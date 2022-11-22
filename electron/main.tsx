@@ -1,19 +1,17 @@
+const { BrowserWindow, app } = require('electron');
 
-// // The app module, which controls our application's event lifecycle.
-// // The BrowserWindow module, which creates and manages application windows.
-// const { app, BrowserWindow } = require('electron');
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    backgroundColor: 'white',
+    // webPreferences: {
+    //     // nodeIntegration: false,
+    //     worldSafeExecuteJavascript: true,
+    //     contextIsolation: true
+    // }
+  });
+  win.loadURL('http://localhost:8080');
+}
 
-// // createWindow() function that loads index.html into a new BrowserWindow instance
-// const createWindow = () => {
-//    const win = new BrowserWindow({
-//         width: 800,
-//         height: 600
-//     })
-//     win.loadFile('../src/index.html')
-// }
-
-
-// // In Electron, browser windows can only be created after the app module's ready event is fired. You can wait for this event by using the app.whenReady() API. Call createWindow() after whenReady() resolves its Promise.
-// app.whenReady().then(() => {
-//     createWindow()
-//   })
+app.whenReady().then(createWindow);
