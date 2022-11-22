@@ -5,11 +5,11 @@ function createWindow () {
         width: 1200,
         height: 800,
         backgroundColor: "white",
-        webPreferences: {
-            nodeItegration: false,
-            worldSafeExecuteJavascript: true,
-            contextIsolation: true
-        }
+        // webPreferences: {
+        //     // nodeItegration: false,
+        //     worldSafeExecuteJavascript: true,
+        //     contextIsolation: true
+        // }
     })
     win.loadFile('./src/client/index.html');
 }
