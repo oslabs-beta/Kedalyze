@@ -1,62 +1,24 @@
 import * as React from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Routes, Route } from 'react-router-dom';
+import Login from './components/login/Login';
+import SignUp from './components/login/SignUp';
+import Dashboard from './components/home/Dashboard';
+import Register from './components/login/Register';
+import '../styles/styles.css';
 
-import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
-export const App: React.FC = () => {
+const App = () => {
   return (
     <div>
-      <h1>Hello World!!!</h1>
-      <Bar options={options} data={data} />;
+      <div className='login-signup'>
+        <Login />
+        <SignUp />
+      </div>
+      <Routes>
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
     </div>
   );
 };
+
+export default App;
