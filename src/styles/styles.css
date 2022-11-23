@@ -44,3 +44,49 @@
   color: black;
   transform: translateY(-7px);
 }
+
+/* NAV DASHBOARD */
+.title,
+.goback-btn {
+  display: inline-block;
+}
+
+.goback-btn {
+  float: right;
+}
+
+.column1,
+.column2 {
+  float: left;
+}
+
+.column1 {
+  width: 12%;
+}
+
+.column2 {
+  width: 88%;
+}
+
+.nav-dashboard {
+  border-top: 1px solid black;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-bar a {
+  text-decoration: none;
+}
+
+.nav-bar ul {
+  border-right: 1px solid black;
+  width: 100px;
+  height: 785px;
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0 0 1rem;
+}
+
+.pages {
+  border: 1px solid black;
+}
