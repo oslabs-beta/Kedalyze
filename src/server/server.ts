@@ -9,8 +9,10 @@ import express, {
 import dotenv from 'dotenv';
 import { RequestHandler } from 'express-serve-static-core';
 import path from 'path';
+// import { startMetricsServer } from './metrics';
 
 dotenv.config();
+
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 3000;
@@ -47,4 +49,5 @@ app.use(
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
+  // startMetricsServer();
 });

@@ -1,5 +1,12 @@
 # Kedalyze
 
+rgb(38, 35, 34) -grayish black
+rgb(224, 26, 79) - pinkish red
+rgb(218, 255, 125) -neon green
+rgb(83, 179, 203) -aqua blue
+rgb(252, 188, 181) -pink
+
+
 Windows Setup for Electron(All of these steps other than installing X server will be commands in your IDE terminal):
 
 1. download and install all of these dependencies:
@@ -45,3 +52,4 @@ Each and every time you want to launch our application on Windows you must: laun
 **Additional**
 If you need anymore help with setup on windows visit this link:
 https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242
+
