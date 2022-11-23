@@ -5,6 +5,7 @@
   "main": "./electron/main.tsx",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
+    "electron-windows": "export DISPLAY=192.168.64.1:0.0",
     "electron-start": "electron .",
     "server": "nodemon server/server.ts --quiet server",
     "dev": "concurrently \"npm run server\" \"npm start\"",
