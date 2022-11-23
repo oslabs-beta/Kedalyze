@@ -1,0 +1,46 @@
+/* need to make the bg image different when routing to a diff page */
+/* body {
+  background-image: url('/Users/karenshi/Kedalyze/src/styles/logo.jpg');
+  background-size: 900px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgba(38, 35, 34, 1);
+} */
+
+/* BUTTONS */
+.login-signup {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.login-btn,
+.signup-btn {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+  background-color: rgba(218, 255, 125, 1);
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: black;
+  transform: translateY(-7px);
+}
