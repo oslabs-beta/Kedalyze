@@ -9,7 +9,7 @@ import express, {
 import dotenv from 'dotenv';
 import { RequestHandler } from 'express-serve-static-core';
 import path from 'path';
-// import { startMetricsServer } from './metrics';
+import { startMetricsServer } from './metrics';
 
 dotenv.config();
 
@@ -49,5 +49,5 @@ app.use(
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
-  // startMetricsServer();
+  startMetricsServer();
 });
