@@ -5,7 +5,8 @@
   "main": "./electron/main.tsx",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
-    "electron-start": "concurrently \"export DISPLAY=192.168.64.1:0.0\" \"electron .\"",
+    "electron-windows": "export DISPLAY=192.168.64.1:0.0",
+    "electron-start": "electron .",
     "server": "nodemon server/server.ts --quiet server",
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
