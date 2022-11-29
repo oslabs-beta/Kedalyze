@@ -4,11 +4,15 @@
   display: inline-block;
 }
 
+.title {
+  margin-left: 1.5rem;
+}
+
 .goback-btn {
   float: right;
-  width: 110px;
+  width: 100px;
   font-size: 10px;
-  height: 45px;
+  height: 30px;
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2.5px;
@@ -21,7 +25,7 @@
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  margin: 1rem;
+  margin: 1rem 1.5rem 1rem 1rem;
 }
 
 .goback-btn:hover {
@@ -34,6 +38,7 @@
 .column1,
 .column2 {
   float: left;
+  background: rgb(17, 18, 23);
 }
 
 .column2 {
@@ -78,4 +83,9 @@
 #customs,
 #alerts {
   margin-left: 2rem;
+}
+
+/* NAV PAGES */
+.metric-nodes {
+  border: none;
 }
