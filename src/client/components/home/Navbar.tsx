@@ -30,16 +30,24 @@ const Navbar = () => {
           <nav className='nav-bar'>
             <ul>
               <li>
-                <Link to='/dashboard/structures'>Structure</Link>
+                <Link to='/dashboard/structures' className='structure'>
+                  Structure
+                </Link>
               </li>
               <li>
-                <Link to='/dashboard/metrics'>Metrics</Link>
+                <Link to='/dashboard/metrics' className='metric'>
+                  Metrics
+                </Link>
               </li>
               <li>
-                <Link to='/dashboard/customs'>Custom</Link>
+                <Link to='/dashboard/customs' className='custom'>
+                  Custom
+                </Link>
               </li>
               <li>
-                <Link to='/dashboard/alerts'>Alerts</Link>
+                <Link to='/dashboard/alerts' className='alert'>
+                  Alerts
+                </Link>
               </li>
             </ul>
           </nav>

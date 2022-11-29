@@ -1,0 +1,81 @@
+/* NAV DASHBOARD */
+.title,
+.goback-btn {
+  display: inline-block;
+}
+
+.goback-btn {
+  float: right;
+  width: 110px;
+  font-size: 10px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+}
+
+.goback-btn:hover {
+  background-color: rgba(252, 188, 181, 1);
+  box-shadow: 0px 7px 15px rgba(224, 26, 79, 0.4);
+  color: rgb(224, 26, 79);
+  transform: translateY(-7px);
+}
+
+.column1,
+.column2 {
+  float: left;
+}
+
+.column2 {
+  width: 88%;
+}
+
+.nav-dashboard {
+  border-top: 1px solid white;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-bar a:hover {
+  color: rgb(224, 26, 79);
+}
+
+.nav-bar ul li {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.nav-bar ul {
+  border-right: 1px solid white;
+  width: 170px;
+  height: 785px;
+  list-style: none;
+  margin: 0;
+  padding: 3rem 0 0 0;
+}
+
+.pages {
+  border: 1px solid black;
+}
+
+#structures,
+#metrics,
+#customs,
+#alerts {
+  margin-left: 2rem;
+}
