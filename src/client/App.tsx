@@ -5,7 +5,7 @@ import SignUp from './components/login/SignUp';
 import Dashboard from './components/home/Dashboard';
 import Register from './components/login/Register';
 import '../styles/styles.css';
-import background from '../styles/logo.jpg';
+import background from '../styles/logo1.jpg';
 
 const App = () => {
   return (
