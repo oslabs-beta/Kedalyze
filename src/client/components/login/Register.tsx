@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import '../../../styles/registerStyles.css';
 
 function GoBack() {
   const navigate = useNavigate();
@@ -18,8 +19,8 @@ function GoBack() {
 
 const Register = () => {
   return (
-    <div>
-      <h1>Register here</h1>
+    <div className='register'>
+      <h1>Register</h1>
       <Routes>
         <Route path='/' element={<GoBack />} />
       </Routes>
