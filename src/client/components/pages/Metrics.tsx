@@ -17,44 +17,45 @@ const Metrics = () => {
       <h1>Global</h1>
       <iframe
         className='metric-nodes'
-        src='http://localhost:3001/d/k8s_views_global/kubernetes-views-global?orgId=1&refresh=10s&from=1669692177637&to=1669695777637'
+        src='http://localhost:3001/d/k8s_views_global/kubernetes-views-global?orgId=1&refresh=5s&from=1669774608237&to=1669778208237'
         width='1200'
-        height='1890'
+        height='1910'
       ></iframe>
       <h1>API Server</h1>
       <iframe
         className='metric-nodes'
-        src='http://localhost:3001/d/k8s_system_apisrv/kubernetes-system-api-server?orgId=1&refresh=10s&from=1669691864085&to=1669695464085'
+        src='http://localhost:3001/d/k8s_system_apisrv/kubernetes-system-api-server?orgId=1&refresh=5s&from=1669774540572&to=1669778140572'
         width='1200'
-        height='1950'
+        height='1910'
       ></iframe>
       <h1>CoreDNS</h1>
       <iframe
         className='metric-nodes'
-        src='http://localhost:3001/d/k8s_system_coredns/kubernetes-system-coredns?orgId=1&refresh=10s&from=1669691844712&to=1669695444712'
+        src='http://localhost:3001/d/k8s_system_coredns/kubernetes-system-coredns?orgId=1&refresh=5s&from=1669774592866&to=1669778192866'
         width='1200'
-        height='2500'
+        height='2100'
       ></iframe>
       <h1>Namespaces</h1>
       <iframe
         className='metric-nodes'
-        src='http://localhost:3001/d/k8s_views_ns/kubernetes-views-namespaces?orgId=1&refresh=10s&from=1669691815942&to=1669695415942'
+        src='http://localhost:3001/d/k8s_views_ns/kubernetes-views-namespaces?orgId=1&refresh=5s&from=1669774628152&to=1669778228152'
         width='1200'
-        height='1600'
+        height='1550'
+        // 1550
       ></iframe>
       <h1>Nodes</h1>
       <iframe
         className='metric-nodes'
-        src='http://localhost:3001/d/k8s_views_nodes/kubernetes-views-nodes?orgId=1&refresh=10s&from=1669691804088&to=1669695404088'
+        src='http://localhost:3001/d/k8s_views_nodes/kubernetes-views-nodes?orgId=1&refresh=5s&from=1669774689053&to=1669778289053'
         width='1200'
-        height='4100'
+        height='4070'
       ></iframe>
       <h1>Pods</h1>
       <iframe
         className='metric-nodes'
-        src='http://localhost:3001/d/k8s_views_pods/kubernetes-views-pods?orgId=1&refresh=10s&from=1669691775341&to=1669695375341'
+        src='http://localhost:3001/d/k8s_views_pods/kubernetes-views-pods?orgId=1&refresh=5s&from=1669774705781&to=1669778305781'
         width='1200'
-        height='1170'
+        height='1500'
       ></iframe>
       {/* <PrometheusChart /> */}
     </div>
