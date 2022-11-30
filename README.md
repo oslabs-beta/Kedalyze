@@ -1,4 +1,15 @@
-# Kedalyze
+![KEDALyzeLogo](./src/styles/logo1.jpg?raw=true)
+
+# KEDAlyze
+
+A tool that the user can deploy on their Kubernetes cluster in order to visualize real-time KEDA autoscaling.  
+
+# Functionality
+
+KEDAlyze is an open-source product that gives the user a way to visualize KEDA's autoscaling. Allowing the user to see a visual representation of their pods scaling up and then back down as the events dissipate. We also have the basic functionality of a Kubernetes cluster visualizer, allowing the user to see the general health of their pods. KEDAlyze uses promQL queries for cluster metrics such as: in order to drive the autoscaling that is then displayed on a graph for the user. 
+
+# Setup
+
 
 rgb(38, 35, 34) -grayish black
 rgb(224, 26, 79) - pinkish red
@@ -52,4 +63,15 @@ Each and every time you want to launch our application on Windows you must: laun
 **Additional**
 If you need anymore help with setup on windows visit this link:
 https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242
+
+# Contributors:  
+
+- Karen Shi  - [Github](https://github.com/ks1009)
+
+- Debbie Zavaleta  - [Github](https://github.com/dzavaleta96)
+
+- Hashim Farah - [Github](https://github.com/Hashim-21)
+
+- Erik Stynchula - [Github](https://github.com/EStynch)
+
 
