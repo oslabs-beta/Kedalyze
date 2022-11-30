@@ -5,20 +5,32 @@ import express, {
   Response,
   NextFunction,
   ErrorRequestHandler,
+  Router,
 } from 'express';
-import dotenv from 'dotenv';
 import { RequestHandler } from 'express-serve-static-core';
+import dotenv from 'dotenv';
 import path from 'path';
-import { startMetricsServer } from './metrics';
+import client from 'prom-client';
+
+const clusterRouter = require('./routes/api');
 
 dotenv.config();
-
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 3000;
 
 app.use(express.json() as RequestHandler);
 app.use(express.urlencoded({ extended: true }) as RequestHandler);
+app.use('/api', clusterRouter);
+
+client.collectDefaultMetrics();
+
+// collecting default metrics from Prometheus
+// https://prometheus.io/docs/instrumenting/writing_clientlibs/#standard-and-runtime-collectors
+// const collectDefaultMetrics = client.collectDefaultMetrics;
+// const Registry = client.Registry;
+// const register = new Registry();
+// collectDefaultMetrics({ register });
 
 app.get('/', (req: Request, res: Response) => {
   console.log('backend and frontend are talking');
@@ -49,5 +61,4 @@ app.use(
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
-  startMetricsServer();
 });

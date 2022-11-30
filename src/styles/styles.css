@@ -40,7 +40,7 @@ body {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  margin: 1.5rem;
+  margin: 2rem;
 }
 
 .signup-btn:hover {
