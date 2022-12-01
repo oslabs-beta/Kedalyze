@@ -1,6 +1,6 @@
 /* NAV DASHBOARD */
 .dashboard {
-  background: rgb(31, 33, 42);
+  background: rgb(23, 25, 32);
 }
 
 .title,
@@ -9,10 +9,188 @@
 }
 
 .title {
-  margin: 2rem;
+  margin: 2rem 0 2rem -3.5rem;
   letter-spacing: 5px;
 }
 
+/* gears */
+.gears {
+  display: inline-block;
+  margin-left: 3.5rem;
+}
+
+.gears-container {
+  width: 150px;
+  position: relative;
+}
+
+.gear-rotate {
+  width: 2em;
+  height: 2em;
+  left: 35%;
+  margin-top: -1em;
+  margin-left: -1em;
+  background: #daff7d;
+  position: absolute;
+  border-radius: 1em;
+  -webkit-animation: 1s gear-rotate linear infinite;
+  -moz-animation: 1s gear-rotate linear infinite;
+  animation: 1s gear-rotate linear infinite;
+}
+.gear-rotate-left {
+  margin-top: -2.2em;
+  top: 50%;
+  width: 2em;
+  height: 2em;
+  background: #daff7d;
+  position: absolute;
+  -webkit-animation: 1s gear-rotate-left linear infinite;
+  -moz-animation: 1s gear-rotate-left linear infinite;
+  animation: 1s gear-rotate-left linear infinite;
+}
+
+.gear-rotate::before,
+.gear-rotate-left::before {
+  width: 2.8em;
+  height: 2.8em;
+  background: -webkit-linear-gradient(
+      0deg,
+      transparent 39%,
+      #daff7d 39%,
+      #daff7d 61%,
+      transparent 61%
+    ),
+    -webkit-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%),
+    -webkit-linear-gradient(120deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%);
+  background: -moz-linear-gradient(
+      0deg,
+      transparent 39%,
+      #daff7d 39%,
+      #47ec19 61%,
+      transparent 61%
+    ),
+    -moz-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%),
+    -moz-linear-gradient(120deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%);
+  background: -o-linear-gradient(
+      0deg,
+      transparent 39%,
+      #daff7d 39%,
+      #daff7d 61%,
+      transparent 61%
+    ),
+    -o-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%),
+    -o-linear-gradient(120deg, transparent 42%, #47ec19 42%, #daff7d 58%, transparent
+          58%);
+  background: -ms-linear-gradient(
+      0deg,
+      transparent 39%,
+      #daff7d 39%,
+      #daff7d 61%,
+      transparent 61%
+    ),
+    -ms-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%),
+    -ms-linear-gradient(120deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+          58%);
+  background: linear-gradient(
+      0deg,
+      transparent 39%,
+      #daff7d 39%,
+      #daff7d 61%,
+      transparent 61%
+    ),
+    linear-gradient(
+      60deg,
+      transparent 42%,
+      #daff7d 42%,
+      #daff7d 58%,
+      transparent 58%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 42%,
+      #daff7d 42%,
+      #daff7d 58%,
+      transparent 58%
+    );
+  position: absolute;
+  content: '';
+  top: -0.4em;
+  left: -0.4em;
+  border-radius: 1.4em;
+}
+.gear-rotate::after,
+.gear-rotate-left::after {
+  width: 1em;
+  height: 1em;
+  background: #2b2b2b;
+  position: absolute;
+  content: '';
+  top: 0.5em;
+  left: 0.5em;
+  border-radius: 0.5em;
+}
+
+@-webkit-keyframes gear-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-180deg);
+  }
+}
+
+@-moz-keyframes gear-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes gear-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@-webkit-keyframes gear-rotate-left {
+  0% {
+    -webkit-transform: rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(210deg);
+  }
+}
+
+@-moz-keyframes gear-rotate-left {
+  0% {
+    -webkit-transform: rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(210deg);
+  }
+}
+
+@keyframes gear-rotate-left {
+  0% {
+    -webkit-transform: rotate(30deg);
+  }
+  100% {
+    -webkit-transform: rotate(210deg);
+  }
+}
+
+/* Home button */
 .goback-btn {
   float: right;
   width: 100px;
@@ -80,7 +258,7 @@
   float: left;
   /* need to figure out how to get the 1st column size to match the 2nd column */
   height: 450vh;
-  background: rgb(31, 33, 42);
+  background: rgb(23, 25, 32);
 }
 
 .column2 {
@@ -108,9 +286,18 @@
 
 .metric-data {
   border: none;
-  margin-left: 2rem;
+  margin-left: -2rem;
 }
 
+.frame-cut {
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.frame-cut iframe {
+  clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 5% 100%);
+  background-color: #000000;
+}
 /* METRICS NAVBAR BUTTONS */
 .metrics-global,
 .metrics-apiserver,

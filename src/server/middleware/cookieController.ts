@@ -12,7 +12,7 @@ const cookieController: Object = {};
   return next();
 };
 
-(cookieController as any).checkPassword = (
+(cookieController as any).setSSIDCookie = (
   req: Request,
   res: Response,
   next: NextFunction

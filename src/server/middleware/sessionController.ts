@@ -3,26 +3,21 @@ const Session = require('../models/sessionModel');
 
 const sessionController: Object = {};
 
-// isLoggedIn - find the appropriate session for this request in the database, then verify whether or not the session is still valid.
-
+// isLoggedIn: find the appropriate session for this request in the database
 (sessionController as any).isLoggedIn = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  // resolve
   Session.findOne({ cookieId: req.cookies.ssid })
     .exec()
-    // anything inside of .then is going to run for a resolve
     .then((data: any) => {
       if (!data) {
-        res.redirect('/signup');
-        // else return to next middleware
+        res.redirect('/register');
       } else return next();
     })
-    // catch error handler
     .catch((error: ErrorRequestHandler) => {
-      res.redirect('/signup');
+      res.redirect('/register');
       return next({
         log: 'sessionController.isLoggedIn: ERROR: ' + error,
         message: 'sessionController.isLoggedIn: ERROR: you are not logged in',
@@ -30,9 +25,7 @@ const sessionController: Object = {};
     });
 };
 
-/**
- * startSession - create and save a new Session into the database.
- */
+// startSession: create and save a new session into the database
 (sessionController as any).startSession = (
   req: Request,
   res: Response,

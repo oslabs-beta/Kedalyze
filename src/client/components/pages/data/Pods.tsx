@@ -39,13 +39,14 @@ const Pods = () => {
           </Link>
         </li>
       </ul>
-      <h1>Pods</h1>
-      <iframe
-        className='metric-data'
-        src='http://localhost:3001/d/k8s_views_pods/kubernetes-views-pods?orgId=1&refresh=5s&from=1669774705781&to=1669778305781'
-        width='1200'
-        height='1500'
-      ></iframe>
+      <div className='frame-cut'>
+        <iframe
+          className='metric-data'
+          src='http://localhost:3001/d/k8s_views_pods/kubernetes-views-pods?orgId=1&refresh=5s&from=1669774705781&to=1669778305781'
+          width='1200'
+          height='1500'
+        ></iframe>
+      </div>
     </div>
   );
 };

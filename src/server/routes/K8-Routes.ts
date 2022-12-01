@@ -6,8 +6,8 @@ import express, {
   Router,
   response,
 } from 'express';
-const middleware = require('../middleware/middleware');
-const KedaMiddleController = require('../middleware/KedaMiddleware')
+const middleware = require('../middleware/K8-middleware');
+const KedaMiddleController = require('../middleware/KedaMiddleware');
 const router: Router = express.Router();
 
 // need to make this in TS
@@ -23,11 +23,34 @@ router.get(
   }
 );
 
-router.get('/scaledobjects', KedaMiddleController.getScaledObject , (req: Request, res: Response)=> {}),
-router.get('/namespace/:namespace/scaledobjects/:name', KedaMiddleController.getScaledObjectName, (req: Request, res: Response) => {}),
-router.get('/hpa', KedaMiddleController.getHpa, (req: Request, res: Response) => {}),
-router.get('/keda', KedaMiddleController.getKeda ,(req: Request, res: Response) => {}),
-router.get('/keda/pod', KedaMiddleController.getKedaPod, (req: Request, res: Response) => {}),
-router.get('/namespace/:namespace/metrics/:metricsname', KedaMiddleController.getMetricName, (req: Request, res: Response) => {}),
-
-module.exports = router;
+router.get(
+  '/scaledobjects',
+  KedaMiddleController.getScaledObject,
+  (req: Request, res: Response) => {}
+),
+  router.get(
+    '/namespace/:namespace/scaledobjects/:name',
+    KedaMiddleController.getScaledObjectName,
+    (req: Request, res: Response) => {}
+  ),
+  router.get(
+    '/hpa',
+    KedaMiddleController.getHpa,
+    (req: Request, res: Response) => {}
+  ),
+  router.get(
+    '/keda',
+    KedaMiddleController.getKeda,
+    (req: Request, res: Response) => {}
+  ),
+  router.get(
+    '/keda/pod',
+    KedaMiddleController.getKedaPod,
+    (req: Request, res: Response) => {}
+  ),
+  router.get(
+    '/namespace/:namespace/metrics/:metricsname',
+    KedaMiddleController.getMetricName,
+    (req: Request, res: Response) => {}
+  ),
+  (module.exports = router);

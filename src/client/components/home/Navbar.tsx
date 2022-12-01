@@ -30,8 +30,17 @@ function GoBack() {
 const Navbar = () => {
   return (
     <>
-      <h1 className='title'>KEDAlyze</h1>
-      <GoBack />
+      <div>
+        <div className='gears' id='two-gears'>
+          <div className='gears-container'>
+            <div className='gear-rotate'></div>
+            <div className='gear-rotate-left'></div>
+          </div>
+        </div>
+        <h1 className='title'>KEDAlyze</h1>
+
+        <GoBack />
+      </div>
       <div className='nav-dashboard'>
         <div className='column1'>
           <nav className='nav-bar'>
