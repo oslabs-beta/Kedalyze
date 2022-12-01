@@ -1,4 +1,8 @@
 /* NAV DASHBOARD */
+.dashboard {
+  background: rgb(31, 33, 42);
+}
+
 .title,
 .goback-btn {
   display: inline-block;
@@ -36,23 +40,8 @@
   transform: translateY(-7px);
 }
 
-.column1,
-.column2 {
-  float: left;
-  background: rgb(17, 18, 23);
-}
-
-.column1 {
-  border-right: 1px solid white;
-  height: 100vh;
-}
-
-.column2 {
-  width: 88%;
-}
-
 .nav-dashboard {
-  border-top: 1px solid white;
+  border-top: 3px solid rgb(17, 18, 23);
   width: 100%;
   height: 100%;
 }
@@ -86,6 +75,20 @@
 }
 
 /* METRICS NAVBAR */
+
+.column1 {
+  float: left;
+  /* need to figure out how to get the 1st column size to match the 2nd column */
+  height: 450vh;
+  background: rgb(31, 33, 42);
+}
+
+.column2 {
+  float: left;
+  background: rgb(17, 18, 23);
+  width: 88%;
+}
+
 .column2 ul li {
   list-style: none;
   display: inline-block;
