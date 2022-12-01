@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-import '../../../styles/registerStyles.css';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import '../../../styles/loginStyles.css';
 
-function GoBack() {
+const LoginPage = () => {
   const navigate = useNavigate();
+
+  // want to create some authentication for login
+  const handleClick = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    navigate('/dashboard');
+  };
 
   const onSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -11,9 +17,10 @@ function GoBack() {
   };
 
   return (
-    <div className='register-page'>
+    <div className='login-page'>
+      <h1>Login</h1>
       <div className='form-align'>
-        <form className='signup-form'>
+        <form className='login-form'>
           <label>
             Username:
             <input type='text' name='username' />
@@ -22,12 +29,12 @@ function GoBack() {
             Password:
             <input type='text' name='password' />
           </label>
-          <label>
-            Email:
-            <input type='text' name='email' />
-          </label>
-          <button type='submit' onClick={onSubmit} className='signup-page-btn'>
-            Sign Up
+          <button
+            type='submit'
+            onClick={handleClick}
+            className='login-page-btn'
+          >
+            Login
           </button>
           <button
             type='submit'
@@ -40,19 +47,6 @@ function GoBack() {
       </div>
     </div>
   );
-}
-
-// need a form to connect to dashboard
-
-const Register = () => {
-  return (
-    <div className='register'>
-      <h1>Register</h1>
-      <Routes>
-        <Route path='/' element={<GoBack />} />
-      </Routes>
-    </div>
-  );
 };
 
-export default Register;
+export default LoginPage;

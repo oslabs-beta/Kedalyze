@@ -1,0 +1,59 @@
+/* SIGN UP/REGISTER PAGE */
+
+.register h1 {
+  margin: 2rem 0 1rem 2rem;
+  letter-spacing: 3px;
+  color: rgba(252, 188, 181, 0.8);
+}
+
+.form-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input,
+label {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 5px 0;
+  display: block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+}
+
+/* SIGNUP BUTTON */
+.signup-page-btn,
+.go-back-again-btn {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+}
+
+.signup-page-btn:hover {
+  background-color: rgba(83, 179, 203, 1);
+  box-shadow: 0px 15px 20px rgba(0, 208, 255, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.go-back-again-btn:hover {
+  background-color: rgba(252, 188, 181, 1);
+  box-shadow: 0px 7px 15px rgba(224, 26, 79, 0.4);
+  color: rgb(224, 26, 79);
+  transform: translateY(-7px);
+}
