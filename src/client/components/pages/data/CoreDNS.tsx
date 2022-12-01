@@ -39,13 +39,14 @@ const CoreDNS = () => {
           </Link>
         </li>
       </ul>
-      <h1>CoreDNS</h1>
-      <iframe
-        className='metric-data'
-        src='http://localhost:3001/d/k8s_system_coredns/kubernetes-system-coredns?orgId=1&refresh=5s&from=1669774592866&to=1669778192866'
-        width='1200'
-        height='2100'
-      ></iframe>
+      <div className='frame-cut'>
+        <iframe
+          className='metric-data'
+          src='http://localhost:3001/d/k8s_system_coredns/kubernetes-system-coredns?orgId=1&refresh=5s&from=1669774592866&to=1669778192866'
+          width='1200'
+          height='2100'
+        ></iframe>
+      </div>
     </div>
   );
 };

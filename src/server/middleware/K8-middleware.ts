@@ -3,7 +3,6 @@ import express, {
   Response,
   NextFunction,
   ErrorRequestHandler,
-  Router,
 } from 'express';
 import * as k8s from '@kubernetes/client-node';
 

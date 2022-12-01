@@ -2,7 +2,6 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  
   entry: './src/client/index.tsx',
 
   output: {
@@ -40,6 +39,10 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
       },
       // {
       //   test: /\.(png|jpg|gif)$/i,

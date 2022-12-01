@@ -39,13 +39,14 @@ const APIServer = () => {
           </Link>
         </li>
       </ul>
-      <h1>API Server</h1>
-      <iframe
-        className='metric-data'
-        src='http://localhost:3001/d/k8s_system_apisrv/kubernetes-system-api-server?orgId=1&refresh=5s&from=1669774540572&to=1669778140572'
-        width='1200'
-        height='1910'
-      ></iframe>
+      <div className='frame-cut'>
+        <iframe
+          className='metric-data'
+          src='http://localhost:3001/d/k8s_system_apisrv/kubernetes-system-api-server?orgId=1&refresh=5s&from=1669774540572&to=1669778140572'
+          width='1200'
+          height='1910'
+        ></iframe>
+      </div>
     </div>
   );
 };
