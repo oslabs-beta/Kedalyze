@@ -2,19 +2,64 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import '../../../styles/registerStyles.css';
 import eye from '../../../styles/pine-eye.jpg';
+import axios from 'axios';
+import { UserList } from '../interfaces/interface';
 
 function GoBack() {
+  // register
   const [passwordShown, setPasswordShown] = useState(false);
-  const navigate = useNavigate();
+  const [email, setEmail] = useState<UserList>();
+  const [username, setUsername] = useState<UserList>();
+  const [password, setPassword] = useState<UserList>();
 
-  const onSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    navigate('/');
-  };
+  // gives me a TS error
+  // useEffect(() => {
+  //   axios
+  //     .get<UserList>('/register')
+  //     .then((response) => {
+  //       setEmail(response.data);
+  //       setUsername(response.data);
+  //       setPassword(response.data);
+  //       console.log('you have signed up!');
+  //     }, [])
+  //     .catch(() => {
+  //       console.log('sign up failed');
+  //     });
+  // });
+
+  async function getUsers() {
+    try {
+      const { data, status } = await axios.get<UserList>('/register', {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      console.log(JSON.stringify(data));
+      console.log('response status is: ', status);
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
 
   const togglePassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setPasswordShown(!passwordShown);
+  };
+
+  // go home navigation
+  // click on sign up - store the user in the database
+  const navigate = useNavigate();
+  const onSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    navigate('/');
   };
 
   return (
@@ -51,8 +96,6 @@ function GoBack() {
     </div>
   );
 }
-
-// need a form to connect to dashboard
 
 const Register = () => {
   return (

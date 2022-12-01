@@ -27,8 +27,9 @@ const userController: Object = {};
   res: Response,
   next: NextFunction
 ) => {
-  const { username, password } = req.body;
+  const { email, username, password } = req.body;
   User.create({
+    email: email,
     username: username,
     password: password,
   })
@@ -54,7 +55,7 @@ const userController: Object = {};
   const { username, password } = req.body;
   if (!username || !password) {
     console.log('Error: username and password fields must be complete.');
-    return res.redirect('/signup');
+    return res.redirect('/register');
   }
 
   // check if user exists / password is correct
@@ -67,10 +68,10 @@ const userController: Object = {};
         function (error: ErrorRequestHandler, isMatch: any) {
           if (error) {
             console.log('userController.verifyUser: ERROR: ' + error);
-            return res.redirect('/signup');
+            return res.redirect('/register');
           } else if (!isMatch) {
             console.log('userController.verifyUser: ERROR: incorrect password');
-            return res.redirect('/signup');
+            return res.redirect('/register');
           } else {
             res.locals.id = userData.id;
             return next();
@@ -82,11 +83,7 @@ const userController: Object = {};
       console.log(
         'userController.verifyUser: ERROR: incorrect username or password'
       );
-      return res.redirect('/signup');
-      // return next({
-      //   log: 'userController.verifyUser: ERROR: ' + error,
-      //   message: 'userController.verifyUser: ERROR: login information incorrect',
-      // });
+      return res.redirect('/register');
     });
 };
 

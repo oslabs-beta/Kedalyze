@@ -7,17 +7,21 @@ import express, {
   Router,
 } from 'express';
 import { RequestHandler } from 'express-serve-static-core';
-import dotenv from 'dotenv';
 import path from 'path';
 import client from 'prom-client';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const cookieParser = require('cookie-parser');
-const clusterRouter = require('./routes/api');
+
+// routes
+const K8Router = require('./routes/K8-Routes');
+
+// controllers
 const userController = require('./middleware/userController');
 const cookieController = require('./middleware/cookieController');
 const sessionController = require('./middleware/sessionController');
-
-dotenv.config();
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 3000;
@@ -26,7 +30,7 @@ app.use(express.json() as RequestHandler);
 app.use(express.urlencoded({ extended: true }) as RequestHandler);
 app.use(cookieParser());
 
-app.use('/api', clusterRouter);
+app.use('/api', K8Router);
 
 client.collectDefaultMetrics();
 
@@ -41,7 +45,7 @@ client.collectDefaultMetrics();
 
 app.get(
   '/',
-  // cookieController.setCookie,
+  // cookieController.addCookie,
   (req: Request, res: Response) => {
     console.log('backend and frontend are talking');
     return res
@@ -51,46 +55,44 @@ app.get(
 );
 
 // signup
-// app.get('/signup', (req: Request, res: Response) => {
-//   res.sendFile(path.resolve(__dirname, '../client/signup.html'));
-// });
+app.get('/register', (req: Request, res: Response) => {
+  return res.status(200).json(res.locals.users);
+});
 
-// // route handler POST request to /signup
-// app.post(
-//   '/signup',
-//   userController.createUser,
-//   cookieController.setSSIDCookie,
-//   sessionController.startSession,
-//   (req: Request, res: Response) => {
-//     // what should happen here on successful sign up?
-//     // if post is successful redirect to /secret
-//     res.status(200).redirect('/secret');
-//   }
-// );
+// route handler POST request to /register
+app.post(
+  '/register',
+  userController.createUser,
+  // cookieController.setSSIDCookie,
+  // sessionController.startSession,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals);
+  }
+);
 
-// // login
-// app.post(
-//   '/login',
-//   userController.verifyUser,
-//   cookieController.setSSIDCookie,
-//   sessionController.startSession,
-//   (req: Request, res: Response) => {
-//     console.log('successful login, redirecting');
-//     res.redirect('/secret');
-//   }
-// );
+// login
+app.post(
+  '/login',
+  userController.verifyUser,
+  // cookieController.setSSIDCookie,
+  // sessionController.startSession,
+  (req: Request, res: Response) => {
+    console.log('successful login, redirecting');
+    // res.redirect('/dashboard');
+  }
+);
 
-// // Authorized routes
+// Authorized routes
 // app.get(
-//   '/secret',
+//   '/dashboard',
 //   sessionController.isLoggedIn,
 //   (req: Request, res: Response) => {
-//     res.sendFile(path.resolve(__dirname, '../client/secret.html'));
+//     return res.status(200);
 //   }
 // );
 
 // app.get(
-//   '/secret/users',
+//   '/dashboard/users',
 //   sessionController.isLoggedIn,
 //   userController.getAllUsers,
 //   (req: Request, res: Response) => {
@@ -123,3 +125,5 @@ app.use(
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
 });
+
+module.exports = app;

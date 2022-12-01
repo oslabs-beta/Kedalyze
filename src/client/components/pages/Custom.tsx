@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import '../../../styles/customStyles.css';
 
 const Custom = () => {
   return (
     <div id='customs'>
-      <h1>Custom</h1>
+      <iframe
+        className='prom-custom'
+        width='97%'
+        height='1150px'
+        src={'http://localhost:9090/graph'}
+      />
     </div>
   );
 };
