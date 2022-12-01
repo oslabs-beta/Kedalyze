@@ -1,12 +1,14 @@
 /* SIGN UP/REGISTER PAGE */
 
-.register h1 {
-  margin: 2rem 0 1rem 2rem;
-  letter-spacing: 3px;
-  color: rgba(252, 188, 181, 0.8);
+.register {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.form-align {
+.form-align,
+.signup-home-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +28,7 @@ label {
 /* SIGNUP BUTTON */
 .signup-page-btn,
 .go-back-again-btn {
-  width: 140px;
+  width: 152px;
   height: 45px;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
@@ -56,4 +58,20 @@ label {
   box-shadow: 0px 7px 15px rgba(224, 26, 79, 0.4);
   color: rgb(224, 26, 79);
   transform: translateY(-7px);
+}
+
+.pine-eye {
+  height: 50px;
+}
+
+.pine-button {
+  background: none;
+  border: none;
+  margin-top: 2rem;
+}
+
+.pine {
+  display: flex;
+  flex-direction: column;
+  float: left;
 }
