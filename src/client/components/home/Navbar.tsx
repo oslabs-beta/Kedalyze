@@ -22,7 +22,7 @@ function GoBack() {
 
   return (
     <button type='submit' onClick={onSubmit} className='goback-btn'>
-      Go Back
+      Home
     </button>
   );
 }

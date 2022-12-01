@@ -7,6 +7,7 @@ import Start from './components/home/Start';
 import LoginPage from './components/login/LoginPage';
 
 const App = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
   const [token, setToken] = useState();
 
   if (!token) {

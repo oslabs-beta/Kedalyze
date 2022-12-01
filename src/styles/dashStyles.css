@@ -5,7 +5,7 @@
 }
 
 .title {
-  margin-left: 1.5rem;
+  margin: 2rem;
   letter-spacing: 5px;
 }
 
@@ -26,7 +26,7 @@
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  margin: 1rem 1.5rem 1rem 1rem;
+  margin: 2rem;
 }
 
 .goback-btn:hover {
@@ -42,8 +42,8 @@
   background: rgb(17, 18, 23);
 }
 
-.column2 {
-  border-left: 1px solid white;
+.column1 {
+  border-right: 1px solid white;
   height: 100vh;
 }
 
