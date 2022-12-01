@@ -43,6 +43,11 @@
 }
 
 .column2 {
+  border-left: 1px solid white;
+  height: 100vh;
+}
+
+.column2 {
   width: 88%;
 }
 
@@ -62,18 +67,18 @@
 }
 
 .nav-bar ul li {
-  margin-bottom: 5rem;
+  margin: 4rem 2rem;
   text-align: center;
 }
 
 .nav-bar ul {
-  border-right: 1px solid white;
   width: 170px;
   height: 785px;
   list-style: none;
   margin: 0;
   padding: 3rem 0 0 0;
   letter-spacing: 3px;
+  display: inline;
 }
 
 .pages {
@@ -84,7 +89,7 @@
 .column2 ul li {
   list-style: none;
   display: inline-block;
-  margin: 2rem 4.3rem 0 0;
+  margin: 2rem 3em 0 0;
 }
 
 .column2 a {

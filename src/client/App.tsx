@@ -1,26 +1,28 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Login from './components/login/Login';
-import SignUp from './components/login/SignUp';
-import Dashboard from './components/home/Dashboard';
 import Register from './components/login/Register';
+import Dashboard from './components/home/Dashboard';
 import '../styles/styles.css';
-import background from '../styles/logo1.jpg';
+import Start from './components/home/Start';
+import LoginPage from './components/login/LoginPage';
 
 const App = () => {
+  const [token, setToken] = useState();
+
+  if (!token) {
+    // return <LoginPage setToken={setToken} />;
+  }
+
+  // Type '{ setToken: Dispatch<(prevState: undefined) => undefined>; }' is not assignable to type 'IntrinsicAttributes'.
+  // Property 'setToken' does not exist on type 'IntrinsicAttributes'.
+
   return (
     <div>
-      <div
-        className='background-image'
-        style={{ backgroundImage: `url(${background})` }}
-      ></div>
-      <div className='login-signup'>
-        <Login />
-        <SignUp />
-      </div>
       <Routes>
-        <Route path='/dashboard/*' element={<Dashboard />} />
+        <Route path='/' element={<Start />} />
+        <Route path='/login/*' element={<LoginPage />} />
         <Route path='/register/*' element={<Register />} />
+        <Route path='/dashboard/*' element={<Dashboard />} />
       </Routes>
     </div>
   );

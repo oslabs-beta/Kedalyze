@@ -1,10 +1,13 @@
-/* SIGN UP/REGISTER PAGE */
+/* LOGIN PAGE */
 
-.register h1 {
+.login-page h1 {
   margin: 2rem 0 1rem 2rem;
   letter-spacing: 3px;
   color: rgba(252, 188, 181, 0.8);
+  margin-bottom: 10rem;
 }
+
+/* LOGIN FORM */
 
 .form-align {
   display: flex;
@@ -23,8 +26,8 @@ label {
   letter-spacing: 2px;
 }
 
-/* SIGNUP BUTTON */
-.signup-page-btn,
+/* LOGIN BUTTON */
+.login-page-btn,
 .go-back-again-btn {
   width: 140px;
   height: 45px;
@@ -44,7 +47,7 @@ label {
   margin: 1rem;
 }
 
-.signup-page-btn:hover {
+.login-page-btn:hover {
   background-color: rgba(83, 179, 203, 1);
   box-shadow: 0px 15px 20px rgba(0, 208, 255, 0.4);
   color: white;
