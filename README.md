@@ -8,17 +8,7 @@ A tool that the user can deploy on their Kubernetes cluster in order to visualiz
 
 KEDAlyze is an open-source product that gives the user a way to visualize KEDA's autoscaling. Allowing the user to see a visual representation of their pods scaling up and then back down as the events dissipate. We also have the basic functionality of a Kubernetes cluster visualizer, allowing the user to see the general health of their pods. KEDAlyze uses promQL queries for cluster metrics such as: in order to drive the autoscaling that is then displayed on a graph for the user. 
 
-# Setup
-
-
-rgb(38, 35, 34) -grayish black
-rgb(224, 26, 79) - pinkish red
-rgb(218, 255, 125) -neon green
-rgb(83, 179, 203) -aqua blue
-rgb(252, 188, 181) -pink
-
-
-Windows Setup for Electron(All of these steps other than installing X server will be commands in your IDE terminal):
+# Windows Setup for Electron
 
 1. download and install all of these dependencies:
 sudo apt install ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxr
@@ -63,6 +53,8 @@ Each and every time you want to launch our application on Windows you must: laun
 **Additional**
 If you need anymore help with setup on windows visit this link:
 https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242
+
+# General Setup
 
 # Contributors:  
 
