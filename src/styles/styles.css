@@ -1,26 +1,27 @@
 body {
-  /* background: rgba(38, 35, 34, 1); */
   background: rgb(17, 18, 23);
   color: white;
-  /* font-family: 'Roboto', sans-serif; */
+  margin: 0;
 }
 
 .background-image {
   width: auto;
-  height: 600px;
+  height: 700px;
   background-size: 900px;
   background-repeat: no-repeat;
   background-position-x: center;
-  background-position-y: 8rem;
+  background-position-y: center;
   background-attachment: fixed;
 }
 
 /* BUTTONS */
 .login-signup {
+  display: inline-flex;
   position: fixed;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  top: 75%;
 }
 
 .login-btn,
