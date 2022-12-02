@@ -34,13 +34,18 @@ A tool that the user can deploy on their Kubernetes cluster in order to visualiz
 	  <li><a href="#installation">Windows Installation</a></li>
       </ul>
     </li>
+    	    <li>
+      <a href="#features">Features</a>
+      <ul>
+	  <li><a href="#live-metrics">Live Metrics</a></li>
+	  <li><a href="#autoscaling">Auto Scaling</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#authors">Authors</a></li>
   </ol>
 </details>
-
-<br/>
 
 # Functionality
 
@@ -52,6 +57,7 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
   ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+  ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
 - <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='Kubernetes' src='https://img.shields.io/badge/Kubernetes-100000?style=for-the-badge&logo=Kubernetes&logoColor=white&labelColor=000000&color=black'/></a>
   <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='KEDA' src='https://img.shields.io/badge/KEDA-100000?style=for-the-badge&logo=KEDA&logoColor=white&labelColor=000000&color=2F61D3'/></a>
 - ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
@@ -71,7 +77,14 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
    ```sh
    npm install
    ```
-3. Create .env file at root of directory
+3. Create `.env` file at root of directory
+
+```sh
+root
+  ├─ .env
+  ├─ electron
+  └─ src
+```
 
 4. Connect Mongo database in .env
    ```js
@@ -81,6 +94,7 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
    ```js
    JWT_KEY = 'your string of choice';
    ```
+6. `npm run dev`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,7 +136,7 @@ export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 7. Copy the nameserver IP, you will need it for the next step
 
 8. In the JSON file change the electron-windows script to export
-   `js DISPLAY="put your nameserver IP here" ` do not add the quotes in your JSON file
+   `DISPLAY="put your nameserver IP here"` do not add the quotes in your JSON file
 
 9. `npm start (to start the webpack)`
 
@@ -164,7 +178,13 @@ If you need anymore help with setup on windows visit this [link](https://techcom
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Contributing:
+# Features
+
+## Live Metrics
+
+## Autoscaling
+
+# Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -181,7 +201,7 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## Contributors
+## Authors
 
 - Karen Shi - [Github](https://github.com/ks1009)
 - Debbie Zavaleta - [Github](https://github.com/dzavaleta96)
