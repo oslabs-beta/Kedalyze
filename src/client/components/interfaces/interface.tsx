@@ -1,7 +1,7 @@
-interface User {
+interface IFormInput {
   email: string;
   username: string;
   password: string;
 }
 
-export type UserList = User[];
+export type IForm = IFormInput[];

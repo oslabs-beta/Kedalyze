@@ -10,7 +10,6 @@ const middleware = require('../middleware/K8-middleware');
 const KedaMiddleController = require('../middleware/KedaMiddleware');
 const router: Router = express.Router();
 
-// need to make this in TS
 router.get('/podList', middleware.getPodList, (req: Request, res: Response) => {
   res.status(201).send(res.locals.podList);
 });

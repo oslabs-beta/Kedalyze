@@ -7,22 +7,16 @@
   transform: translate(-50%, -50%);
 }
 
-.form-align,
-.signup-home-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 input,
 label {
   width: 100%;
   padding: 12px 20px;
   margin: 5px 0;
-  display: block;
+  /* display: block; */
   border-radius: 4px;
   box-sizing: border-box;
   letter-spacing: 2px;
+  /* margin-right: 1.5rem; */
 }
 
 /* SIGNUP BUTTON */

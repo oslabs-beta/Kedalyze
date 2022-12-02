@@ -7,16 +7,6 @@ import Start from './components/home/Start';
 import LoginPage from './components/login/LoginPage';
 
 const App = () => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  const [token, setToken] = useState();
-
-  if (!token) {
-    // return <LoginPage setToken={setToken} />;
-  }
-
-  // Type '{ setToken: Dispatch<(prevState: undefined) => undefined>; }' is not assignable to type 'IntrinsicAttributes'.
-  // Property 'setToken' does not exist on type 'IntrinsicAttributes'.
-
   return (
     <div>
       <Routes>
