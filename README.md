@@ -120,7 +120,7 @@ export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 7. Copy the nameserver IP, you will need it for the next step
 
 8. In the JSON file change the electron-windows script to export
-   `js DISPLAY="put your nameserver IP here" ` do not add the quotes in your JSON file
+   `DISPLAY="put your nameserver IP here" ` do not add the quotes in your JSON file
 
 9. `npm start (to start the webpack)`
 
