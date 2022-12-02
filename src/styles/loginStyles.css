@@ -8,14 +8,6 @@
 }
 
 /* LOGIN FORM */
-
-.form-align,
-.login-home-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 input,
 label {
   width: 291px;

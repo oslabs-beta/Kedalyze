@@ -28,6 +28,7 @@ const userController: Object = {};
   next: NextFunction
 ) => {
   const { email, username, password } = req.body;
+
   User.create({
     email: email,
     username: username,
@@ -35,9 +36,10 @@ const userController: Object = {};
   })
     .then((data: any) => {
       res.locals.id = data.id;
+      // console.log('this is req body', req.body);
+      // console.log('this is res.locals.id', res.locals.id);
       return next();
     })
-    // catch error handler
     .catch((error: ErrorRequestHandler) => {
       return next({
         log: 'userController.createUser: ERROR: ' + error,
@@ -52,8 +54,8 @@ const userController: Object = {};
   res: Response,
   next: NextFunction
 ) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
+  const { email, username, password } = req.body;
+  if (!email || !username || !password) {
     console.log('Error: username and password fields must be complete.');
     return res.redirect('/register');
   }
