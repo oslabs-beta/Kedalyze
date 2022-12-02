@@ -55,9 +55,13 @@ app.get(
 );
 
 // signup
-app.get('/register', (req: Request, res: Response) => {
-  return res.status(200).json(res.locals.users);
-});
+app.get(
+  '/register',
+  userController.getAllUsers,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.users);
+  }
+);
 
 // route handler POST request to /register
 app.post(
@@ -66,7 +70,7 @@ app.post(
   // cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req: Request, res: Response) => {
-    return res.status(200).json(res.locals.id);
+    return res.status(200).json(res.locals);
   }
 );
 
@@ -78,7 +82,7 @@ app.post(
   // sessionController.startSession,
   (req: Request, res: Response) => {
     console.log('successful login, redirecting');
-    // res.redirect('/dashboard');
+    res.redirect('/dashboard');
   }
 );
 

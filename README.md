@@ -14,6 +14,13 @@ A tool that the user can deploy on their Kubernetes cluster in order to visualiz
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+      <li>
+      <a href="#features">Features</a>
+      <ul>
+	  <li><a href="#live-metrics">Live Metrics</a></li>
+	  <li><a href="#autoscaling">Auto Scaling</a></li>
+      </ul>
+    </li>
 	    <li>
       <a href="#general-setup">General Setup</a>
       <ul>
@@ -32,13 +39,6 @@ A tool that the user can deploy on their Kubernetes cluster in order to visualiz
       <ul>
 	  <li><a href="#installation">MacOS Installation</a></li>
 	  <li><a href="#installation">Windows Installation</a></li>
-      </ul>
-    </li>
-    	    <li>
-      <a href="#features">Features</a>
-      <ul>
-	  <li><a href="#live-metrics">Live Metrics</a></li>
-	  <li><a href="#autoscaling">Auto Scaling</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -65,6 +65,14 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+# Features
+
+## Live Metrics
+
+## Autoscaling
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 # General Setup
 
 ## Installation
@@ -79,12 +87,12 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
    ```
 3. Create `.env` file at root of directory
 
-```sh
-root
-  ├─ .env
-  ├─ electron
-  └─ src
-```
+   ```sh
+   root
+    ├─ .env
+    ├─ electron
+    └─ src
+   ```
 
 4. Connect Mongo database in .env
    ```js
@@ -178,18 +186,12 @@ If you need anymore help with setup on windows visit this [link](https://techcom
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Features
-
-## Live Metrics
-
-## Autoscaling
-
 # Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Don't forget to give our product a star! Thanks again!
 
 1. Fork the Open Source Product
 2. Create your Feature Branch `git checkout -b feature/AmazingFeature`

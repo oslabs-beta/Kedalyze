@@ -16,7 +16,7 @@ const LoginPage = () => {
     // console.log(values);
 
     useEffect(() => {
-      const createUser = {
+      const getUser = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -24,7 +24,7 @@ const LoginPage = () => {
           password: password,
         }),
       };
-      fetch('/register', createUser)
+      fetch('/login', getUser)
         .then((response) => response.json())
         .then((values) => {
           setUsername('');

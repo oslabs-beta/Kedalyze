@@ -1,3 +1,4 @@
+import { Request, Response, NextFunction } from 'express';
 export interface CRUD {
   list: (limit: number, page: number) => Promise<any>;
   create: (resource: any) => Promise<any>;
@@ -6,3 +7,9 @@ export interface CRUD {
   deleteById: (id: string) => Promise<string>;
   patchById: (id: string, resource: any) => Promise<string>;
 }
+
+export type ResponseObj = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => void;
