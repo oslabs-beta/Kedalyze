@@ -58,7 +58,7 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
   ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
-- <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='Kubernetes' src='https://img.shields.io/badge/Kubernetes-100000?style=for-the-badge&logo=Kubernetes&logoColor=white&labelColor=000000&color=black'/></a>
+- ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='Kubernetes' src='https://img.shields.io/badge/Kubernetes-100000?style=for-the-badge&logo=Kubernetes&logoColor=white&labelColor=000000&color=black'/></a>
   <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='KEDA' src='https://img.shields.io/badge/KEDA-100000?style=for-the-badge&logo=KEDA&logoColor=white&labelColor=000000&color=2F61D3'/></a>
 - ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
@@ -205,9 +205,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Authors
 
-- Karen Shi - [Github](https://github.com/ks1009)
-- Debbie Zavaleta - [Github](https://github.com/dzavaleta96)
-- Hashim Farah - [Github](https://github.com/Hashim-21)
-- Erik Stynchula - [Github](https://github.com/EStynch)
+- Debbie Zavaleta - [Github](https://github.com/dzavaleta96) | [LinkedIn](https://www.linkedin.com/in/debbie-zavaleta/)
+- Erik Stynchula - [Github](https://github.com/EStynch) | [LinkedIn](https://www.linkedin.com/in/erik-s-606035231/)
+- Hashim Farah - [Github](https://github.com/Hashim-21) | [LinkedIn](https://www.linkedin.com/in/hashim-farah-b73660232/)
+- Karen Shi - [Github](https://github.com/ks1009) | [LinkedIn](https://www.linkedin.com/in/karenshi/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

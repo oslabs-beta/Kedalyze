@@ -23,14 +23,14 @@ const userController: userController = {
 
   createUser: (req: Request, res: Response, next: NextFunction) => {
     const { email, username, password } = req.body;
-
     User.create({
       email: email,
       username: username,
       password: password,
     })
       .then((data: any) => {
-        res.locals.id = data.id;
+        // res.locals.id = data.id;
+        res.locals.users = data;
         return next();
       })
       .catch((error: ErrorRequestHandler) => {
@@ -45,7 +45,7 @@ const userController: userController = {
     const { username, password } = req.body;
     if (!username || !password) {
       console.log('Error: username and password fields must be complete.');
-      return res.redirect('/register');
+      return res.redirect('http://localhost:8080/register');
     }
 
     // check if user exists / password is correct
@@ -66,6 +66,7 @@ const userController: userController = {
               return res.redirect('/register');
             } else {
               res.locals.id = userData.id;
+              // console.log(res.locals.id);
               return next();
             }
           }

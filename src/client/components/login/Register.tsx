@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../../styles/registerStyles.css';
 import eye from '../../../styles/pine-eye.jpg';
-import { useForm } from '../interfaces/customHooks';
-import { SlowBuffer } from 'buffer';
 
 function Register() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const { onChange, handleSubmit, values } = useForm(signUpUserCallback);
-
-  // a submit function that will execute upon form submission
-  function signUpUserCallback() {
-    // console.log(values);
-
-    useEffect(() => {
-      const createUser = {
+  let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      let res = await fetch('http://localhost:3000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -26,20 +21,23 @@ function Register() {
           username: username,
           password: password,
         }),
-      };
-      fetch('/register', createUser)
-        .then((response) => response.json())
-        .then((values) => {
-          setEmail('');
-          setUsername('');
-          setPassword('');
-          console.log(values);
-        })
-        .catch((error) => {
-          console.log(`Error: ${error}`);
-        });
-    }, []);
-  }
+      });
+
+      console.log(res);
+
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setEmail('');
+        setUsername('');
+        setPassword('');
+        setMessage('User created successfully!');
+      } else {
+        setMessage('This username / email is already in use');
+      }
+    } catch (err) {
+      console.log(`err: ${err}`);
+    }
+  };
 
   // go home
   const navigate = useNavigate();
@@ -59,18 +57,26 @@ function Register() {
       <form onSubmit={handleSubmit} className='signup-form'>
         <label>
           Email:
-          <input type='text' name='email' onChange={onChange} />
+          <input
+            type='text'
+            name='email'
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
         <label>
           Username:
-          <input type='text' name='username' onChange={onChange} />
+          <input
+            type='text'
+            name='username'
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </label>
         <div className='pine'>
           <label>
             Password:
             <input
               type={passwordShown ? 'text' : 'password'}
-              onChange={onChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
         </div>
@@ -78,16 +84,13 @@ function Register() {
           <img src={eye} className='pine-eye' />
         </button>
         <div className='signup-home-buttons'>
-          <button
-            onClick={signUpUserCallback}
-            type='submit'
-            className='signup-page-btn'
-          >
+          <button type='submit' className='signup-page-btn'>
             Sign Up
           </button>
           <button type='submit' onClick={goHome} className='go-back-again-btn'>
             Home
           </button>
+          <div className='message'>{message ? <p>{message}</p> : null}</div>
         </div>
       </form>
     </div>
