@@ -8,36 +8,62 @@ const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const { onChange, handleSubmit, values } = useForm(loginUserCallback);
+  const navigate = useNavigate();
 
-  // a submit function that will execute upon form submission
-  function loginUserCallback() {
-    // console.log(values);
+  // fetch post request from login
+  // if login credentials don't match, create an error msg, stay at login page
+  // if they match, redirect to dashboard
+  // use jwt to confirm credentials
 
-    useEffect(() => {
-      const createUser = {
-        method: 'GET',
+  let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      let res = await fetch('http://localhost:3000/login', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: username,
           password: password,
         }),
-      };
-      fetch('/register', createUser)
-        .then((response) => response.json())
-        .then((values) => {
-          setUsername('');
-          setPassword('');
-          console.log(values);
-        })
-        .catch((error) => {
-          console.log(`Error: ${error}`);
-        });
-    }, []);
-  }
+      });
 
-  const navigate = useNavigate();
+      console.log(res);
+
+      let resJson = await res.json();
+      if (res.status !== 200) {
+        setUsername('');
+        setPassword('');
+        setMessage('Wrong username/password, Please try again');
+        navigate('/login');
+        return;
+      } else {
+        setMessage('Successful login!');
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.log(`err: ${err}`);
+    }
+
+    //   // let resJson = await res.json();
+    //   if (res.status === 200) {
+    //     // setUsername('');
+    //     // setPassword('');
+    //     setMessage('Successful login!');
+    //     // navigate('/dashboard');
+    //   } else {
+    //     // setMessage('Some error occurred');
+    //   }
+    // } catch (err) {
+    //   console.log(`err: ${err}`);
+    // }
+  };
+
+  // const goLogin = (event: { preventDefault: () => void }) => {
+  //   event.preventDefault();
+  //   navigate('/dashboard');
+  // };
 
   const goHome = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -54,14 +80,18 @@ const LoginPage = () => {
       <form onSubmit={handleSubmit} className='login-form'>
         <label>
           Username:
-          <input type='text' name='username' onChange={onChange} />
+          <input
+            type='text'
+            name='username'
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </label>
         <div className='pine'>
           <label>
             Password:
             <input
               type={passwordShown ? 'text' : 'password'}
-              onChange={onChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
         </div>
@@ -70,7 +100,7 @@ const LoginPage = () => {
             <img src={eye} className='pine-eye' />
           </button>
           <button
-            onClick={loginUserCallback}
+            // onClick={goLogin}
             type='submit'
             className='login-page-btn'
           >
@@ -79,6 +109,7 @@ const LoginPage = () => {
           <button type='submit' onClick={goHome} className='go-back-again-btn'>
             Home
           </button>
+          <div className='message'>{message ? <p>{message}</p> : null}</div>
         </div>
       </form>
     </div>
