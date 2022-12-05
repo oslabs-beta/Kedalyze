@@ -60,10 +60,10 @@ const LoginPage = () => {
     // }
   };
 
-  // const goLogin = (event: { preventDefault: () => void }) => {
-  //   event.preventDefault();
-  //   navigate('/dashboard');
-  // };
+  const goLogin = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    navigate('/dashboard');
+  };
 
   const goHome = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -100,7 +100,7 @@ const LoginPage = () => {
             <img src={eye} className='pine-eye' />
           </button>
           <button
-            // onClick={goLogin}
+            onClick={goLogin}
             type='submit'
             className='login-page-btn'
           >
