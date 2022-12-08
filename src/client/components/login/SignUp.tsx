@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function SignUpButton() {
+const SignUp = () => {
   const navigate = useNavigate();
-
-  const onSubmit = (event: { preventDefault: () => void }) => {
+  const handleClick = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     navigate('/register');
   };
-
   return (
-    <button type='submit' onClick={onSubmit} className='signup-btn'>
-      Sign Up
-    </button>
-  );
-}
-
-const SignUp = () => {
-  return (
-    <Routes>
-      <Route path='/' element={<SignUpButton />} />
-    </Routes>
+    <>
+      <button type='submit' onClick={handleClick} className='signup-btn'>
+        Sign Up
+      </button>
+    </>
   );
 };
 

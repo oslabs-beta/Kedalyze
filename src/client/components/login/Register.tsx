@@ -1,110 +1,100 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../../styles/registerStyles.css';
 import eye from '../../../styles/pine-eye.jpg';
-import axios from 'axios';
-import { UserList } from '../interfaces/interface';
 
-function GoBack() {
-  // register
+function Register() {
   const [passwordShown, setPasswordShown] = useState(false);
-  const [email, setEmail] = useState<UserList>();
-  const [username, setUsername] = useState<UserList>();
-  const [password, setPassword] = useState<UserList>();
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  // gives me a TS error
-  // useEffect(() => {
-  //   axios
-  //     .get<UserList>('/register')
-  //     .then((response) => {
-  //       setEmail(response.data);
-  //       setUsername(response.data);
-  //       setPassword(response.data);
-  //       console.log('you have signed up!');
-  //     }, [])
-  //     .catch(() => {
-  //       console.log('sign up failed');
-  //     });
-  // });
-
-  async function getUsers() {
+  let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
-      const { data, status } = await axios.get<UserList>('/register', {
-        headers: {
-          Accept: 'application/json',
-        },
+      let res = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          username: username,
+          password: password,
+        }),
       });
 
-      console.log(JSON.stringify(data));
-      console.log('response status is: ', status);
-      return data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log('error message: ', error.message);
-        return error.message;
-      } else {
-        console.log('unexpected error: ', error);
-        return 'An unexpected error occurred';
-      }
-    }
-  }
+      console.log(res);
 
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setEmail('');
+        setUsername('');
+        setPassword('');
+        setMessage('User created successfully!');
+      } else {
+        setMessage('This username / email is already in use');
+      }
+    } catch (err) {
+      console.log(`err: ${err}`);
+    }
+  };
+
+  // go home
+  const navigate = useNavigate();
+  const goHome = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    navigate('/');
+  };
+
+  // toggle password visibility
   const togglePassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setPasswordShown(!passwordShown);
   };
 
-  // go home navigation
-  // click on sign up - store the user in the database
-  const navigate = useNavigate();
-  const onSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    navigate('/');
-  };
-
   return (
-    <div className='register-page'>
-      <div className='form-align'>
-        <form className='signup-form'>
+    <div className='register'>
+      <form onSubmit={handleSubmit} className='signup-form'>
+        <label>
+          Email:
+          <input
+            type='text'
+            name='email'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          Username:
+          <input
+            type='text'
+            name='username'
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <div className='pine'>
           <label>
-            Email:
-            <input type='text' name='email' />
+            Password:
+            <input
+              type={passwordShown ? 'text' : 'password'}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </label>
-          <label>
-            Username:
-            <input type='text' name='username' />
-          </label>
-          <div className='pine'>
-            <label>
-              Password:
-              <input type={passwordShown ? 'text' : 'password'} />
-            </label>
-          </div>
-          <button onClick={togglePassword} className='pine-button'>
-            <img src={eye} className='pine-eye' />
+        </div>
+        <button onClick={togglePassword} className='pine-button'>
+          <img src={eye} className='pine-eye' />
+        </button>
+        <div className='signup-home-buttons'>
+          <button type='submit' className='signup-page-btn'>
+            Sign Up
           </button>
-        </form>
-      </div>
-      <div className='signup-home-buttons'>
-        <button type='submit' onClick={onSubmit} className='signup-page-btn'>
-          Sign Up
-        </button>
-        <button type='submit' onClick={onSubmit} className='go-back-again-btn'>
-          Home
-        </button>
-      </div>
+          <button type='submit' onClick={goHome} className='go-back-again-btn'>
+            Home
+          </button>
+          <div className='message'>{message ? <p>{message}</p> : null}</div>
+        </div>
+      </form>
     </div>
   );
 }
-
-const Register = () => {
-  return (
-    <div className='register'>
-      <Routes>
-        <Route path='/' element={<GoBack />} />
-      </Routes>
-    </div>
-  );
-};
 
 export default Register;

@@ -13,6 +13,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 // routes
@@ -28,6 +29,7 @@ const port: number = Number(process.env.PORT) || 3000;
 
 app.use(express.json() as RequestHandler);
 app.use(express.urlencoded({ extended: true }) as RequestHandler);
+app.use(cors());
 app.use(cookieParser());
 
 app.use('/api', K8Router);
@@ -41,23 +43,21 @@ client.collectDefaultMetrics();
 // const register = new Registry();
 // collectDefaultMetrics({ register });
 
-// change to TS
+app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
+  console.log('backend and frontend are talking');
+  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
 
-app.get(
-  '/',
-  // cookieController.addCookie,
-  (req: Request, res: Response) => {
-    console.log('backend and frontend are talking');
-    return res
-      .status(200)
-      .sendFile(path.join(__dirname, '../client/index.html'));
-  }
-);
+app.use(express.static(path.join(__dirname, '../client')));
 
 // signup
-app.get('/register', (req: Request, res: Response) => {
-  return res.status(200).json(res.locals.users);
-});
+app.get(
+  '/register',
+  userController.getAllUsers,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.users);
+  }
+);
 
 // route handler POST request to /register
 app.post(
@@ -66,7 +66,7 @@ app.post(
   // cookieController.setSSIDCookie,
   // sessionController.startSession,
   (req: Request, res: Response) => {
-    return res.status(200).json(res.locals);
+    return res.status(200).json(res.locals.users);
   }
 );
 
@@ -74,31 +74,31 @@ app.post(
 app.post(
   '/login',
   userController.verifyUser,
-  // cookieController.setSSIDCookie,
-  // sessionController.startSession,
+  cookieController.setSSIDCookie,
+  sessionController.startSession,
   (req: Request, res: Response) => {
     console.log('successful login, redirecting');
-    // res.redirect('/dashboard');
+    return res.status(200);
   }
 );
 
 // Authorized routes
-// app.get(
-//   '/dashboard',
-//   sessionController.isLoggedIn,
-//   (req: Request, res: Response) => {
-//     return res.status(200);
-//   }
-// );
+app.get(
+  '/dashboard',
+  sessionController.isLoggedIn,
+  (req: Request, res: Response) => {
+    return res.status(200);
+  }
+);
 
-// app.get(
-//   '/dashboard/users',
-//   sessionController.isLoggedIn,
-//   userController.getAllUsers,
-//   (req: Request, res: Response) => {
-//     res.send({ users: res.locals.users });
-//   }
-// );
+app.get(
+  '/dashboard/users',
+  sessionController.isLoggedIn,
+  userController.getAllUsers,
+  (req: Request, res: Response) => {
+    res.send({ users: res.locals.users });
+  }
+);
 
 app.use('*', (req: Request, res: Response) => {
   return res.status(404);

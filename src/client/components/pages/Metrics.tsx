@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../../../styles/dashStyles.css';
-// import PodByNamespace from '../charts/PodByNamespace';
 // import PrometheusChart from '../charts/PrometheusChart';
 
 import { Link } from 'react-router-dom';
