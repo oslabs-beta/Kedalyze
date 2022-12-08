@@ -1,4 +1,4 @@
-![KEDALyzeLogo](./src/styles/logo1.jpg?raw=true)
+![KEDALyzeLogo](./src/client/styles/logo1.jpg?raw=true)
 
 # KEDAlyze
 
