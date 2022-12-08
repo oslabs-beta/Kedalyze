@@ -301,16 +301,18 @@
 /* METRICS NAVBAR BUTTONS */
 .metrics-global,
 .metrics-apiserver,
-.metrics-coredns,
+.metrics-keda,
 .metrics-namespaces,
 .metrics-nodes,
 .metrics-pods,
+.metrics-coredns,
 .metrics-global:after,
 .metrics-apiserver:after,
-.metrics-coredns:after,
+.metrics-keda:after,
 .metrics-namespaces:after,
 .metrics-nodes:after,
-.metrics-pods:after {
+.metrics-pods:after,
+.metrics-coredns:after {
   padding: 10px 20px;
   font-size: 15px;
   background: linear-gradient(45deg, transparent 5%, rgb(252, 188, 181) 5%);
