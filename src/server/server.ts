@@ -15,6 +15,7 @@ dotenv.config();
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 // routes
 const K8Router = require('./routes/K8-Routes');

@@ -1,12 +1,16 @@
+require('dotenv').config();
+
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { ResponseObj } from '../interfaces/crud';
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 interface userController {
   getAllUsers: ResponseObj;
   createUser: ResponseObj;
   verifyUser: ResponseObj;
+  authenticateToken: ResponseObj;
 }
 
 const userController: userController = {
@@ -43,9 +47,23 @@ const userController: userController = {
 
   verifyUser: (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
+    const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET)
+    res.json({ accessToken: accessToken })
+
     if (!username || !password) {
       console.log('Error: username and password fields must be complete.');
       return res.redirect('http://localhost:8080/register');
+    }
+
+    authenticateToken: (req: Request, res: Response, next: NextFunction) => {
+      const authHeader = req.headers['authorization']
+      const token = authHeader && authHeader.split('')[1]
+      if (token === null) return res.send('Incorrect Login')
+
+      jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err: ErrorRequestHandler, user: String) => {
+        if (err) return res.sendStatus(403)
+        req.user = user
+      })
     }
 
     // check if user exists / password is correct
