@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../../styles/registerStyles.css';
-import eye from '../../../styles/pine-eye.jpg';
+import '../../styles/registerStyles.css';
+import eye from '../../styles/pine-eye.jpg';
 
 function Register() {
   const [passwordShown, setPasswordShown] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/styles.css';
-import background from '../../../styles/logo1.jpg';
+import '../../styles/styles.css';
+import background from '../../styles/logo1.jpg';
 import SignUp from '../login/SignUp';
 import Login from '../login/Login';
 
