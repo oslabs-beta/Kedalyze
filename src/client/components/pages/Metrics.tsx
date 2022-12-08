@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/dashStyles.css';
+import '../../styles/dashStyles.css';
 // import PrometheusChart from '../charts/PrometheusChart';
 
 import { Link } from 'react-router-dom';

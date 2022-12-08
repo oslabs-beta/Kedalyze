@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useForm } from '../interfaces/customHooks';
-import '../../../styles/loginStyles.css';
-import eye from '../../../styles/pine-eye.jpg';
+import '../../styles/loginStyles.css';
+import eye from '../../styles/pine-eye.jpg';
 
 const LoginPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -46,14 +46,14 @@ const LoginPage = () => {
       console.log(`err: ${err}`);
     }
 
-    //   // let resJson = await res.json();
+    //   let resJson = await res.json();
     //   if (res.status === 200) {
-    //     // setUsername('');
-    //     // setPassword('');
+    //     setUsername('');
+    //     setPassword('');
     //     setMessage('Successful login!');
-    //     // navigate('/dashboard');
+    //     navigate('/dashboard');
     //   } else {
-    //     // setMessage('Some error occurred');
+    //     setMessage('Some error occurred');
     //   }
     // } catch (err) {
     //   console.log(`err: ${err}`);
@@ -99,11 +99,7 @@ const LoginPage = () => {
           <button onClick={togglePassword} className='pine-button'>
             <img src={eye} className='pine-eye' />
           </button>
-          <button
-            onClick={goLogin}
-            type='submit'
-            className='login-page-btn'
-          >
+          <button onClick={goLogin} type='submit' className='login-page-btn'>
             Login
           </button>
           <button type='submit' onClick={goHome} className='go-back-again-btn'>
