@@ -1,0 +1,47 @@
+apiVersion: keda.sh/v1alpha1
+# Custom CRD provisioned by the Keda operator
+kind: ScaledObject
+metadata:
+  name: prometheus-scaledobject
+spec:
+  scaleTargetRef:
+    # target our deployment
+    name: go-prom-app
+  # Interval to when check Prometheus in this case
+  pollingInterval: 15
+  # The period to wait after the last trigger reported active
+  # before scaling the deployment back to 0
+  cooldownPeriod: 30
+  # min replicas keda will scale to
+  # if you have an app that has an dependency on pubsub
+  # this would be a good use case to set it to zero
+  minReplicaCount: 1
+  # max replicas keda will scale to
+  maxReplicaCount: 20
+  advanced:
+    # HPA config
+    # Read about it here: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 30
+          policies:
+            - type: Percent
+              value: 50
+              periodSeconds: 30
+        scaleUp:
+          stabilizationWindowSeconds: 0
+          policies:
+            - type: Percent
+              value: 50
+              periodSeconds: 10
+  triggers:
+    - type: prometheus
+      metadata:
+        # address where keda can reach our prometheus on
+        serverAddress: http://prometheus-service.keda-demo.svc.cluster.local:9090
+        # metric on what we want to scale
+        metricName: http_requests_total
+        # if treshold is reached then Keda will scale our deployment
+        threshold: "100"
+        query: sum(rate(http_requests[1m]))
