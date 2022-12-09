@@ -11,5 +11,5 @@
     "allowJs": true,
     "moduleResolution": "node"
   },
-  "include": ["src", "custom.d.ts", "manifest"]
+  "include": ["src", "custom.d.ts", "manifest", "data"]
 }
