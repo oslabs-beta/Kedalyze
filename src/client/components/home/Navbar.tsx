@@ -71,11 +71,9 @@ const Navbar = () => {
         </div>
         <div className='column2'>
           <Routes>
-            {/* this is the navbar routes */}
             <Route path='/structures' element={<Structure />} />
-            <Route path='/metrics' element={<Metrics />} />
 
-            {/* this is the nested metrics routes */}
+            <Route path='/metrics' element={<Metrics />} />
             <Route path='/metrics/global' element={<Global />} />
             <Route path='/metrics/apiServer' element={<APIServer />} />
             <Route path='/metrics/keda' element={<Keda />} />
@@ -84,7 +82,6 @@ const Navbar = () => {
             <Route path='/metrics/pods' element={<Pods />} />
             <Route path='/metrics/coreDNS' element={<CoreDNS />} />
 
-            {/* this is the navbar routes */}
             <Route path='/customs' element={<Custom />} />
             <Route path='/alerts' element={<Alerts />} />
           </Routes>

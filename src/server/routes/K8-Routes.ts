@@ -15,10 +15,10 @@ router.get(
   '/cluster',
   clusterController.getClusterInfo,
   (req: Request, res: Response) => {
-    console.log(
-      'Getting clusters from clusterController.getClusterInfo',
-      res.locals.clusterInfo
-    );
+    // console.log(
+    //   'Getting clusters from clusterController.getClusterInfo',
+    //   res.locals.clusterInfo
+    // );
     return res.status(200).json(res.locals.clusterInfo);
   }
 );
@@ -28,10 +28,10 @@ router.get(
   '/podList',
   clusterController.getPodList,
   (req: Request, res: Response) => {
-    console.log(
-      'Getting podList from clusterController.getPodList',
-      res.locals.podList
-    );
+    // console.log(
+    //   'Getting podList from clusterController.getPodList',
+    //   res.locals.podList
+    // );
     return res.status(200).json(res.locals.podList);
   }
 );
