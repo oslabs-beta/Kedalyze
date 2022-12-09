@@ -5,13 +5,13 @@ import Metrics from '../pages/Metrics';
 import Custom from '../pages/Custom';
 import Alerts from '../pages/Alerts';
 
-import Global from '../pages/data/Global';
-import APIServer from '../pages/data/APIServer';
-import Keda from '../pages/data/Keda';
-import Namespaces from '../pages/data/Namespaces';
-import Nodes from '../pages/data/Nodes';
-import Pods from '../pages/data/Pods';
-import CoreDNS from '../pages/data/CoreDNS';
+import Global from '../../../../data/Global';
+import APIServer from '../../../../data/APIServer';
+import Keda from '../../../../data/Keda';
+import Namespaces from '../../../../data/Namespaces';
+import Nodes from '../../../../data/Nodes';
+import Pods from '../../../../data/Pods';
+import CoreDNS from '../../../../data/CoreDNS';
 
 function GoBack() {
   const navigate = useNavigate();
