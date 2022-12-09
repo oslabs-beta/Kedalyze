@@ -7,13 +7,17 @@ rules:
     resources:
       - services
       - nodes
+      - nodes/proxy
       - nodes/metrics
       - endpoints
       - pods
       - horizontalpodautoscalers
     verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["configmaps"]
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses
+    verbs: ["get", "list", "watch"]
   - nonResourceURLs: ["/metrics"]
     verbs: ["get"]
 ---
@@ -42,10 +46,27 @@ metadata:
   labels:
     name: prom-conf
 data:
+  prometheus.rules: |-
+    groups:
+    - name: keda demo alert
+      rules:
+      - alert: High Pod Memory
+        expr: sum(container_memory_usage_bytes) > 1
+        for: 1m
+        labels:
+          severity: slack
+        annotations:
+          summary: High Memory Usage
   prometheus.yml: |-
     global:
       scrape_interval: 5s
       evaluation_interval: 5s
+    alerting:
+      alertmanagers:
+      - scheme: http
+        static_configs:
+        - targets:
+          - "alertmanager.monitoring.svc:9093"
     scrape_configs:
       - job_name: 'go-prom-job'
         kubernetes_sd_configs:
@@ -65,6 +86,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus-deployment
+  labels:
+    app: prometheus-server
 spec:
   replicas: 1
   selector:
@@ -82,6 +105,7 @@ spec:
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
+            - "--web.external-url=http://prometheus-service.keda-demo.svc:9090" 
           ports:
             - containerPort: 9090
           volumeMounts:
@@ -102,9 +126,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: prometheus-service
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '9090'
 spec:
   ports:
     - port: 9090
+      targetPort: 9090
+      nodePort: 30000
       protocol: TCP
   selector:
     app: prometheus-server
+  type: NodePort
