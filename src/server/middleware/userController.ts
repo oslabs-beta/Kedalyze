@@ -1,10 +1,7 @@
-require('dotenv').config();
-
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { ResponseObj } from '../interfaces/crud';
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 interface userController {
   getAllUsers: ResponseObj;
@@ -32,7 +29,6 @@ const userController: userController = {
       password: password,
     })
       .then((data: any) => {
-        // res.locals.id = data.id;
         res.locals.users = data;
         return next();
       })
@@ -83,5 +79,8 @@ const userController: userController = {
       });
   },
 };
+
+
+
 
 module.exports = userController;
