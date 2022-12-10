@@ -49,7 +49,8 @@ A tool that the user can deploy on their Kubernetes cluster in order to visualiz
 
 # Functionality
 
-KEDAlyze is an open-source product that gives the user a way to visualize KEDA's autoscaling. Allowing the user to see a visual representation of their pods scaling up and then back down as the events dissipate. We also have the basic functionality of a Kubernetes cluster visualizer, allowing the user to see the general health of their pods. KEDAlyze uses promQL queries for cluster metrics such as: in order to drive the autoscaling that is then displayed on a graph for the user.
+KEDALyze is an open-source product that gives users the ability to visualize KEDA's autoscaling. With Prometheus as the event trigger, watch as promQL queries drive the deployment and termination of pods. Our visualizer displays cluster health, events triggers, and horizontal auto scaling in live time, to give the user security that their applications can handle higher workloads.
+
 
 ### Built With:
 
