@@ -36,7 +36,6 @@
     "mongoose": "^6.7.5",
     "node-fetch": "^3.3.0",
     "nodemon": "^2.0.20",
-    "normalize-type": "^1.5.2",
     "prom-client": "^14.1.0",
     "prometheus-query": "^3.3.0",
     "react": "^18.2.0",

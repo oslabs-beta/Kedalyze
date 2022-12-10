@@ -4,7 +4,20 @@ import { drag } from 'd3-drag';
 import { useSelector } from 'react-redux';
 import '../../../styles/d3Styles.css';
 
-const D3Visuals = () => {
+const D3Visuals = (props) => {
+  const { cluster, namespace, podName, podCapacity, podCount, terminatedPods } =
+    props;
+
+  console.log(
+    'testing',
+    cluster,
+    namespace,
+    podName,
+    podCapacity,
+    podCount,
+    terminatedPods
+  );
+
   const svgRef = useRef();
 
   const data = {
@@ -95,9 +108,6 @@ const D3Visuals = () => {
             name: 'storage-provisioner',
           },
         ],
-      },
-      {
-        name: 'Azura',
       },
     ],
   };

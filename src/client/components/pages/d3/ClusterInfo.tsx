@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import normalizeType from 'normalize-type';
+import D3Visuals from './D3Visuals';
 import '../../../styles/clusterStyles.css';
 
 interface ClusterState {
@@ -30,35 +30,27 @@ const ClusterInfo = () => {
       .then((cluster) => {
         dispatch({ type: 'SET_CLUSTER', cluster });
 
-        // Store the names of the namespaces in the Redux store
         const namespace = cluster.Namespace.filter(
           (name: string, index: number, self: string) =>
             self.indexOf(name) === index
         );
-        console.log('this is namespace', namespace);
+
         dispatch({ type: 'SET_NAMESPACE', namespace });
 
-        // Store the names of the pods in the Redux store
         const podName = cluster.PodName.map(
           (name: string, index: number) => name
         );
-        console.log('this is podName', podName);
         dispatch({ type: 'SET_POD_NAME', podName });
 
-        // Store the capacity of the pods in the Redux store
         const podCapacity = cluster.PodCapacity;
-        // console.log('this is podCapacity', podCapacity);
         dispatch({ type: 'SET_POD_CAPACITY', podCapacity });
 
-        // Store the count of the pods in the Redux store
         const podLength = cluster.PodName.length;
+
         const podCount = parseInt(cluster.PodCount.match(/\d+/g)[0], 10);
-        console.log('this is podLength', podLength);
-        console.log('this is podCount', podCount);
-        dispatch;
+        dispatch({ type: 'SET_POD_COUNT', podCount });
 
         const terminatedPods = Math.floor(Number(podLength) / Number(podCount));
-        console.log('this is terminatedPods', terminatedPods);
         dispatch({ type: 'SET_TERMINATED_PODS', terminatedPods });
 
         setLoading(false);
@@ -69,22 +61,60 @@ const ClusterInfo = () => {
         );
       });
   }, []);
+
   if (loading) {
     return <div className='loading'>Loading your pods...</div>;
   }
 
   return (
     <div>
+      <div className='d3-cluster-visual'>
+        <D3Visuals
+          cluster={cluster}
+          namespace={namespace}
+          podName={podName}
+          podCapacity={podCapacity}
+          podCount={podCount}
+          terminatedPods={terminatedPods}
+        />
+      </div>
       <div className='cluster-info'>
-        {/* <span> Namespace: {namespace}</span> */}
+        <span>
+          Namespace:
+          {Object.values(namespace).map((name: string, index) => {
+            return <span key={name}>{name}</span>;
+          })}
+        </span>
         <br />
-        {/* <span>Pod Name: {podName}</span>
-        <br /> */}
-        {/* <span>Capacity-{podCapacity}</span>
+        <span>
+          Pod Name:
+          <span>
+            {Object.values(podName).map((name: string) => {
+              return <span key={name}>{name}</span>;
+            })}
+          </span>
+        </span>
         <br />
-        <span>Pod Count: {podCount}</span>
+        <span>
+          Capacity-
+          {Object.values(podCapacity).map((name: string) => {
+            return <span key={name}>{name}</span>;
+          })}
+        </span>
         <br />
-        <span>Terminated Pods: {terminatedPods}</span> */}
+        <span>
+          Pod Count:
+          {Object.values(podCount).map((count: number) => {
+            return <span key={count}>{count}</span>;
+          })}
+        </span>
+        <br />
+        <span>
+          Terminated Pods:
+          {Object.values(terminatedPods).map((name: string) => {
+            return <span key={name}>{name}</span>;
+          })}
+        </span>
       </div>
     </div>
   );
