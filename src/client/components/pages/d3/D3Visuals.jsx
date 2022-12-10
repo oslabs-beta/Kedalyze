@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import { drag } from 'd3-drag';
 import '../../../styles/d3Styles.css';
 
-const Test = () => {
+const D3Visuals = () => {
   const svgRef = useRef();
 
   const data = {
@@ -101,9 +101,7 @@ const Test = () => {
     ],
   };
 
-  const invalidation = new Promise((resolve) => {
-    // code to resolve the promise goes here
-  });
+  const invalidation = new Promise(() => {});
 
   useEffect(() => {
     const node = chart(d3, data, 100, 100, drag, invalidation);
@@ -212,4 +210,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default D3Visuals;
