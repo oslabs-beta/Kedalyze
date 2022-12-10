@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/dashStyles.css';
-// import PrometheusChart from '../charts/PrometheusChart';
 
 import { Link } from 'react-router-dom';
 
@@ -51,7 +50,6 @@ const Metrics = () => {
             </Link>
           </li>
         </ul>
-        {/* <PrometheusChart /> */}
       </div>
     </>
   );
