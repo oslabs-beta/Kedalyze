@@ -30,6 +30,14 @@ const ClusterInfo = () => {
       .then((cluster) => {
         dispatch({ type: 'SET_CLUSTER', cluster });
 
+        // const namespace = cluster.Namespace.filter(
+        //   (name: string, index: number, self: string) =>
+        //     self.indexOf(name) === index
+        // ).map((name: string, index: number) => {
+        //   console.log(name);
+        //   name;
+        // });
+
         const namespace = cluster.Namespace.filter(
           (name: string, index: number, self: string) =>
             self.indexOf(name) === index
@@ -40,6 +48,7 @@ const ClusterInfo = () => {
         const podName = cluster.PodName.map(
           (name: string, index: number) => name
         );
+
         dispatch({ type: 'SET_POD_NAME', podName });
 
         const podCapacity = cluster.PodCapacity;
@@ -62,6 +71,35 @@ const ClusterInfo = () => {
       });
   }, []);
 
+  interface Child {
+    name: string;
+    children?: Child[];
+  }
+
+  const generateData = (namespace: string[], podName: string[][]) => {
+    const data: Child = {
+      name: 'minikube',
+      children: [],
+    };
+
+    Object.values(namespace).forEach((namespace, i) => {
+      const namespaceData: Child = {
+        name: namespace,
+        children: [],
+      };
+
+      Object.values(podName[i]).forEach((podName) => {
+        namespaceData.children.push({ name: podName });
+      });
+
+      data.children.push(namespaceData);
+    });
+
+    return data;
+  };
+
+  const data = generateData(namespace, [podName]);
+
   if (loading) {
     return <div className='loading'>Loading your pods...</div>;
   }
@@ -69,28 +107,31 @@ const ClusterInfo = () => {
   return (
     <div>
       <div className='d3-cluster-visual'>
-        <D3Visuals
-          cluster={cluster}
-          namespace={namespace}
-          podName={podName}
-          podCapacity={podCapacity}
-          podCount={podCount}
-          terminatedPods={terminatedPods}
-        />
+        <D3Visuals data={data} />
       </div>
       <div className='cluster-info'>
         <span>
           Namespace:
-          {Object.values(namespace).map((name: string, index) => {
-            return <span key={name}>{name}</span>;
-          })}
+          <span>
+            {Object.values(namespace).map((name: string, index: number) => {
+              let listItems = [];
+              for (let i = 0; i < name.length; i++) {
+                listItems.push(<li key={name[i]}>{name[i]}</li>);
+              }
+              return listItems;
+            })}
+          </span>
         </span>
         <br />
         <span>
           Pod Name:
           <span>
-            {Object.values(podName).map((name: string) => {
-              return <span key={name}>{name}</span>;
+            {Object.values(podName).map((name: string, index: number) => {
+              let listItems = [];
+              for (let i = 0; i < name.length; i++) {
+                listItems.push(<li key={name[i]}>{name[i]}</li>);
+              }
+              return listItems;
             })}
           </span>
         </span>

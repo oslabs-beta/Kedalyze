@@ -1,24 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { drag } from 'd3-drag';
-import { useSelector } from 'react-redux';
 import '../../../styles/d3Styles.css';
 
 const D3Visuals = (props) => {
-  const { cluster, namespace, podName, podCapacity, podCount, terminatedPods } =
-    props;
-
-  console.log(
-    'testing',
-    cluster,
-    namespace,
-    podName,
-    podCapacity,
-    podCount,
-    terminatedPods
-  );
-
-  const svgRef = useRef();
+  // need to figure out a way to do it without hard-coding the data
+  // passing down props, it is still deeply nested
+  // const { data } = props;
 
   const data = {
     name: 'minikube',
@@ -111,6 +99,10 @@ const D3Visuals = (props) => {
       },
     ],
   };
+
+  const svgRef = useRef();
+
+  console.log(data);
 
   const invalidation = new Promise(() => {});
 
