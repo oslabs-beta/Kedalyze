@@ -45,16 +45,9 @@ const clusterController: clusterController = {
         Duration: [],
       };
 
-      // console.log(arr);
-      // console.log(obj);
-
       for (let i = 0; i < arr.length; i++) {
-        // console.log(`this is arr el: ${arr[i]} at key:${[i]}`);
         obj.PodCapacity = arr[42];
         obj.PodCount = arr[65];
-
-        // let podCapacity = arr[42];
-        // let nonTerminatedPods = arr[65]
 
         if (arr[i].includes('Namespace')) start = i;
         if (arr[i].includes('Allocated resources')) end = i;
@@ -75,7 +68,6 @@ const clusterController: clusterController = {
         obj.Duration.push(newArr[i][11]);
       }
       res.locals.clusterInfo = obj;
-      // console.log('kedaController: ', res.locals.clusterInfo);
       return next();
     });
   },
@@ -100,13 +92,6 @@ const clusterController: clusterController = {
               type: V1PodCondition.type,
             };
             res.locals.podList = obj;
-            // res.locals.podList = data.body;
-            // console.log('status:', obj.status);
-            // console.log('type:', obj.type);
-            // console.log('podName:', obj.podName);
-            // console.log('namespace:', obj.namespace);
-            // console.log('created:', obj.created);
-            // console.log('podIp:', obj.podIp);
           }
         }
         return next();

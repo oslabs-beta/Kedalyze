@@ -3,8 +3,10 @@ import * as d3 from 'd3';
 import { drag } from 'd3-drag';
 import '../../../styles/d3Styles.css';
 
-const Test = () => {
-  const svgRef = useRef();
+const D3Visuals = (props) => {
+  // need to figure out a way to do it without hard-coding the data
+  // passing down props, it is still deeply nested
+  // const { data } = props;
 
   const data = {
     name: 'minikube',
@@ -95,15 +97,14 @@ const Test = () => {
           },
         ],
       },
-      {
-        name: 'Azura',
-      },
     ],
   };
 
-  const invalidation = new Promise((resolve) => {
-    // code to resolve the promise goes here
-  });
+  const svgRef = useRef();
+
+  console.log(data);
+
+  const invalidation = new Promise(() => {});
 
   useEffect(() => {
     const node = chart(d3, data, 100, 100, drag, invalidation);
@@ -212,4 +213,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default D3Visuals;

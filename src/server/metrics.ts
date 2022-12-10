@@ -22,7 +22,6 @@ export function startMetricsServer() {
   });
 
   app.get('/metrics', async (req: Request, res: Response) => {
-    console.log('Getting metrics...');
     res.setHeader('Content-type', register.contentType);
     res.end(await register.metrics());
   });

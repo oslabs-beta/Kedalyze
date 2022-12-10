@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useForm } from '../interfaces/customHooks';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/loginStyles.css';
 import eye from '../../styles/pine-eye.jpg';
 
@@ -11,11 +10,6 @@ const LoginPage = () => {
   const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
-
-  // fetch post request from login
-  // if login credentials don't match, create an error msg, stay at login page
-  // if they match, redirect to dashboard
-  // use jwt to confirm credentials
 
   let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,8 +23,6 @@ const LoginPage = () => {
         }),
       });
 
-      console.log(res);
-
       let resJson = await res.json();
       if (res.status !== 200) {
         setUsername('');
@@ -43,21 +35,8 @@ const LoginPage = () => {
         navigate('/dashboard');
       }
     } catch (err) {
-      console.log(`err: ${err}`);
+      console.log(`❌ Error in fetching login POST requesting: ${err}`);
     }
-
-    //   let resJson = await res.json();
-    //   if (res.status === 200) {
-    //     setUsername('');
-    //     setPassword('');
-    //     setMessage('Successful login!');
-    //     navigate('/dashboard');
-    //   } else {
-    //     setMessage('Some error occurred');
-    //   }
-    // } catch (err) {
-    //   console.log(`err: ${err}`);
-    // }
   };
 
   const goLogin = (event: { preventDefault: () => void }) => {

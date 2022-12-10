@@ -23,8 +23,6 @@ function Register() {
         }),
       });
 
-      console.log(res);
-
       let resJson = await res.json();
       if (res.status === 200) {
         setEmail('');
@@ -35,7 +33,7 @@ function Register() {
         setMessage('This username / email is already in use');
       }
     } catch (err) {
-      console.log(`err: ${err}`);
+      console.log(`❌ Error in fetching register POST request: ${err}`);
     }
   };
 

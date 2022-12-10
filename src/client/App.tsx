@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Register from './components/login/Register';
 import Dashboard from './components/home/Dashboard';
-import '../client/styles/styles.css';
 import Start from './components/home/Start';
 import LoginPage from './components/login/LoginPage';
+import '../client/styles/styles.css';
 
 const App = () => {
   return (
