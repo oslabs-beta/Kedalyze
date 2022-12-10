@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ClusterInfo from './d3/ClusterInfo.jsx';
+import ClusterInfo from './d3/ClusterInfo';
 import D3Visual from './d3/D3Visuals.jsx';
 
 const Structures = () => {

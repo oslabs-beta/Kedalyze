@@ -49,34 +49,14 @@ register.setDefaultLabels({
 
 // all metrics
 app.get('/metrics', async (req: Request, res: Response) => {
-  console.log('Getting metrics...');
   res.setHeader('Content-type', register.contentType);
   res.end(await register.metrics());
 });
 
-// app.get('/apis/metrics.k8s.io/v1beta1', async (req: Request, res: Response) => {
-//   console.log('Getting k8 metrics...');
-//   res.end(await register.metrics());
-// });
-
-// keda
-// app.get('/apis/keda.sh/v1alpha1', async (req: Request, res: Response) => {
-//   console.log('Getting KEDA metrics...');
-//   res.setHeader('Content-type', register.contentType);
-//   res.end(await register.metrics());
-// });
-
-// keda autoscaling
-// app.get('/apis/autoscaling/v2beta2', async (req: Request, res: Response) => {
-//   console.log('Getting KEDA autoscaling metrics...');
-//   res.setHeader('Content-type', register.contentType);
-//   res.end(await register.metrics());
-// });
-
 ////////////////////
 
 app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
-  console.log('backend and frontend are talking');
+  console.log('Backend and Frontend are connected 🎉🎉🎉');
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
@@ -109,7 +89,7 @@ app.post(
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req: Request, res: Response) => {
-    console.log('successful login, redirecting');
+    console.log('✅ successful login, redirecting');
     return res.status(200);
   }
 );

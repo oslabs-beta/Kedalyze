@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { drag } from 'd3-drag';
+import { useSelector } from 'react-redux';
 import '../../../styles/d3Styles.css';
 
 const D3Visuals = () => {
