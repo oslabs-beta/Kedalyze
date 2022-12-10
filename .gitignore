@@ -3,3 +3,4 @@ node_modules
 manifest
 mongodb
 .env
+Test.jsx
