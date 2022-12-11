@@ -8,6 +8,8 @@ const D3Visuals = (props) => {
   // passing down props, it is still deeply nested
   // const { data } = props;
 
+  // console.log('this is data', data);
+
   const data = {
     name: 'minikube',
     children: [
@@ -102,7 +104,7 @@ const D3Visuals = (props) => {
 
   const svgRef = useRef();
 
-  console.log(data);
+  // console.log(data);
 
   const invalidation = new Promise(() => {});
 
@@ -126,13 +128,32 @@ const D3Visuals = (props) => {
           .strength(1)
       )
       .force('charge', d3.forceManyBody().strength(-50))
+      .force(
+        'collide',
+        d3.forceCollide(function (d) {
+          return d.id === 'j' ? 25 : 12;
+        })
+      )
       .force('x', d3.forceX().x(d3.randomUniform(0, width)))
       .force('y', d3.forceY().y(d3.randomUniform(0, height)));
 
     const svg = d3
       .select(svgRef.current)
-      .attr('width', '100%')
-      .attr('height', '300');
+      .attr('width', '800')
+      .attr('height', '500')
+      .style('border', '0.5px solid white');
+
+    const tooltip = d3
+      .select('.d3-visuals-cluster')
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('visibility', 'hidden')
+      .style('position', 'absolute')
+      .style('padding', '0.5rem 1.5rem')
+      .style('border-radius', '25px')
+      .style('background', '#f9c4d2')
+      .style('opacity', '80%')
+      .style('color', '#382b22');
 
     const link = svg
       .append('g')
@@ -144,15 +165,24 @@ const D3Visuals = (props) => {
 
     const node = svg
       .append('g')
-      .attr('fill', '#fff')
+      .attr('fill', '#fcbcb5')
       .attr('stroke', '#000')
-      .attr('stroke-width', 1.5)
+      .attr('stroke-width', 1)
       .selectAll('circle')
       .data(nodes)
       .join('circle')
-      .attr('fill', (d) => (d.children ? null : '#000'))
+      .attr('fill', (d) => (d.children ? null : '#daff7d'))
       .attr('stroke', (d) => (d.children ? null : '#fff'))
       .attr('r', 6)
+      .on('mouseover', (e, d) => {
+        let data = d.data.name;
+        tooltip.style('visibility', 'visible').text(`${d.data.name}:`);
+      })
+      .on('mousemove', (e, d) => {
+        tooltip
+          .style('top', e.pageY - 50 + 'px')
+          .style('left', e.pageX - 50 + 'px');
+      })
       .call(drag(simulation));
 
     node.append('title').text((d) => d.data.name);
@@ -207,8 +237,9 @@ const D3Visuals = (props) => {
 
   return (
     <div>
-      <h1>D3 Visualizer</h1>
-      <svg ref={svgRef} className='d3-visual' />
+      <div className='d3-visuals-cluster'>
+        <svg ref={svgRef} className='d3-visual' />
+      </div>
     </div>
   );
 };
