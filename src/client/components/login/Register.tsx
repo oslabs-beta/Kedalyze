@@ -10,6 +10,11 @@ function Register() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  const goLogin = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    navigate('/dashboard');
+  };
+
   let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -82,7 +87,7 @@ function Register() {
           <img src={eye} className='pine-eye' />
         </button>
         <div className='signup-home-buttons'>
-          <button type='submit' className='signup-page-btn'>
+          <button type='submit' onClick={goLogin} className='signup-page-btn'>
             Sign Up
           </button>
           <button type='submit' onClick={goHome} className='go-back-again-btn'>

@@ -80,13 +80,14 @@ app.post(
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req: Request, res: Response) => {
-    return res.status(200).json({
-      _id: res.locals.users.id,
-      username: res.locals.users.username,
-      email: res.locals.users.email,
-      password: res.locals.users.password,
-      token: generateToken(res.locals.users.id)
-    });
+    return res.status(200)
+    //.json({
+    //   // _id: res.locals.users.id,
+    //   // username: res.locals.users.username,
+    //   // email: res.locals.users.email,
+    //   // password: res.locals.users.password,
+    //   // token: generateToken(res.locals.users.id)
+    // });
   }
 );
 
