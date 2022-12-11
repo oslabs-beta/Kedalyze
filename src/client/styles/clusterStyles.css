@@ -1,4 +1,110 @@
+.cluster-heading {
+  text-align: center;
+}
+
+h2 {
+  color: rgb(255, 255, 255);
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #f2e5d7;
+}
+
+.key {
+  font-size: 0.9rem;
+  line-height: 0.3;
+  margin-left: 2rem;
+}
+
+.key-section {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.green {
+  color: rgb(218, 255, 125);
+}
+
+.pink {
+  color: rgb(252, 181, 220);
+}
+
+.d3-visuals-cluster {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .cluster-info span,
 .cluster-info span li {
   margin: 0 2rem;
+}
+
+.namespace-list,
+.podName-list,
+.capacity-section,
+.podCount-section,
+.terminatedPods-section {
+  font-size: 1.2rem;
+}
+
+/* DROPDOWN LIST */
+
+.namespace-dropdown {
+  border: 2px solid white;
+  border-radius: 25px;
+  background: rgb(83, 179, 203);
+  margin: 0.5rem 0 0.5rem 1rem;
+  padding: 0.4rem;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.podName-dropdown {
+  border: 2px solid white;
+  border-radius: 25px;
+  background: rgb(83, 179, 203);
+  color: white;
+  text-align: center;
+  margin: 0.5rem 0 0 1.4rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
+.namespace-dropdown:hover,
+.podName-dropdown:hover {
+  background-color: rgba(83, 179, 203, 1);
+  box-shadow: 0px 15px 20px rgba(0, 208, 255, 0.3);
+  color: white;
+  transform: translateY(-3px);
+}
+
+h6 {
+  margin: 0 2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.pod-capacity-span {
+  margin-top: 0.5rem;
+  color: rgb(183, 183, 183);
+}
+
+.pod-count-span {
+  color: rgb(145, 255, 145);
+}
+
+.terminated-pods-span {
+  color: rgb(255, 81, 81);
+}
+
+.green-red {
+  text-align: center;
+}
+
+.green-red span {
+  display: inline-block;
+  margin-bottom: 2rem;
+  text-align: center;
 }
