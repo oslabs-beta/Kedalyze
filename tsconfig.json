@@ -11,5 +11,10 @@
     "allowJs": true,
     "moduleResolution": "node"
   },
-  "include": ["src", "custom.d.ts"]
+  "include": [
+    "src",
+    "custom.d.ts",
+    "manifest",
+    "src/client/components/pages/data"
+  ]
 }

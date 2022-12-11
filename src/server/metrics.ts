@@ -1,4 +1,3 @@
-//metrics.ts
 import express, {
   Express,
   Request,
@@ -11,15 +10,23 @@ import client from 'prom-client';
 const app: Express = express();
 
 export function startMetricsServer() {
-  const collectDefaultMetrics = client.collectDefaultMetrics;
-  collectDefaultMetrics();
+  client.collectDefaultMetrics();
 
-  app.get('/metrics', async (req: Request, res: Response) => {
-    res.set('Content-Type', client.register.contentType);
-    return res.send(await client.register.metrics());
+  const collectDefaultMetrics = client.collectDefaultMetrics;
+  const Registry = client.Registry;
+  const register = new Registry();
+  collectDefaultMetrics({ register });
+
+  register.setDefaultLabels({
+    app: 'kedalyze-keda-api',
   });
 
-  app.listen(9100, () => {
-    console.log('Metrics server started at http://localhost:9100');
+  app.get('/metrics', async (req: Request, res: Response) => {
+    res.setHeader('Content-type', register.contentType);
+    res.end(await register.metrics());
+  });
+
+  app.listen(9022, () => {
+    console.log('Metrics server started at http://localhost:9022');
   });
 }

@@ -10,6 +10,8 @@ import { RequestHandler } from 'express-serve-static-core';
 import path from 'path';
 import client from 'prom-client';
 import * as dotenv from 'dotenv';
+// use this one to connect to 9022 metrics (keda)
+// import { startMetricsServer } from './metrics';
 
 dotenv.config();
 const jwt = require('jsonwebtoken');
@@ -38,15 +40,25 @@ app.use('/api', K8Router);
 
 client.collectDefaultMetrics();
 
-// collecting default metrics from Prometheus
-// https://prometheus.io/docs/instrumenting/writing_clientlibs/#standard-and-runtime-collectors
-// const collectDefaultMetrics = client.collectDefaultMetrics;
-// const Registry = client.Registry;
-// const register = new Registry();
-// collectDefaultMetrics({ register });
+const collectDefaultMetrics = client.collectDefaultMetrics;
+const Registry = client.Registry;
+const register = new Registry();
+collectDefaultMetrics({ register });
+
+register.setDefaultLabels({
+  app: 'kedalyze-api',
+});
+
+// all metrics
+app.get('/metrics', async (req: Request, res: Response) => {
+  res.setHeader('Content-type', register.contentType);
+  res.end(await register.metrics());
+});
+
+////////////////////
 
 app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
-  console.log('backend and frontend are talking');
+  console.log('Backend and Frontend are connected 🎉🎉🎉');
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
@@ -65,8 +77,8 @@ app.get(
 app.post(
   '/register',
   userController.createUser,
-  // cookieController.setSSIDCookie,
-  // sessionController.startSession,
+  cookieController.setSSIDCookie,
+  sessionController.startSession,
   (req: Request, res: Response) => {
     return res.status(200).json({
       _id: res.locals.users.id,
@@ -85,9 +97,8 @@ app.post(
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req: Request, res: Response) => {
-    console.log('successful login, redirecting');
-    //add .json(res.locals.users);
-    return res.status(200).json(res.locals.users.id);
+    console.log('✅ successful login, redirecting');
+    return res.status(200);
   }
 );
 
@@ -140,6 +151,7 @@ const generateToken = (id: String) => {
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
+  // startMetricsServer();
 });
 
 module.exports = app;

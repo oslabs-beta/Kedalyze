@@ -17,8 +17,8 @@ const Global = () => {
           </Link>
         </li>
         <li>
-          <Link to='/dashboard/metrics/coreDNS' className='metrics-coredns'>
-            Core DNS
+          <Link to='/dashboard/metrics/Keda' className='metrics-keda'>
+            KEDA
           </Link>
         </li>
         <li>
@@ -39,11 +39,16 @@ const Global = () => {
             Pods
           </Link>
         </li>
+        <li>
+          <Link to='/dashboard/metrics/coreDNS' className='metrics-coredns'>
+            Core DNS
+          </Link>
+        </li>
       </ul>
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_views_global/kubernetes-views-global?orgId=1&refresh=5s&from=1669774608237&to=1669778208237'
+          src='http://localhost:3001/d/k8s_views_global/kubernetes-views-global?orgId=1&refresh=5s&from=1670293996166&to=1670297596166'
           width='1200'
           height='1910'
         ></iframe>

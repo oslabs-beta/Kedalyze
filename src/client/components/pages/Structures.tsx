@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import ClusterInfo from './d3/ClusterInfo';
 
-const Structure = () => {
+const Structures = () => {
   return (
     <div id='structures'>
-      <h1>Structure</h1>
+      <ClusterInfo />
     </div>
   );
 };
 
-export default Structure;
+export default Structures;

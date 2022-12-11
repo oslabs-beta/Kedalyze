@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Nodes = () => {
+const Keda = () => {
   return (
     <div id='metrics'>
       <ul>
@@ -47,13 +47,13 @@ const Nodes = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_views_nodes/kubernetes-views-nodes?orgId=1&refresh=5s&from=1670294029065&to=1670297629065'
+          src='keda metric data in here'
           width='1200'
-          height='4070'
+          height='1910'
         ></iframe>
       </div>
     </div>
   );
 };
 
-export default Nodes;
+export default Keda;

@@ -1,8 +1,8 @@
-![KEDALyzeLogo](./src/styles/logo1.jpg?raw=true)
+![KEDALyzeLogo](./src/client/styles/logo1.jpg?raw=true)
 
 # KEDAlyze
 
-A tool that the user can deploy on their Kubernetes cluster in order to visualize real-time KEDA autoscaling.
+An application that visualizes real-time Kubernetes Event Driven Autoscaling (KEDA).
 
 <!--- TABLE OF CONTENTS --->
 <details>
@@ -49,7 +49,11 @@ A tool that the user can deploy on their Kubernetes cluster in order to visualiz
 
 # Functionality
 
-KEDAlyze is an open-source product that gives the user a way to visualize KEDA's autoscaling. Allowing the user to see a visual representation of their pods scaling up and then back down as the events dissipate. We also have the basic functionality of a Kubernetes cluster visualizer, allowing the user to see the general health of their pods. KEDAlyze uses promQL queries for cluster metrics such as: in order to drive the autoscaling that is then displayed on a graph for the user.
+KEDA is the perfect tool to use for autoscaling kubernetes pods based on event triggers. Gone are the days of only being able to horizontally autoscale new pods only for CPU or memory usage. We know how great of a tool KEDA is, but how can we see all of it's magic happening behind the scenes? 
+
+We introduce to you, KEDALyze!
+
+KEDALyze is an open-source product that gives users the ability to visualize KEDA's autoscaling. With Prometheus as the event trigger, watch as promQL queries drive the deployment and termination of pods. Our visualizer displays cluster health, events triggers, and horizontal auto scaling in live time, to give the user security that their applications can handle higher workloads.
 
 ### Built With:
 
@@ -67,13 +71,24 @@ KEDAlyze is an open-source product that gives the user a way to visualize KEDA's
 
 # Features
 
+
 ## Live Metrics
 
+
 ## Autoscaling
+
+Prometheus queries are the event triggers we used to horizontally auto scale our pods.
+Customizing the KEDA scaled object to use http requests, we are able to deploy replica pods once the requests have reached a certain threshold. 
+We've incorporated Grafana to allow monitoring of the http requests of your application, alongside with the autoscaling that is triggered.
+Our charts give users the security to know that KEDA is functional, deploying pods at higher workloads and disapating them when they are no longer necessary.
+
+*insert youtube video here*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # General Setup
+
+In the config folder, you can see all the configuration files needed to get you started with our application. Please have docker and minikube installed on your computer prior to following the steps in the read me in the config folder.
 
 ## Installation
 

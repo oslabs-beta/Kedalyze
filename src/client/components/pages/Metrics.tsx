@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/dashStyles.css';
-// import PrometheusChart from '../charts/PrometheusChart';
+import '../../styles/dashStyles.css';
 
 import { Link } from 'react-router-dom';
 
@@ -23,8 +22,8 @@ const Metrics = () => {
             </Link>
           </li>
           <li>
-            <Link to='/dashboard/metrics/coreDNS' className='metrics-coredns'>
-              Core DNS
+            <Link to='/dashboard/metrics/Keda' className='metrics-keda'>
+              KEDA
             </Link>
           </li>
           <li>
@@ -45,8 +44,12 @@ const Metrics = () => {
               Pods
             </Link>
           </li>
+          <li>
+            <Link to='/dashboard/metrics/coreDNS' className='metrics-coredns'>
+              Core DNS
+            </Link>
+          </li>
         </ul>
-        {/* <PrometheusChart /> */}
       </div>
     </>
   );

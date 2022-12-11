@@ -16,9 +16,9 @@ mongoose
     useUnifiedTopology: true,
     dbName: 'kedalyze',
   })
-  .then(() => console.log('Connected to Mongo DB'))
+  .then(() => console.log('Connected to Mongo DB 🦫 🦫 🦫'))
   .catch((err: ErrorRequestHandler) =>
-    console.log(`Error connecting to Mongo DB: ${err}`)
+    console.log(`❌ Error connecting to Mongo DB: ${err}`)
   );
 
 const Schema = mongoose.Schema;

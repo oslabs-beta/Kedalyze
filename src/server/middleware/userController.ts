@@ -43,7 +43,7 @@ const userController: userController = {
   verifyUser: (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!username || !password) {
-      console.log('Error: username and password fields must be complete.');
+      console.log('❌ Error: username and password fields must be complete.');
       return res.redirect('http://localhost:8080/register');
     }
 
@@ -56,16 +56,15 @@ const userController: userController = {
           userData.password,
           function (error: ErrorRequestHandler, isMatch: any) {
             if (error) {
-              console.log('userController.verifyUser: ERROR: ' + error);
+              console.log('❌ userController.verifyUser: ERROR: ' + error);
               return res.redirect('/register');
             } else if (!isMatch) {
               console.log(
-                'userController.verifyUser: ERROR: incorrect password'
+                '❌ userController.verifyUser: ERROR: incorrect password'
               );
               return res.redirect('/register');
             } else {
               res.locals.id = userData.id;
-              // console.log(res.locals.id);
               return next();
             }
           }
@@ -73,7 +72,7 @@ const userController: userController = {
       })
       .catch((error: ErrorRequestHandler) => {
         console.log(
-          'userController.verifyUser: ERROR: incorrect username or password'
+          '❌ userController.verifyUser: ERROR: incorrect username or password'
         );
         return res.redirect('/register');
       });
