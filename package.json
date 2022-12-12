@@ -68,6 +68,7 @@
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
+    "supertest": "^6.3.3",
     "svg-inline-loader": "^0.8.2",
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
