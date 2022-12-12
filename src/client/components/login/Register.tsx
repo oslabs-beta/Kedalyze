@@ -68,16 +68,6 @@ function Register() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-        </div>
-        <button onClick={togglePassword} className='pine-button'>
-          <img src={eye} className='pine-eye' />
-        </button>
-        <div className='signup-home-buttons'>
-          <button type='submit' onClick={signUp} className='signup-page-btn'>
-            Sign Up
-          </button>
-          <button type='submit' onClick={goHome} className='go-back-again-btn'>
-            Home
           <label>
             <input
               placeholder='Username'
@@ -99,7 +89,7 @@ function Register() {
             <img src={eye} className='pine-eye' />
           </button>
           <div className='signup-home-buttons'>
-            <button type='submit' className='signup-page-btn'>
+            <button type='submit' onClick={signUp} className='signup-page-btn'>
               Sign Up
             </button>
             <button
