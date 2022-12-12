@@ -8,15 +8,11 @@ const kc = new k8s.KubeConfig();
 kc.loadFromDefault();
 
 const k8sApi1 = kc.makeApiClient(k8s.CoreV1Api);
-const k8sApi2 = kc.makeApiClient(k8s.AppsV1Api);
 
 interface clusterController {
   getPodList: ResponseObj;
   getClusterInfo: ResponseObj;
 }
-
-// get cluster info
-// use this to get total number of pods in a namespace to visualize the autoscaling
 
 const clusterController: clusterController = {
   getClusterInfo: (req: Request, res: Response, next: NextFunction) => {
@@ -28,6 +24,7 @@ const clusterController: clusterController = {
         }
       );
     }
+
     system('kubectl describe nodes', function (nodes: string) {
       let arr = nodes.split('\n');
       let start;

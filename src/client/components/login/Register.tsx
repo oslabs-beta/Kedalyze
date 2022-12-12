@@ -58,28 +58,14 @@ function Register() {
   return (
     <div className='register'>
       <form onSubmit={handleSubmit} className='signup-form'>
-        <label>
-          Email:
-          <input
-            type='text'
-            name='email'
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Username:
-          <input
-            type='text'
-            name='username'
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <div className='pine'>
+        <div className='con'>
+          <h2 className='login-in-text'>Sign Up</h2>
           <label>
-            Password:
             <input
-              type={passwordShown ? 'text' : 'password'}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Email'
+              type='text'
+              name='email'
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
         </div>
@@ -92,8 +78,39 @@ function Register() {
           </button>
           <button type='submit' onClick={goHome} className='go-back-again-btn'>
             Home
+          <label>
+            <input
+              placeholder='Username'
+              type='text'
+              name='username'
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
+          <div className='pine'>
+            <label>
+              <input
+                placeholder='Password'
+                type={passwordShown ? 'text' : 'password'}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <button onClick={togglePassword} className='pine-button'>
+            <img src={eye} className='pine-eye' />
           </button>
-          <div className='message'>{message ? <p>{message}</p> : null}</div>
+          <div className='signup-home-buttons'>
+            <button type='submit' className='signup-page-btn'>
+              Sign Up
+            </button>
+            <button
+              type='submit'
+              onClick={goHome}
+              className='go-back-again-btn'
+            >
+              Home
+            </button>
+            <div className='message'>{message ? <p>{message}</p> : null}</div>
+          </div>
         </div>
       </form>
     </div>
