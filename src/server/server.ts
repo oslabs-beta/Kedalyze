@@ -14,7 +14,7 @@ import * as dotenv from 'dotenv';
 // import { startMetricsServer } from './metrics';
 
 dotenv.config();
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -143,12 +143,12 @@ app.use(
   }
 );
 
-// Generate JWT
-const generateToken = (id: String) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '1d',
-  })
-}
+// // Generate JWT
+// const generateToken = (id: String) => {
+//   return jwt.sign({ id }, process.env.JWT_SECRET, {
+//     expiresIn: '1d',
+//   })
+// }
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);

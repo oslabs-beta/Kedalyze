@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { ResponseObj } from '../interfaces/crud';
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+//const jwt = require('jsonwebtoken');
 
 interface userController {
   getAllUsers: ResponseObj;
@@ -65,6 +66,7 @@ const userController: userController = {
               return res.redirect('/register');
             } else {
               res.locals.id = userData.id;
+              //const token = jwt.sign(res.locals.id, process.env.JWT_SECRET, {expiresIn: '1d'});
               return next();
             }
           }
