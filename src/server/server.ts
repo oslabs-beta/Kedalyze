@@ -16,6 +16,7 @@ dotenv.config();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+
 // routes
 const K8Router = require('./routes/K8-Routes');
 
@@ -75,7 +76,7 @@ app.post(
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req: Request, res: Response) => {
-    return res.status(200).json(res.locals.users);
+    return res.status(200)
   }
 );
 
