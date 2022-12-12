@@ -21,7 +21,7 @@ label {
 }
 
 input {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(138, 138, 138);
 }
 
 form .con {
@@ -37,7 +37,8 @@ form {
   width: 450px;
   border-radius: 15px;
   box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.4);
-  background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
+  background: #f3ece5;
+  border: 2px solid white;
 }
 
 /* LOGIN BUTTON */

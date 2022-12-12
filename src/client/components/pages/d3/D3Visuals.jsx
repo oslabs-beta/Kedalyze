@@ -135,6 +135,7 @@ const D3Visuals = (props) => {
       .select(svgRef.current)
       .attr('width', '800')
       .attr('height', '500')
+      .style('border-radius', '15px')
       .style('border', '0.5px solid white');
 
     const tooltip = d3

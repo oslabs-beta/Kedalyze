@@ -47,7 +47,7 @@ const Pods = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_views_pods/kubernetes-views-pods?orgId=1&refresh=5s&var-datasource=Prometheus&var-namespace=default&var-pod=alertmanager-prometheus-kube-prometheus-alertmanager-0&var-resolution=30s&from=1670294071435&to=1670297671435'
+          src='http://localhost:3001/d/k8s_views_pods/kubernetes-views-pods?orgId=1&refresh=5s&var-datasource=Prometheus&var-namespace=default&var-pod=alertmanager-prometheus-kube-prometheus-alertmanager-0&var-resolution=15s&from=1670817411376&to=1670821011376'
           width='1200'
           height='1500'
         ></iframe>

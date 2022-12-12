@@ -4,7 +4,11 @@ import ClusterInfo from './d3/ClusterInfo';
 const Structures = () => {
   return (
     <div id='structures'>
-      <ClusterInfo />
+      <div className='structure-border'>
+        <div>
+          <ClusterInfo />
+        </div>
+      </div>
     </div>
   );
 };
