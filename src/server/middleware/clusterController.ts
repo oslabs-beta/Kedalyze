@@ -42,9 +42,6 @@ const clusterController: clusterController = {
         Duration: [],
       };
 
-      console.log('this is arr', arr);
-      console.log('this is obj', obj);
-
       for (let i = 0; i < arr.length; i++) {
         obj.PodCapacity = arr[42];
         obj.PodCount = arr[65];

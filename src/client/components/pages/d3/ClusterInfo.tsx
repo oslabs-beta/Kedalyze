@@ -134,6 +134,7 @@ const ClusterInfo = () => {
       <div className='cluster-header'>
         <h2 className='cluster-heading'>Cluster D3 Visualizer</h2>
       </div>
+      {/* dropdown menu for the namespaces and pods to see all the names */}
       <div className='cluster-info'>
         <span className='namespace-list'>
           Namespace:
