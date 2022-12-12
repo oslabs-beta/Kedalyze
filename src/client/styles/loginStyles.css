@@ -14,10 +14,30 @@ label {
   padding: 12px 20px;
   margin: 5px 0;
   display: block;
-  border-radius: 4px;
-  box-sizing: border-box;
   letter-spacing: 2px;
   margin-right: 1.5rem;
+  border: none;
+  background: none;
+}
+
+input {
+  border-bottom: 1px solid black;
+}
+
+form .con {
+  justify-content: center;
+  padding: 2.2rem;
+}
+
+.login-in-text {
+  color: rgb(78, 51, 7);
+}
+
+form {
+  width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.4);
+  background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
 }
 
 /* LOGIN BUTTON */
@@ -57,12 +77,13 @@ label {
 
 .pine-eye {
   height: 50px;
+  width: auto;
 }
 
 .pine-button {
   background: none;
   border: none;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .pine-button:hover {

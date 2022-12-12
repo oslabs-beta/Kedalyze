@@ -4,12 +4,8 @@ import { drag } from 'd3-drag';
 import '../../../styles/d3Styles.css';
 
 const D3Visuals = (props) => {
-  // need to figure out a way to do it without hard-coding the data
-  // passing down props, it is still deeply nested
   // const { data } = props;
-
   // console.log('this is data', data);
-
   const data = {
     name: 'minikube',
     children: [
@@ -103,8 +99,6 @@ const D3Visuals = (props) => {
   };
 
   const svgRef = useRef();
-
-  // console.log(data);
 
   const invalidation = new Promise(() => {});
 

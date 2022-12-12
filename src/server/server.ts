@@ -10,8 +10,6 @@ import { RequestHandler } from 'express-serve-static-core';
 import path from 'path';
 import client from 'prom-client';
 import * as dotenv from 'dotenv';
-// use this one to connect to 9022 metrics (keda)
-// import { startMetricsServer } from './metrics';
 
 dotenv.config();
 
@@ -54,7 +52,6 @@ app.get('/metrics', async (req: Request, res: Response) => {
 });
 
 ////////////////////
-
 app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
   console.log('Backend and Frontend are connected 🎉🎉🎉');
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
@@ -136,7 +133,6 @@ app.use(
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
-  // startMetricsServer();
 });
 
 module.exports = app;

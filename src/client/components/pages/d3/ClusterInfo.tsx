@@ -24,8 +24,6 @@ const ClusterInfo = () => {
     (state: ClusterState) => state.terminatedPods
   );
 
-  // console.log('cluster info', cluster);
-
   useEffect(() => {
     fetch('http://localhost:3000/api/cluster')
       .then((res) => res.json())
@@ -64,9 +62,6 @@ const ClusterInfo = () => {
         );
       });
   }, []);
-
-  console.log('this is cluster data', cluster);
-
   interface Child {
     name: string;
     children?: Child[];
@@ -86,26 +81,21 @@ const ClusterInfo = () => {
       children: [],
     };
 
-    // Object.values(namespace).forEach((namespace, i) => {
-    //   const namespaceData: Child = {
-    //     name: namespace,
-    //     children: [],
-    //   };
-
     Object.values(namespace).forEach((namespace, i) => {
       const namespaceData: Child = {
         name: namespace,
         children: [],
       };
 
-      // Object.values(podName[i]).forEach((podName) => {
-      //   namespaceData.children.push({ name: podName });
-      //   console.log('podName', podName[i]); // gives podName
-      // });
+      // issue: the podNames are not separated by namespaces
 
-      console.log('namespaceData', namespaceData); // this is nesting namespace, children on the same line
-
+      // pushing namespaceData into the DATA children
       data.children.push(namespaceData);
+
+      Object.values(podName[i]).forEach((podName) => {
+        // pushing podName data into the NAMESPACE children
+        namespaceData.children.push({ name: podName });
+      });
     });
 
     return data;
@@ -144,6 +134,7 @@ const ClusterInfo = () => {
       <div className='cluster-header'>
         <h2 className='cluster-heading'>Cluster D3 Visualizer</h2>
       </div>
+      {/* dropdown menu for the namespaces and pods to see all the names */}
       <div className='cluster-info'>
         <span className='namespace-list'>
           Namespace:

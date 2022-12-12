@@ -11,6 +11,8 @@
 .title {
   margin: 2rem 0 2rem -3.5rem;
   letter-spacing: 5px;
+  color: #fdfbe8;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* gears */
@@ -281,12 +283,12 @@ button.goback-btn:active::before {
   color: rgb(224, 26, 79);
 }
 
-.nav-bar ul li {
+.nav-bar li {
   text-align: center;
   padding: 3.5rem 2rem;
 }
 
-.nav-bar ul {
+.nav-bar {
   width: 170px;
   list-style: none;
   letter-spacing: 2.5px;
@@ -294,7 +296,7 @@ button.goback-btn:active::before {
   display: inline;
 }
 
-.nav-bar ul li:hover {
+.nav-bar li:hover {
   background: rgba(249, 196, 210, 0.9);
 }
 
@@ -307,6 +309,7 @@ button.goback-btn:active::before {
   float: left;
   height: 450vh;
   background: rgb(23, 25, 32);
+  font-family: 'Raleway', sans-serif;
 }
 
 .column2 {
@@ -315,7 +318,7 @@ button.goback-btn:active::before {
   width: 88%;
 }
 
-.column2 ul li {
+.column2 li {
   list-style: none;
   display: inline-block;
   margin: 2rem 3em 0 0;
