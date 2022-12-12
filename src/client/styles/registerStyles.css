@@ -111,6 +111,8 @@ label {
 .message {
   text-align: center;
   letter-spacing: 2px;
-  color: rgb(255, 233, 111);
+  color: rgb(215, 151, 3);
+  text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
+  padding: 0 2rem;
 }
