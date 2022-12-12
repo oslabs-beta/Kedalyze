@@ -30,8 +30,7 @@ An application that visualizes real-time Kubernetes Event Driven Autoscaling (KE
     <li>
       <a href="#electron-setup">Electron Setup</a>
       <ul>
-	  <li><a href="#installation">MacOS Installation</a></li>
-	  <li><a href="#installation">Windows Installation</a></li>
+	  <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
 	    <li>
@@ -49,7 +48,7 @@ An application that visualizes real-time Kubernetes Event Driven Autoscaling (KE
 
 # Functionality
 
-KEDA is the perfect tool to use for autoscaling kubernetes pods based on event triggers. Gone are the days of only being able to horizontally autoscale new pods only for CPU or memory usage. We know how great of a tool KEDA is, but how can we see all of it's magic happening behind the scenes? 
+KEDA is the perfect tool to use for autoscaling kubernetes pods based on event triggers. Gone are the days of only being able to horizontally autoscale new pods only for CPU or memory usage. We know how great of a tool KEDA is, but how can we see all of it's magic happening behind the scenes?
 
 We introduce to you, KEDALyze!
 
@@ -62,6 +61,7 @@ KEDALyze is an open-source product that gives users the ability to visualize KED
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
   ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
+  ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 - ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='Kubernetes' src='https://img.shields.io/badge/Kubernetes-100000?style=for-the-badge&logo=Kubernetes&logoColor=white&labelColor=000000&color=black'/></a>
   <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='KEDA' src='https://img.shields.io/badge/KEDA-100000?style=for-the-badge&logo=KEDA&logoColor=white&labelColor=000000&color=2F61D3'/></a>
 - ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
@@ -71,18 +71,16 @@ KEDALyze is an open-source product that gives users the ability to visualize KED
 
 # Features
 
-
 ## Live Metrics
-
 
 ## Autoscaling
 
 Prometheus queries are the event triggers we used to horizontally auto scale our pods.
-Customizing the KEDA scaled object to use http requests, we are able to deploy replica pods once the requests have reached a certain threshold. 
+Customizing the KEDA scaled object to use http requests, we are able to deploy replica pods once the requests have reached a certain threshold.
 We've incorporated Grafana to allow monitoring of the http requests of your application, alongside with the autoscaling that is triggered.
 Our charts give users the security to know that KEDA is functional, deploying pods at higher workloads and disapating them when they are no longer necessary.
 
-*insert youtube video here*
+_insert youtube video here_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -133,9 +131,9 @@ In the config folder, you can see all the configuration files needed to get you 
 
 1. download and install all of these dependencies:
 
-```sh
-sudo apt install ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
-```
+    ```sh
+    sudo apt install ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
+    ```
 
 2. Go to this [link](https://sourceforge.net/projects/vcxsrv/) to download X Server, this is how you will see the electron window:
 
@@ -152,9 +150,9 @@ sudo apt install ca-certificates fonts-liberation libappindicator3-1 libasound2 
 
 6. Run this command on your local system this will print your nameserver IP to the terminal:
 
-```sh
-export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
-```
+   ```sh
+   export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+   ```
 
 7. Copy the nameserver IP, you will need it for the next step
 
@@ -179,25 +177,24 @@ The platform failed to initialize. Exiting. `
 
 3. Repeat steps 8 and 9, make sure X server is still running, then move on to steps 10 to 12
 
-\*\* **Important**
+\*\* **Important:**
 Each and every time you want to launch our application on Windows you must: launch X server, and follow steps 8 to 12
 
-\*\* **Additional**
+\*\* **Additional:**
 If you need anymore help with setup on windows visit this [link](https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Cluster Setup
 
-## MacOS Installation
+## MacOS/Windows/Linux Installation
 
-1.
+Follow the steps that apply to you for your operating system to install via [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Windows Installation
-
-1.
+<ul>
+<li><a href="./config/Helm/ClusterREADME.md">README for Cluster Setup via Helm </a></li>
+<li><a href="./config/README.md">README for KEDA Setup</a></li>
+</ul>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
