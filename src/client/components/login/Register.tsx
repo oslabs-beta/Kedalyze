@@ -10,6 +10,11 @@ function Register() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  const signUp = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    navigate('/dashboard');
+  };
+
   let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -63,6 +68,16 @@ function Register() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
+        </div>
+        <button onClick={togglePassword} className='pine-button'>
+          <img src={eye} className='pine-eye' />
+        </button>
+        <div className='signup-home-buttons'>
+          <button type='submit' onClick={signUp} className='signup-page-btn'>
+            Sign Up
+          </button>
+          <button type='submit' onClick={goHome} className='go-back-again-btn'>
+            Home
           <label>
             <input
               placeholder='Username'
