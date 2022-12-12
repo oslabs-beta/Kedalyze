@@ -14,7 +14,6 @@ import * as dotenv from 'dotenv';
 // import { startMetricsServer } from './metrics';
 
 dotenv.config();
-// const jwt = require('jsonwebtoken');
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -81,13 +80,6 @@ app.post(
   sessionController.startSession,
   (req: Request, res: Response) => {
     return res.status(200)
-    //.json({
-    //   // _id: res.locals.users.id,
-    //   // username: res.locals.users.username,
-    //   // email: res.locals.users.email,
-    //   // password: res.locals.users.password,
-    //   // token: generateToken(res.locals.users.id)
-    // });
   }
 );
 
@@ -142,13 +134,6 @@ app.use(
     return res.status(errorObj.status).json(errorObj.message);
   }
 );
-
-// // Generate JWT
-// const generateToken = (id: String) => {
-//   return jwt.sign({ id }, process.env.JWT_SECRET, {
-//     expiresIn: '1d',
-//   })
-// }
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
