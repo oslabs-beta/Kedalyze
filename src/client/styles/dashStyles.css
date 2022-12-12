@@ -32,7 +32,7 @@
   left: 35%;
   margin-top: -1em;
   margin-left: -1em;
-  background: #daff7d;
+  background: #f3ece5;
   position: absolute;
   border-radius: 1em;
   -webkit-animation: 1s gear-rotate linear infinite;
@@ -44,7 +44,7 @@
   top: 50%;
   width: 2em;
   height: 2em;
-  background: #daff7d;
+  background: #f3ece5;
   position: absolute;
   -webkit-animation: 1s gear-rotate-left linear infinite;
   -moz-animation: 1s gear-rotate-left linear infinite;
@@ -58,66 +58,66 @@
   background: -webkit-linear-gradient(
       0deg,
       transparent 39%,
-      #daff7d 39%,
-      #daff7d 61%,
+      #f3ece5 39%,
+      #f3ece5 61%,
       transparent 61%
     ),
-    -webkit-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -webkit-linear-gradient(60deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%),
-    -webkit-linear-gradient(120deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -webkit-linear-gradient(120deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%);
   background: -moz-linear-gradient(
       0deg,
       transparent 39%,
-      #daff7d 39%,
-      #47ec19 61%,
+      #f3ece5 39%,
+      white 61%,
       transparent 61%
     ),
-    -moz-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -moz-linear-gradient(60deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%),
-    -moz-linear-gradient(120deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -moz-linear-gradient(120deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%);
   background: -o-linear-gradient(
       0deg,
       transparent 39%,
-      #daff7d 39%,
-      #daff7d 61%,
+      #f3ece5 39%,
+      #f3ece5 61%,
       transparent 61%
     ),
-    -o-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -o-linear-gradient(60deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%),
-    -o-linear-gradient(120deg, transparent 42%, #47ec19 42%, #daff7d 58%, transparent
+    -o-linear-gradient(120deg, transparent 42%, white 42%, #f3ece5 58%, transparent
           58%);
   background: -ms-linear-gradient(
       0deg,
       transparent 39%,
-      #daff7d 39%,
-      #daff7d 61%,
+      #f3ece5 39%,
+      #f3ece5 61%,
       transparent 61%
     ),
-    -ms-linear-gradient(60deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -ms-linear-gradient(60deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%),
-    -ms-linear-gradient(120deg, transparent 42%, #daff7d 42%, #daff7d 58%, transparent
+    -ms-linear-gradient(120deg, transparent 42%, #f3ece5 42%, #f3ece5 58%, transparent
           58%);
   background: linear-gradient(
       0deg,
       transparent 39%,
-      #daff7d 39%,
-      #daff7d 61%,
+      #f3ece5 39%,
+      #f3ece5 61%,
       transparent 61%
     ),
     linear-gradient(
       60deg,
       transparent 42%,
-      #daff7d 42%,
-      #daff7d 58%,
+      #f3ece5 42%,
+      #f3ece5 58%,
       transparent 58%
     ),
     linear-gradient(
       120deg,
       transparent 42%,
-      #daff7d 42%,
-      #daff7d 58%,
+      #f3ece5 42%,
+      #f3ece5 58%,
       transparent 58%
     );
   position: absolute;
@@ -199,7 +199,7 @@ button.goback-btn {
   height: 45px;
   width: 110px;
   font-size: 0.9rem;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   cursor: pointer;
@@ -207,7 +207,6 @@ button.goback-btn {
   font-weight: 600;
   color: #382b22;
   text-transform: uppercase;
-  padding: 1.25em 2em;
   background: #fff0f0;
   border: 2px solid #b18597;
   border-radius: 0.75em;
@@ -378,6 +377,7 @@ button.goback-btn:active::before {
 
 .metrics-global:after,
 .metrics-apiserver:after,
+.metrics-keda::after,
 .metrics-coredns:after,
 .metrics-namespaces:after,
 .metrics-nodes:after,
@@ -407,6 +407,7 @@ button.goback-btn:active::before {
 }
 .metrics-global:hover::after,
 .metrics-apiserver:hover::after,
+.metrics-keda:hover::after,
 .metrics-coredns:hover::after,
 .metrics-namespaces:hover::after,
 .metrics-nodes:hover::after,

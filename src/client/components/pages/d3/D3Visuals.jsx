@@ -133,7 +133,7 @@ const D3Visuals = (props) => {
 
     const svg = d3
       .select(svgRef.current)
-      .attr('width', '800')
+      .attr('width', '570')
       .attr('height', '500')
       .style('border-radius', '15px')
       .style('border', '0.5px solid white');
