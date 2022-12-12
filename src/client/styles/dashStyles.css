@@ -279,7 +279,7 @@ button.goback-btn:active::before {
 }
 
 .nav-bar a:hover {
-  color: rgb(224, 26, 79);
+  color: rgba(218, 255, 125);
 }
 
 .nav-bar li {
@@ -296,7 +296,8 @@ button.goback-btn:active::before {
 }
 
 .nav-bar li:hover {
-  background: rgba(249, 196, 210, 0.9);
+  /* background: rgba(249, 196, 210, 0.9); */
+  background: rgb(17, 18, 23);
 }
 
 .pages {
