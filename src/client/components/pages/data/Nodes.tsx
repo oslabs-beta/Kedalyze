@@ -47,7 +47,7 @@ const Nodes = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_views_nodes/kubernetes-views-nodes?orgId=1&refresh=5s&from=1670294029065&to=1670297629065'
+          src='http://localhost:3001/d/k8s_views_nodes/kubernetes-views-nodes?orgId=1&refresh=5s'
           width='1200'
           height='4070'
         ></iframe>

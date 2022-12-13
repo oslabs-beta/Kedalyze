@@ -48,7 +48,7 @@ const Global = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_views_global/kubernetes-views-global?orgId=1&refresh=5s&from=1670293996166&to=1670297596166'
+          src='http://localhost:3001/d/k8s_views_global/kubernetes-views-global?orgId=1&refresh=5s'
           width='1200'
           height='1910'
         ></iframe>

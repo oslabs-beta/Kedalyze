@@ -47,7 +47,7 @@ const Namespaces = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_views_ns/kubernetes-views-namespaces?orgId=1&refresh=5s&from=1670294012759&to=1670297612759'
+          src='http://localhost:3001/d/k8s_views_ns/kubernetes-views-namespaces?orgId=1&refresh=5s'
           width='1200'
           height='1550'
           // 1550
