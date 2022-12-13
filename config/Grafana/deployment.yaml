@@ -20,6 +20,11 @@ spec:
         ports:
         - name: grafana
           containerPort: 3000
+        env:
+          - name: GF_SECURITY_ALLOW_EMBEDDING
+            value: "true"
+          - name: GF_AUTH_ANONYMOUS_ENABLED
+            value: "true"
         resources:
           limits:
             memory: "1Gi"
