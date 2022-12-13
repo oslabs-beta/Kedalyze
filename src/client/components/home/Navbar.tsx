@@ -29,6 +29,8 @@ function GoBack() {
 }
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <div>
@@ -39,7 +41,6 @@ const Navbar = () => {
           </div>
         </div>
         <h1 className='title'>KEDAlyze</h1>
-
         <GoBack />
       </div>
       <div className='nav-dashboard'>
@@ -50,11 +51,72 @@ const Navbar = () => {
                 Structure
               </Link>
             </li>
-            <li>
-              <Link to='/dashboard/metrics' className='metric'>
-                Metrics
-              </Link>
-            </li>
+            {/* //////////////////// */}
+            <div className='dropdown'>
+              <button className='nav-bar' onClick={() => setIsOpen(!isOpen)}>
+                <Link to='/dashboard/metrics' className='metric'>
+                  Metrics
+                </Link>
+              </button>
+              {isOpen && (
+                <ul
+                  className='metrics-dropdown'
+                  onClick={() => setIsOpen(false)}
+                >
+                  <li id='list'>
+                    <Link
+                      to='/dashboard/metrics/global'
+                      className='metrics-global'
+                    >
+                      Global
+                    </Link>
+                  </li>
+                  <li id='list'>
+                    <Link
+                      to='/dashboard/metrics/apiServer'
+                      className='metrics-apiserver'
+                    >
+                      API Server
+                    </Link>
+                  </li>
+                  <li id='list'>
+                    <Link to='/dashboard/metrics/Keda' className='metrics-keda'>
+                      KEDA
+                    </Link>
+                  </li>
+                  <li id='list'>
+                    <Link
+                      to='/dashboard/metrics/namespaces'
+                      className='metrics-namespaces'
+                    >
+                      Namespaces
+                    </Link>
+                  </li>
+                  <li id='list'>
+                    <Link
+                      to='/dashboard/metrics/nodes'
+                      className='metrics-nodes'
+                    >
+                      Nodes
+                    </Link>
+                  </li>
+                  <li id='list'>
+                    <Link to='/dashboard/metrics/pods' className='metrics-pods'>
+                      Pods
+                    </Link>
+                  </li>
+                  <li id='list'>
+                    <Link
+                      to='/dashboard/metrics/coreDNS'
+                      className='metrics-coredns'
+                    >
+                      Core DNS
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+            {/* //////////////////// */}
             <li>
               <Link to='/dashboard/customs' className='custom'>
                 Custom
