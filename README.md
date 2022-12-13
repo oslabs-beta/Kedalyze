@@ -73,6 +73,19 @@ KEDALyze is an open-source product that gives users the ability to visualize KED
 
 ## Live Metrics
 
+### KEDA: See KEDA autoscaling in action
+
+![KEDA](./demo-gifs/KEDA.gif)
+
+### See other metrics from your local Kubernetes cluster
+
+![Global](./demo-gifs/Global.gif)
+![APIServer](./demo-gifs/APIServer.gif)
+![Namespaces](./demo-gifs/Namespaces.gif)
+![Nodes](./demo-gifs/Nodes.gif)
+![Pods](./demo-gifs/Pods.gif)
+![CoreDNS](./demo-gifs/CoreDNS.gif)
+
 ## Autoscaling
 
 Prometheus queries are the event triggers we used to horizontally auto scale our pods.
