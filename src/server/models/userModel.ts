@@ -36,7 +36,6 @@ userSchema.pre('save', function (next: NextFunction) {
   if (this.isNew || this.isModified('password')) {
     bcrypt
       .hash(this.password, SALT_WORK_FACTOR)
-      // is the hash value type a number | string?
       .then((hash: any) => {
         this.password = hash;
         return next();

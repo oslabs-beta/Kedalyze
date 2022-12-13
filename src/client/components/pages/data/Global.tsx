@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 const Global = () => {
   return (
