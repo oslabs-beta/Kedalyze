@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Metrics = () => {
   return (
     <>
-      <div id='metrics'>
+      {/* <div id='metrics'>
         <ul>
           <li>
             <Link to='/dashboard/metrics/global' className='metrics-global'>
@@ -50,7 +50,7 @@ const Metrics = () => {
             </Link>
           </li>
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };
