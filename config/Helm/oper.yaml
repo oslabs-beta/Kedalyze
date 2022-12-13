@@ -1,12 +1,12 @@
 Name:                   prometheus-kube-prometheus-operator
 Namespace:              default
-CreationTimestamp:      Mon, 05 Dec 2022 20:16:13 -0500
+CreationTimestamp:      Mon, 12 Dec 2022 23:54:26 -0500
 Labels:                 app=kube-prometheus-stack-operator
                         app.kubernetes.io/instance=prometheus
                         app.kubernetes.io/managed-by=Helm
                         app.kubernetes.io/part-of=kube-prometheus-stack
-                        app.kubernetes.io/version=42.2.1
-                        chart=kube-prometheus-stack-42.2.1
+                        app.kubernetes.io/version=42.3.0
+                        chart=kube-prometheus-stack-42.3.0
                         heritage=Helm
                         release=prometheus
 Annotations:            deployment.kubernetes.io/revision: 1
@@ -22,8 +22,8 @@ Pod Template:
                     app.kubernetes.io/instance=prometheus
                     app.kubernetes.io/managed-by=Helm
                     app.kubernetes.io/part-of=kube-prometheus-stack
-                    app.kubernetes.io/version=42.2.1
-                    chart=kube-prometheus-stack-42.2.1
+                    app.kubernetes.io/version=42.3.0
+                    chart=kube-prometheus-stack-42.3.0
                     heritage=Helm
                     release=prometheus
   Service Account:  prometheus-kube-prometheus-operator
@@ -60,8 +60,8 @@ Conditions:
   Available      True    MinimumReplicasAvailable
   Progressing    True    NewReplicaSetAvailable
 OldReplicaSets:  <none>
-NewReplicaSet:   prometheus-kube-prometheus-operator-689dd6679c (1/1 replicas created)
+NewReplicaSet:   prometheus-kube-prometheus-operator-66d6758bd9 (1/1 replicas created)
 Events:
-  Type    Reason             Age    From                   Message
-  ----    ------             ----   ----                   -------
-  Normal  ScalingReplicaSet  4m12s  deployment-controller  Scaled up replica set prometheus-kube-prometheus-operator-689dd6679c to 1
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  41s   deployment-controller  Scaled up replica set prometheus-kube-prometheus-operator-66d6758bd9 to 1

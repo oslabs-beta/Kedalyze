@@ -47,7 +47,7 @@ const APIServer = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/k8s_system_apisrv/kubernetes-system-api-server?orgId=1&refresh=5s&from=1670293961816&to=1670297561816'
+          src='http://localhost:3001/d/k8s_system_apisrv/kubernetes-system-api-server?orgId=1&refresh=5s&var-datasource=Prometheus&var-resolution=1s&from=1670904739576&to=1670908339576'
           width='1200'
           height='1910'
         ></iframe>

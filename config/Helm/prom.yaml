@@ -1,23 +1,23 @@
 Name:               prometheus-prometheus-kube-prometheus-prometheus
 Namespace:          default
-CreationTimestamp:  Mon, 05 Dec 2022 20:16:17 -0500
+CreationTimestamp:  Mon, 12 Dec 2022 23:54:37 -0500
 Selector:           app.kubernetes.io/instance=prometheus-kube-prometheus-prometheus,app.kubernetes.io/managed-by=prometheus-operator,app.kubernetes.io/name=prometheus,operator.prometheus.io/name=prometheus-kube-prometheus-prometheus,operator.prometheus.io/shard=0,prometheus=prometheus-kube-prometheus-prometheus
 Labels:             app=kube-prometheus-stack-prometheus
                     app.kubernetes.io/instance=prometheus
                     app.kubernetes.io/managed-by=Helm
                     app.kubernetes.io/part-of=kube-prometheus-stack
-                    app.kubernetes.io/version=42.2.1
-                    chart=kube-prometheus-stack-42.2.1
+                    app.kubernetes.io/version=42.3.0
+                    chart=kube-prometheus-stack-42.3.0
                     heritage=Helm
                     operator.prometheus.io/name=prometheus-kube-prometheus-prometheus
                     operator.prometheus.io/shard=0
                     release=prometheus
 Annotations:        meta.helm.sh/release-name: prometheus
                     meta.helm.sh/release-namespace: default
-                    prometheus-operator-input-hash: 15070948111844286238
+                    prometheus-operator-input-hash: 5126594913203010721
 Replicas:           1 desired | 1 total
 Update Strategy:    RollingUpdate
-Pods Status:        1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pods Status:        0 Running / 1 Waiting / 0 Succeeded / 0 Failed
 Pod Template:
   Labels:           app.kubernetes.io/instance=prometheus-kube-prometheus-prometheus
                     app.kubernetes.io/managed-by=prometheus-operator
@@ -132,6 +132,6 @@ Pod Template:
     SizeLimit:  <unset>
 Volume Claims:  <none>
 Events:
-  Type    Reason            Age    From                    Message
-  ----    ------            ----   ----                    -------
-  Normal  SuccessfulCreate  3m31s  statefulset-controller  create Pod prometheus-prometheus-kube-prometheus-prometheus-0 in StatefulSet prometheus-prometheus-kube-prometheus-prometheus successful
+  Type    Reason            Age   From                    Message
+  ----    ------            ----  ----                    -------
+  Normal  SuccessfulCreate  18s   statefulset-controller  create Pod prometheus-prometheus-kube-prometheus-prometheus-0 in StatefulSet prometheus-prometheus-kube-prometheus-prometheus successful
