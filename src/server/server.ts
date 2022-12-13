@@ -51,8 +51,6 @@ app.get('/metrics', async (req: Request, res: Response) => {
   res.end(await register.metrics());
 });
 
-////////////////////
-
 app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
   console.log('Backend and Frontend are connected 🎉🎉🎉');
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));

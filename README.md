@@ -189,7 +189,7 @@ If you need anymore help with setup on windows visit this [link](https://techcom
 
 ## MacOS/Windows/Linux Installation
 
-Follow the steps that apply to you for your operating system to install via [minikube](https://minikube.sigs.k8s.io/docs/start/)
+Follow the steps that apply to you for your operating system to install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/#install-with-homebrew-on-macos) and [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 <ul>
 <li><a href="./config/Helm/ClusterREADME.md">README for Cluster Setup via Helm </a></li>

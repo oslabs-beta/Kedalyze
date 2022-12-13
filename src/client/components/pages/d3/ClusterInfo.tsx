@@ -68,10 +68,6 @@ const ClusterInfo = () => {
     children?: Child[];
   }
 
-  // somehow nest PodName into the Namespace into the cluster
-
-  // obj > arr > obj > arr > obj
-
   const generateData = (
     cluster: any,
     namespace: string[],
@@ -88,13 +84,9 @@ const ClusterInfo = () => {
         children: [],
       };
 
-      // issue: the podNames are not separated by namespaces
-
-      // pushing namespaceData into the DATA children
       data.children.push(namespaceData);
 
       Object.values(podName[i]).forEach((podName) => {
-        // pushing podName data into the NAMESPACE children
         namespaceData.children.push({ name: podName });
       });
     });

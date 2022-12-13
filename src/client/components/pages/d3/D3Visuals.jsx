@@ -14,22 +14,22 @@ const D3Visuals = (props) => {
             name: 'alertmanager-prometheus-kube-prometheus-alertmanager-0',
           },
           {
-            name: 'hello-minikube-7ddcbc9b8b-mwvkv',
+            name: 'hello-minikube-7ddcbc9b8b-6rp88',
           },
           {
-            name: 'prometheus-grafana-698d6c4477-tqd56',
+            name: 'prometheus-grafana-54c6c7fc7b-8jfq7',
           },
           {
-            name: 'prometheus-kube-prometheus-operator-66d6758bd9-x2qml',
+            name: 'prometheus-kube-prometheus-operator-54b9d7fdc-m4csq',
           },
           {
-            name: 'prometheus-kube-state-metrics-6cfd96f4c8-gbjqj',
+            name: 'prometheus-kube-state-metrics-6cfd96f4c8-blvs7',
           },
           {
             name: 'prometheus-prometheus-kube-prometheus-prometheus-0',
           },
           {
-            name: 'prometheus-prometheus-node-exporter-bgps9',
+            name: 'prometheus-prometheus-node-exporter-4cr2l',
           },
         ],
       },
@@ -41,6 +41,20 @@ const D3Visuals = (props) => {
           },
           {
             name: 'keda-operator-metrics-apiserver-66496446f7-stgfn',
+          },
+        ],
+      },
+      {
+        name: 'keda-demo',
+        children: [
+          {
+            name: 'go-prom-app-6498f56b55-t4rz7 ',
+          },
+          {
+            name: 'grafana-d567ffc6d-wlm67',
+          },
+          {
+            name: 'prometheus-deployment-575fd985d8-bvg9j',
           },
         ],
       },

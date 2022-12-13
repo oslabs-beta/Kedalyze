@@ -91,6 +91,7 @@ const clusterController: clusterController = {
             res.locals.podList = obj;
           }
         }
+
         return next();
       })
       .catch((err) => {
