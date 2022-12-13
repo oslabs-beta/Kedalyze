@@ -10,8 +10,6 @@ import { RequestHandler } from 'express-serve-static-core';
 import path from 'path';
 import client from 'prom-client';
 import * as dotenv from 'dotenv';
-// use this one to connect to 9022 metrics (keda)
-// import { startMetricsServer } from './metrics';
 
 dotenv.config();
 
@@ -78,7 +76,7 @@ app.post(
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req: Request, res: Response) => {
-    return res.status(200).json(res.locals.users);
+    return res.status(200);
   }
 );
 
@@ -136,7 +134,6 @@ app.use(
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}...`);
-  // startMetricsServer();
 });
 
 module.exports = app;

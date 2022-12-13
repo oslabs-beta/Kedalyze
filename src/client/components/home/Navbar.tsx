@@ -23,7 +23,7 @@ function GoBack() {
 
   return (
     <button type='submit' onClick={onSubmit} className='goback-btn'>
-      Home
+      Log Out
     </button>
   );
 }
@@ -45,28 +45,26 @@ const Navbar = () => {
       <div className='nav-dashboard'>
         <div className='column1'>
           <nav className='nav-bar'>
-            <ul>
-              <li>
-                <Link to='/dashboard/structures' className='structure'>
-                  Structure
-                </Link>
-              </li>
-              <li>
-                <Link to='/dashboard/metrics' className='metric'>
-                  Metrics
-                </Link>
-              </li>
-              <li>
-                <Link to='/dashboard/customs' className='custom'>
-                  Custom
-                </Link>
-              </li>
-              <li>
-                <Link to='/dashboard/alerts' className='alert'>
-                  Alerts
-                </Link>
-              </li>
-            </ul>
+            <li>
+              <Link to='/dashboard/structures' className='structure'>
+                Structure
+              </Link>
+            </li>
+            <li>
+              <Link to='/dashboard/metrics' className='metric'>
+                Metrics
+              </Link>
+            </li>
+            <li>
+              <Link to='/dashboard/customs' className='custom'>
+                Custom
+              </Link>
+            </li>
+            <li>
+              <Link to='/dashboard/alerts' className='alert'>
+                Alerts
+              </Link>
+            </li>
           </nav>
         </div>
         <div className='column2'>

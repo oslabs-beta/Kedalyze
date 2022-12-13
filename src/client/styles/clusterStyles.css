@@ -1,5 +1,31 @@
-.cluster-heading {
-  text-align: center;
+.col {
+  columns: 2;
+  margin-top: 2rem;
+}
+
+.col-1-a {
+  margin: 0 1rem 1.5rem 2rem;
+  padding: 2rem 1rem;
+  border-radius: 25px;
+  background: rgb(23, 25, 32);
+  border: 1px solid rgb(48, 48, 48);
+}
+
+.col-1-b {
+  margin: 0 1rem 0 2rem;
+  padding: 1rem 1rem 1rem 2.5rem;
+  border-radius: 25px;
+  background: rgb(23, 25, 32);
+  font-size: 0.9rem;
+  line-height: 0.5;
+  width: 32%;
+  border: 1px solid rgb(48, 48, 48);
+}
+
+.col-2 {
+  border-radius: 25px;
+  background: rgb(23, 25, 32);
+  border: 1px solid rgb(48, 48, 48);
 }
 
 h2 {
@@ -8,12 +34,6 @@ h2 {
   letter-spacing: 0.2rem;
   font-family: 'Montserrat', sans-serif;
   color: #f2e5d7;
-}
-
-.key {
-  font-size: 0.9rem;
-  line-height: 0.3;
-  margin-left: 2rem;
 }
 
 .key-section {
@@ -29,47 +49,30 @@ h2 {
   color: rgb(252, 181, 220);
 }
 
-.d3-visuals-cluster {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.cluster-info span,
-.cluster-info span li {
-  margin: 0 2rem;
-}
-
 .namespace-list,
-.podName-list,
-.capacity-section,
-.podCount-section,
-.terminatedPods-section {
-  font-size: 1.2rem;
+.podName-list {
+  margin: 0 0 0 1.5rem;
 }
 
 /* DROPDOWN LIST */
-
 .namespace-dropdown {
   border: 2px solid white;
   border-radius: 25px;
-  background: rgb(83, 179, 203);
+  background: rgba(252, 181, 220, 0.8);
   margin: 0.5rem 0 0.5rem 1rem;
-  padding: 0.4rem;
+  padding: 0.4rem 0;
   color: white;
   text-align: center;
-  font-size: 1rem;
 }
 
 .podName-dropdown {
   border: 2px solid white;
   border-radius: 25px;
-  background: rgb(83, 179, 203);
+  background: rgba(145, 255, 145, 0.6);
   color: white;
   text-align: center;
   margin: 0.5rem 0 0 1.4rem;
-  padding: 0.4rem;
-  font-size: 1rem;
+  padding: 0.4rem 0;
 }
 
 .namespace-dropdown:hover,
@@ -82,12 +85,22 @@ h2 {
 
 h6 {
   margin: 0 2rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
+.span-inline span {
+  display: inline-block;
+}
+
+.capacity-section,
+.podCount-section,
+.terminatedPods-section {
+  text-align: center;
+  margin: 1rem 2rem 2rem 3rem;
+}
+
 .pod-capacity-span {
-  margin-top: 0.5rem;
   color: rgb(183, 183, 183);
 }
 
@@ -97,14 +110,4 @@ h6 {
 
 .terminated-pods-span {
   color: rgb(255, 81, 81);
-}
-
-.green-red {
-  text-align: center;
-}
-
-.green-red span {
-  display: inline-block;
-  margin-bottom: 2rem;
-  text-align: center;
 }

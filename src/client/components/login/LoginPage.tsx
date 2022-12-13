@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/loginStyles.css';
 import eye from '../../styles/pine-eye.jpg';
@@ -57,34 +57,41 @@ const LoginPage = () => {
   return (
     <div className='login-page'>
       <form onSubmit={handleSubmit} className='login-form'>
-        <label>
-          Username:
-          <input
-            type='text'
-            name='username'
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <div className='pine'>
+        <div className='con'>
+          <h2 className='login-in-text'>Log In</h2>
           <label>
-            Password:
             <input
-              type={passwordShown ? 'text' : 'password'}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Username'
+              type='text'
+              name='username'
+              onChange={(e) => setUsername(e.target.value)}
             />
           </label>
-        </div>
-        <div className='login-home-buttons'>
-          <button onClick={togglePassword} className='pine-button'>
-            <img src={eye} className='pine-eye' />
-          </button>
-          <button onClick={goLogin} type='submit' className='login-page-btn'>
-            Login
-          </button>
-          <button type='submit' onClick={goHome} className='go-back-again-btn'>
-            Home
-          </button>
-          <div className='message'>{message ? <p>{message}</p> : null}</div>
+          <div className='pine'>
+            <label>
+              <input
+                placeholder='Password'
+                type={passwordShown ? 'text' : 'password'}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className='login-home-buttons'>
+            <button onClick={togglePassword} className='pine-button'>
+              <img src={eye} className='pine-eye' />
+            </button>
+            <button onClick={goLogin} type='submit' className='login-page-btn'>
+              Login
+            </button>
+            <button
+              type='submit'
+              onClick={goHome}
+              className='go-back-again-btn'
+            >
+              Home
+            </button>
+            <div className='message'>{message ? <p>{message}</p> : null}</div>
+          </div>
         </div>
       </form>
     </div>

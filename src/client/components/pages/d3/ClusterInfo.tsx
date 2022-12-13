@@ -24,8 +24,6 @@ const ClusterInfo = () => {
     (state: ClusterState) => state.terminatedPods
   );
 
-  // console.log('cluster info', cluster);
-
   useEffect(() => {
     fetch('http://localhost:3000/api/cluster')
       .then((res) => res.json())
@@ -53,7 +51,8 @@ const ClusterInfo = () => {
         const podCount = parseInt(cluster.PodCount.match(/\d+/g)[0], 10);
         dispatch({ type: 'SET_POD_COUNT', podCount });
 
-        const terminatedPods = Math.floor(Number(podLength) / Number(podCount));
+        const terminatedPods = Math.floor(Number(podLength) % Number(podCount));
+
         dispatch({ type: 'SET_TERMINATED_PODS', terminatedPods });
 
         setLoading(false);
@@ -64,9 +63,6 @@ const ClusterInfo = () => {
         );
       });
   }, []);
-
-  console.log('this is cluster data', cluster);
-
   interface Child {
     name: string;
     children?: Child[];
@@ -86,26 +82,21 @@ const ClusterInfo = () => {
       children: [],
     };
 
-    // Object.values(namespace).forEach((namespace, i) => {
-    //   const namespaceData: Child = {
-    //     name: namespace,
-    //     children: [],
-    //   };
-
     Object.values(namespace).forEach((namespace, i) => {
       const namespaceData: Child = {
         name: namespace,
         children: [],
       };
 
-      // Object.values(podName[i]).forEach((podName) => {
-      //   namespaceData.children.push({ name: podName });
-      //   console.log('podName', podName[i]); // gives podName
-      // });
+      // issue: the podNames are not separated by namespaces
 
-      console.log('namespaceData', namespaceData); // this is nesting namespace, children on the same line
-
+      // pushing namespaceData into the DATA children
       data.children.push(namespaceData);
+
+      Object.values(podName[i]).forEach((podName) => {
+        // pushing podName data into the NAMESPACE children
+        namespaceData.children.push({ name: podName });
+      });
     });
 
     return data;
@@ -140,49 +131,62 @@ const ClusterInfo = () => {
   }
 
   return (
-    <div>
-      <div className='cluster-header'>
-        <h2 className='cluster-heading'>Cluster D3 Visualizer</h2>
+    <div className='col'>
+      <div className='col-1'>
+        <div className='col-1-a'>
+          <span className='namespace-list'>
+            Namespace:
+            <select className='namespace-dropdown'>
+              {Object.values(namespace).map((name: string, index: number) => {
+                let options = [];
+                for (let i = 0; i < name.length; i++) {
+                  options.push(<option key={name[i]}>{name[i]}</option>);
+                }
+                return options;
+              })}
+            </select>
+          </span>
+          <br />
+          <span className='podName-list'>
+            Pod Name:
+            <select className='podName-dropdown'>
+              {Object.values(podName).map((name: string, index: number) => {
+                let options = [];
+                for (let i = 0; i < name.length; i++) {
+                  options.push(<option key={name[i]}>{name[i]}</option>);
+                }
+                return options;
+              })}
+            </select>
+          </span>
+        </div>
+        {/*  */}
+        <div className='col-1-b'>
+          <p className='key-section'>Key:</p>
+          <p>
+            Center <span className='pink'>pink</span> circle = Clusters
+          </p>
+          <p>
+            Other <span className='pink'>pink</span> circles = Namespaces
+          </p>
+          <p>
+            External <span className='green'>green</span> circles = Pods
+          </p>
+        </div>
       </div>
-      <div className='cluster-info'>
-        <span className='namespace-list'>
-          Namespace:
-          <select className='namespace-dropdown'>
-            {Object.values(namespace).map((name: string, index: number) => {
-              let options = [];
-              for (let i = 0; i < name.length; i++) {
-                options.push(<option key={name[i]}>{name[i]}</option>);
-              }
-              return options;
+      <div className='col-2'>
+        <D3Visuals data={data} />
+        <div className='span-inline'>
+          <span className='capacity-section'>
+            Capacity:
+            {Object.values(podCapacity).map((name: string) => {
+              return (
+                <h6 className='pod-capacity-span' key={name}>
+                  {name}
+                </h6>
+              );
             })}
-          </select>
-        </span>
-        <br />
-        <span className='podName-list'>
-          Pod Name:
-          <select className='podName-dropdown'>
-            {Object.values(podName).map((name: string, index: number) => {
-              let options = [];
-              for (let i = 0; i < name.length; i++) {
-                options.push(<option key={name[i]}>{name[i]}</option>);
-              }
-              return options;
-            })}
-          </select>
-        </span>
-        <br />
-        <span className='capacity-section'>
-          Capacity:
-          {Object.values(podCapacity).map((name: string) => {
-            return (
-              <h6 className='pod-capacity-span' key={name}>
-                {name}
-              </h6>
-            );
-          })}
-        </span>
-        <br />
-        <div className='green-red'>
+          </span>
           <span className='podCount-section'>
             Pod Count:
             {Object.values(podCount).map((count: number) => {
@@ -203,21 +207,6 @@ const ClusterInfo = () => {
               );
             })}
           </span>
-        </div>
-      </div>
-      <div className='d3-cluster-visual'>
-        <D3Visuals data={data} />
-        <div className='key'>
-          <p className='key-section'>Key:</p>
-          <p>
-            Center <span className='pink'>pink</span> circle = Clusters
-          </p>
-          <p>
-            Other <span className='pink'>pink</span> circles = Namespaces
-          </p>
-          <p>
-            External <span className='green'>green</span> circles = Pods
-          </p>
         </div>
       </div>
     </div>
