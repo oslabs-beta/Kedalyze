@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-  default-prometheus-kube-prometheus-alertmanager.rules-cccad0b0-e23f-4ea3-89d2-b4992cf0967f.yaml: |
+  default-prometheus-kube-prometheus-alertmanager.rules-a2d6fa90-107a-41d4-92fe-0402554d061e.yaml: |
     groups:
     - name: alertmanager.rules
       rules:
@@ -142,7 +142,7 @@ data:
         for: 5m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-config-reloaders-9324a243-4452-4f01-9f8f-38ceb6b69a0e.yaml: |
+  default-prometheus-kube-prometheus-config-reloaders-84f8964c-e57f-4619-9073-1d4301701848.yaml: |
     groups:
     - name: config-reloaders
       rules:
@@ -157,7 +157,7 @@ data:
         for: 10m
         labels:
           severity: warning
-  default-prometheus-kube-prometheus-etcd-d33d6b2b-191c-40a8-9bab-aa1602654732.yaml: |
+  default-prometheus-kube-prometheus-etcd-6c4cbf3d-5539-463d-b798-c7b71af84913.yaml: |
     groups:
     - name: etcd
       rules:
@@ -338,7 +338,7 @@ data:
         for: 10m
         labels:
           severity: warning
-  default-prometheus-kube-prometheus-general.rules-fb515061-b445-4218-b3f9-be93f6b24a29.yaml: |
+  default-prometheus-kube-prometheus-general.rules-93c7d8d2-5af1-49b4-b813-bb8975554c3c.yaml: |
     groups:
     - name: general.rules
       rules:
@@ -382,7 +382,7 @@ data:
           "InfoInhibitor", severity =~ "warning|critical", alertstate="firing"} == 1
         labels:
           severity: none
-  default-prometheus-kube-prometheus-k8s.rules-90b2cf69-97dc-46e5-9407-cd0a98b656d9.yaml: |
+  default-prometheus-kube-prometheus-k8s.rules-d3b3ac35-4742-410e-a772-98405340b997.yaml: |
     groups:
     - name: k8s.rules
       rules:
@@ -532,7 +532,7 @@ data:
         labels:
           workload_type: job
         record: namespace_workload_pod:kube_pod_owner:relabel
-  default-prometheus-kube-prometheus-kube-apiserver-availability.rules-e87274f7-d280-4d93-abf7-28c779a4ea3b.yaml: |
+  default-prometheus-kube-prometheus-kube-apiserver-availability.rules-91ff5693-a3ab-4845-832d-85db066f1f33.yaml: |
     groups:
     - interval: 3m
       name: kube-apiserver-availability.rules
@@ -648,7 +648,7 @@ data:
         record: code_verb:apiserver_request_total:increase1h
       - expr: sum by (cluster, code, verb) (increase(apiserver_request_total{job="apiserver",verb=~"LIST|GET|POST|PUT|PATCH|DELETE",code=~"5.."}[1h]))
         record: code_verb:apiserver_request_total:increase1h
-  default-prometheus-kube-prometheus-kube-apiserver-burnrate.rules-4eaa9e92-9146-44d1-9353-e69abce9a6fd.yaml: |
+  default-prometheus-kube-prometheus-kube-apiserver-burnrate.rules-574490ef-4f05-458c-adf2-8c6602082b5a.yaml: |
     groups:
     - name: kube-apiserver-burnrate.rules
       rules:
@@ -953,7 +953,7 @@ data:
         labels:
           verb: write
         record: apiserver_request:burnrate6h
-  default-prometheus-kube-prometheus-kube-apiserver-histogram.rules-bd9824f6-a144-48f6-b6c2-3e691b299290.yaml: |
+  default-prometheus-kube-prometheus-kube-apiserver-histogram.rules-0c565c62-a1e5-4d40-81a7-89ef4ea57d44.yaml: |
     groups:
     - name: kube-apiserver-histogram.rules
       rules:
@@ -969,7 +969,7 @@ data:
           quantile: "0.99"
           verb: write
         record: cluster_quantile:apiserver_request_slo_duration_seconds:histogram_quantile
-  default-prometheus-kube-prometheus-kube-apiserver-slos-f1853d70-8d35-4a5c-bbed-0b57ae2eb951.yaml: |
+  default-prometheus-kube-prometheus-kube-apiserver-slos-c4521a37-c1ac-46c7-bb92-78662e462f50.yaml: |
     groups:
     - name: kube-apiserver-slos
       rules:
@@ -1029,7 +1029,7 @@ data:
           long: 3d
           severity: warning
           short: 6h
-  default-prometheus-kube-prometheus-kube-prometheus-general.rules-fbca3768-d474-407f-bd52-9acd6f8c78c6.yaml: |
+  default-prometheus-kube-prometheus-kube-prometheus-general.rules-362da194-2e35-4304-8f8b-cc8ae82b7ee7.yaml: |
     groups:
     - name: kube-prometheus-general.rules
       rules:
@@ -1037,7 +1037,7 @@ data:
         record: count:up1
       - expr: count without(instance, pod, node) (up == 0)
         record: count:up0
-  default-prometheus-kube-prometheus-kube-prometheus-node-recording.rules-69e7c4d9-22db-4af3-bc96-4cfbcf7eec1e.yaml: |
+  default-prometheus-kube-prometheus-kube-prometheus-node-recording.rules-4d53e502-4647-4991-b280-e68250a1d076.yaml: |
     groups:
     - name: kube-prometheus-node-recording.rules
       rules:
@@ -1057,7 +1057,7 @@ data:
       - expr: cluster:node_cpu:sum_rate5m / count(sum(node_cpu_seconds_total) BY (instance,
           cpu))
         record: cluster:node_cpu:ratio
-  default-prometheus-kube-prometheus-kube-scheduler.rules-ae4b203f-4bd6-4597-b62c-1733bb154418.yaml: |
+  default-prometheus-kube-prometheus-kube-scheduler.rules-1f386a30-6016-4112-a1f4-fad5da1a8e9a.yaml: |
     groups:
     - name: kube-scheduler.rules
       rules:
@@ -1106,7 +1106,7 @@ data:
         labels:
           quantile: "0.5"
         record: cluster_quantile:scheduler_binding_duration_seconds:histogram_quantile
-  default-prometheus-kube-prometheus-kube-state-metrics-4ce6f2e1-6879-4795-a32e-a9d7c95ee26f.yaml: |
+  default-prometheus-kube-prometheus-kube-state-metrics-db5b2c2b-9a5c-4223-bbec-f80cc35a1b05.yaml: |
     groups:
     - name: kube-state-metrics
       rules:
@@ -1165,7 +1165,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-kubelet.rules-91e5858c-7549-47ca-8379-c38923824b37.yaml: |
+  default-prometheus-kube-prometheus-kubelet.rules-59a5989a-156d-45a5-9e14-8c38a0bb7ac2.yaml: |
     groups:
     - name: kubelet.rules
       rules:
@@ -1187,7 +1187,7 @@ data:
         labels:
           quantile: "0.5"
         record: node_quantile:kubelet_pleg_relist_duration_seconds:histogram_quantile
-  default-prometheus-kube-prometheus-kubernetes-apps-8f5c6f3c-197c-4348-9c3e-be4ce74602a5.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-apps-937dad97-bb39-4147-ae79-67714b47a39e.yaml: |
     groups:
     - name: kubernetes-apps
       rules:
@@ -1438,7 +1438,7 @@ data:
         for: 15m
         labels:
           severity: warning
-  default-prometheus-kube-prometheus-kubernetes-resources-36ea2cf2-1777-4ccd-aba5-e228de39427d.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-resources-8e5989da-b912-4103-a6c3-b78cf57d8b24.yaml: |
     groups:
     - name: kubernetes-resources
       rules:
@@ -1551,7 +1551,7 @@ data:
         for: 15m
         labels:
           severity: info
-  default-prometheus-kube-prometheus-kubernetes-storage-d4ae983b-4977-465c-b479-83fb0bd8233f.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-storage-a7c007fb-2e91-4a09-adfb-e5068a8738a2.yaml: |
     groups:
     - name: kubernetes-storage
       rules:
@@ -1658,7 +1658,36 @@ data:
         for: 5m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-kubernetes-system-apiserver-c6e1df61-1e85-4ae7-9b9a-16c6f82971cb.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-system-7ad2ccc0-c5c1-4a34-a0e0-f4a4439f2bfd.yaml: |
+    groups:
+    - name: kubernetes-system
+      rules:
+      - alert: KubeVersionMismatch
+        annotations:
+          description: There are {{ $value }} different semantic versions of Kubernetes
+            components running.
+          runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch
+          summary: Different semantic versions of Kubernetes components running.
+        expr: count by (cluster) (count by (git_version, cluster) (label_replace(kubernetes_build_info{job!~"kube-dns|coredns"},"git_version","$1","git_version","(v[0-9]*.[0-9]*).*")))
+          > 1
+        for: 15m
+        labels:
+          severity: warning
+      - alert: KubeClientErrors
+        annotations:
+          description: Kubernetes API server client '{{ $labels.job }}/{{ $labels.instance
+            }}' is experiencing {{ $value | humanizePercentage }} errors.'
+          runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclienterrors
+          summary: Kubernetes API server client is experiencing errors.
+        expr: |-
+          (sum(rate(rest_client_requests_total{code=~"5.."}[5m])) by (cluster, instance, job, namespace)
+            /
+          sum(rate(rest_client_requests_total[5m])) by (cluster, instance, job, namespace))
+          > 0.01
+        for: 15m
+        labels:
+          severity: warning
+  default-prometheus-kube-prometheus-kubernetes-system-apiserver-36a152b3-4ac3-4c55-a43a-412a7d7acc21.yaml: |
     groups:
     - name: kubernetes-system-apiserver
       rules:
@@ -1730,36 +1759,7 @@ data:
         for: 5m
         labels:
           severity: warning
-  default-prometheus-kube-prometheus-kubernetes-system-cf97dc23-1584-4aac-8f9e-8bcc82d0beb6.yaml: |
-    groups:
-    - name: kubernetes-system
-      rules:
-      - alert: KubeVersionMismatch
-        annotations:
-          description: There are {{ $value }} different semantic versions of Kubernetes
-            components running.
-          runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch
-          summary: Different semantic versions of Kubernetes components running.
-        expr: count by (cluster) (count by (git_version, cluster) (label_replace(kubernetes_build_info{job!~"kube-dns|coredns"},"git_version","$1","git_version","(v[0-9]*.[0-9]*).*")))
-          > 1
-        for: 15m
-        labels:
-          severity: warning
-      - alert: KubeClientErrors
-        annotations:
-          description: Kubernetes API server client '{{ $labels.job }}/{{ $labels.instance
-            }}' is experiencing {{ $value | humanizePercentage }} errors.'
-          runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclienterrors
-          summary: Kubernetes API server client is experiencing errors.
-        expr: |-
-          (sum(rate(rest_client_requests_total{code=~"5.."}[5m])) by (cluster, instance, job, namespace)
-            /
-          sum(rate(rest_client_requests_total[5m])) by (cluster, instance, job, namespace))
-          > 0.01
-        for: 15m
-        labels:
-          severity: warning
-  default-prometheus-kube-prometheus-kubernetes-system-controller-manager-60720499-d287-45ee-8412-e0afdb73faa0.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-system-controller-manager-2fbb1629-04d3-4b77-9c50-69ca1db98429.yaml: |
     groups:
     - name: kubernetes-system-controller-manager
       rules:
@@ -1772,7 +1772,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-kubernetes-system-kube-proxy-b6ca7e8f-793c-4bb9-9186-d0bdd2216b21.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-system-kube-proxy-22ee0f42-e713-4920-be86-b1cc12eb54b9.yaml: |
     groups:
     - name: kubernetes-system-kube-proxy
       rules:
@@ -1785,7 +1785,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-kubernetes-system-kubelet-e290db3b-7d9d-43b6-b05e-c66799f6c677.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-system-kubelet-2e6154ec-b308-4d26-94d3-8fa1052c90ef.yaml: |
     groups:
     - name: kubernetes-system-kubelet
       rules:
@@ -1928,7 +1928,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-kubernetes-system-scheduler-e58d3a13-5362-42e4-8e7e-09c27f89d1e4.yaml: |
+  default-prometheus-kube-prometheus-kubernetes-system-scheduler-e7f6e795-6aa0-4e3d-af4b-790f1569d73b.yaml: |
     groups:
     - name: kubernetes-system-scheduler
       rules:
@@ -1941,7 +1941,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-node-exporter-6fb664d6-7700-4b81-8945-1e2a48ac6c61.yaml: |
+  default-prometheus-kube-prometheus-node-exporter-01a2bf12-2e99-4656-962f-fc9fa1a1a22c.yaml: |
     groups:
     - name: node-exporter
       rules:
@@ -2194,7 +2194,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-node-exporter.rules-8445db12-5e53-43cb-b305-d6e993906688.yaml: |
+  default-prometheus-kube-prometheus-node-exporter.rules-a0b1d223-55d9-4f5e-b26b-d4bd0f8532b0.yaml: |
     groups:
     - name: node-exporter.rules
       rules:
@@ -2260,7 +2260,7 @@ data:
             rate(node_network_transmit_drop_total{job="node-exporter", device!="lo"}[5m])
           )
         record: instance:node_network_transmit_drop_excluding_lo:rate5m
-  default-prometheus-kube-prometheus-node-network-25794c1c-eae8-4c0d-9beb-236a51561561.yaml: |
+  default-prometheus-kube-prometheus-node-network-19f91de3-ba33-41ad-8dc6-1c0a105b2860.yaml: |
     groups:
     - name: node-network
       rules:
@@ -2274,7 +2274,7 @@ data:
         for: 2m
         labels:
           severity: warning
-  default-prometheus-kube-prometheus-node.rules-796c45a9-0947-4275-9869-52328c7f9a09.yaml: |
+  default-prometheus-kube-prometheus-node.rules-70a00b4c-5d51-4ca8-80de-64cc8ccec114.yaml: |
     groups:
     - name: node.rules
       rules:
@@ -2306,7 +2306,7 @@ data:
           sum(rate(node_cpu_seconds_total{job="node-exporter",mode!="idle",mode!="iowait",mode!="steal"}[5m])) /
           count(sum(node_cpu_seconds_total{job="node-exporter"}) by (cluster, instance, cpu))
         record: cluster:node_cpu:ratio_rate5m
-  default-prometheus-kube-prometheus-prometheus-ffe2fadf-b950-4e1c-b904-97a9cfddfa3c.yaml: |
+  default-prometheus-kube-prometheus-prometheus-539e8634-b86d-4f14-883f-1908eae42dca.yaml: |
     groups:
     - name: prometheus
       rules:
@@ -2609,7 +2609,7 @@ data:
         for: 15m
         labels:
           severity: critical
-  default-prometheus-kube-prometheus-prometheus-operator-bac30331-23cb-44d3-b0c3-ebc2e429da6d.yaml: |
+  default-prometheus-kube-prometheus-prometheus-operator-94b7534f-474a-451e-9cd0-9e506c28881e.yaml: |
     groups:
     - name: prometheus-operator
       rules:
@@ -2696,7 +2696,7 @@ data:
           severity: warning
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-12-06T01:16:16Z"
+  creationTimestamp: "2022-12-13T04:54:37Z"
   labels:
     managed-by: prometheus-operator
     prometheus-name: prometheus-kube-prometheus-prometheus
@@ -2708,6 +2708,6 @@ metadata:
     controller: true
     kind: Prometheus
     name: prometheus-kube-prometheus-prometheus
-    uid: 1c4f72ac-38fd-40f1-a66e-c20e2bdcff81
-  resourceVersion: "388429"
-  uid: 4ce96916-0f03-43f5-b795-ff00720c101e
+    uid: c97ba131-9c64-4d2a-85a1-2e55875f0fac
+  resourceVersion: "867"
+  uid: 7606e04b-90cd-4c48-aa6f-2c704c8cf181

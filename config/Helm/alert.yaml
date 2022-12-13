@@ -1,18 +1,18 @@
 Name:               alertmanager-prometheus-kube-prometheus-alertmanager
 Namespace:          default
-CreationTimestamp:  Mon, 05 Dec 2022 20:16:16 -0500
+CreationTimestamp:  Mon, 12 Dec 2022 23:54:37 -0500
 Selector:           alertmanager=prometheus-kube-prometheus-alertmanager,app.kubernetes.io/instance=prometheus-kube-prometheus-alertmanager,app.kubernetes.io/managed-by=prometheus-operator,app.kubernetes.io/name=alertmanager
 Labels:             app=kube-prometheus-stack-alertmanager
                     app.kubernetes.io/instance=prometheus
                     app.kubernetes.io/managed-by=Helm
                     app.kubernetes.io/part-of=kube-prometheus-stack
-                    app.kubernetes.io/version=42.2.1
-                    chart=kube-prometheus-stack-42.2.1
+                    app.kubernetes.io/version=42.3.0
+                    chart=kube-prometheus-stack-42.3.0
                     heritage=Helm
                     release=prometheus
 Annotations:        meta.helm.sh/release-name: prometheus
                     meta.helm.sh/release-namespace: default
-                    prometheus-operator-input-hash: 3079223683669481117
+                    prometheus-operator-input-hash: 7448886143715508106
 Replicas:           1 desired | 1 total
 Update Strategy:    RollingUpdate
 Pods Status:        1 Running / 0 Waiting / 0 Succeeded / 0 Failed
@@ -100,4 +100,4 @@ Volume Claims:  <none>
 Events:
   Type    Reason            Age   From                    Message
   ----    ------            ----  ----                    -------
-  Normal  SuccessfulCreate  3m8s  statefulset-controller  create Pod alertmanager-prometheus-kube-prometheus-alertmanager-0 in StatefulSet alertmanager-prometheus-kube-prometheus-alertmanager successful
+  Normal  SuccessfulCreate  20s   statefulset-controller  create Pod alertmanager-prometheus-kube-prometheus-alertmanager-0 in StatefulSet alertmanager-prometheus-kube-prometheus-alertmanager successful

@@ -2,21 +2,27 @@
 
 ## MacOS Installation
 
-1.  Install [Helm Chart:](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+1.  Add and then install the helm repo: [link](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+
+    ```sh
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo update
+    ```
 
     ```sh
     helm install [RELEASE_NAME] prometheus-community/kube-prometheus-stack
     ```
 
+    **Note**: Our release name was `prometheus`
+
 2.  Run
 
-        ```sh
-        kubectl get statefulset
-        ```
-         You should see 2 stateful set's:
-        `alertmanager-prometheus-kube-prometheus-alertmanager` and `
+    ```sh
+    kubectl get statefulset
+    ```
 
-    prometheus-prometheus-kube-prometheus-prometheus`
+    You should see 2 stateful set's:
+    `alertmanager-prometheus-kube-prometheus-alertmanager` and `prometheus-prometheus-kube-prometheus-prometheus`
 
 3.  Run these commands to see your stateful set YAML files:
 

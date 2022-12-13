@@ -35,53 +35,45 @@
    ```
 
    ```sh
-   kubectl create namespace keda
-   helm install keda kedacore/keda --namespace keda
-   ```
-
-2. After installing KEDA run this command and set everything regarding prometheus to true in the keda-values.yaml file
-
-   ```sh
    helm show values kedacore/keda > keda-values.yaml
    ```
 
-3. Uninstall KEDA:
-
    ```sh
-   helm uninstall keda -n keda
+   kubectl create namespace keda
    ```
 
-4. Reinstall KEDA:
+2. After seeing the keda-values.yaml make sure everything regarding prometheus to true in the keda-values.yaml file
 
    ```sh
    helm install keda kedacore/keda --namespace keda -f keda-values.yaml
    ```
 
-   **Note:** Now the prometheus values should all be true for KEDA
+   **Note:** Now the prometheus values should all be true for KEDA now
 
-5. Download [Go](https://go.dev/doc/install) as an event trigger
-6. Create another namespace:
+3. Download [Go](https://go.dev/doc/install) as an event trigger
+4. Create another namespace:
    ```sh
    kubectl create namespace keda-demo
    ```
-7. Go to [link](https://djamaile.dev/blog/using-keda-and-prometheus/) to start using KEDA and Prometheus to scale your Kubernetes workloads
+5. Go to [link](https://djamaile.dev/blog/using-keda-and-prometheus/) to start using KEDA and Prometheus to scale your Kubernetes workloads
 
-8. Follow the sections _Starting Up_ to create your `prometheus.yaml` file and _Deploying Keda_
+6. Follow the sections _Starting Up_ to create your `prometheus.yaml` file
 
    **Note**: SKIP the _Creating the application(optional)_ section
 
-9. Follow the section _Running the application_ and create a `go-deployment.yaml` file
-10. Apply the manifest:
-    ```sh
-    kubectl apply -f go-deployment.yaml --namespace=keda-demo
-    ```
-11. Run this command to see all services:
+7. Follow the section _Running the application_ and create a `go-deployment.yaml` file
 
-    ```sh
-    kubectl get services -A
-    ```
+8. Apply the manifest:
+   ```sh
+   kubectl apply -f go-deployment.yaml --namespace=keda-demo
+   ```
+9. Run this command to see all services:
 
-12. Port-forward the image by running:
+   ```sh
+   kubectl get services -A
+   ```
+
+10. Port-forward the image by running:
 
     ```sh
     kubectl port-forward svc/go-prom-app-service 8080 --namespace=keda-demo
@@ -89,7 +81,7 @@
 
     **Note:** Change the port if it is going to affect your other ports
 
-13. Follow the section _Scaling the application_ and create a `scaled-object.yaml` file
+11. Follow the section _Scaling the application_ and create a `scaled-object.yaml` file
 
     a) Make sure to change the service address to what your prometheus service address is
 
@@ -97,13 +89,13 @@
 
     b) Change the query to what your prometheus can actually query
 
-14. Apply the manifest:
+12. Apply the manifest:
 
     ```sh
     kubectl apply -f scaled-object.yaml --namespace=keda-demo
     ```
 
-15. Check that you have HPA and scaled objects in your namespace:
+13. Check that you have HPA and scaled objects in your namespace:
 
     ```sh
     kubectl get hpa -n keda-demo
@@ -119,7 +111,7 @@
     kubectl get scaledobjects -n keda-demo
     ```
 
-16. Download hey from homebrew [link](https://github.com/rakyll/hey)
+14. Download hey from homebrew [link](https://github.com/rakyll/hey)
 
     ```sh
     brew install hey
@@ -133,7 +125,7 @@
     hey -n 100 -m GET http://localhost:8080
     ```
 
-17. To see the autoscaling in action:
+15. To see the autoscaling in action:
 
     a) Run this command for Scaled Objects:
 
@@ -149,7 +141,7 @@
 
     **Note:** may take a minute to show, these two commands will tell you if your HPA and scaled objects are working.
 
-18. Now you have HPA and Scaled Objects working!
+16. Now you have HPA and Scaled Objects working!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

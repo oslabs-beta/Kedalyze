@@ -4,8 +4,6 @@ import { drag } from 'd3-drag';
 import '../../../styles/d3Styles.css';
 
 const D3Visuals = (props) => {
-  // const { data } = props;
-  // console.log('this is data', data);
   const data = {
     name: 'minikube',
     children: [
@@ -16,39 +14,22 @@ const D3Visuals = (props) => {
             name: 'alertmanager-prometheus-kube-prometheus-alertmanager-0',
           },
           {
-            name: ' hello-minikube-7ddcbc9b8b-p58vn',
+            name: 'hello-minikube-7ddcbc9b8b-mwvkv',
           },
           {
-            name: 'mongodb-deployment-9695cdd7c-h46gm ',
+            name: 'prometheus-grafana-698d6c4477-tqd56',
           },
           {
-            name: 'mongodb-exporter-prometheus-mongodb-exporter-697654b54d-txjh2',
+            name: 'prometheus-kube-prometheus-operator-66d6758bd9-x2qml',
           },
           {
-            name: 'prometheus-grafana-5d9f5d6499-8hh9r',
+            name: 'prometheus-kube-state-metrics-6cfd96f4c8-gbjqj',
           },
           {
-            name: 'prometheus-kube-prometheus-operator-689dd6679c-stgt8',
+            name: 'prometheus-prometheus-kube-prometheus-prometheus-0',
           },
           {
-            name: 'prometheus-kube-state-metrics-6cfd96f4c8-72n84',
-          },
-          {
-            name: ' prometheus-prometheus-kube-prometheus-prometheus-0  ',
-          },
-          {
-            name: ' prometheus-prometheus-node-exporter-44jrr  ',
-          },
-        ],
-      },
-      {
-        name: 'keda-demo',
-        children: [
-          {
-            name: 'go-prom-app-7bc85dbd8b-x5b9t',
-          },
-          {
-            name: 'prometheus-deployment-c845c544d-qzvb2',
+            name: 'prometheus-prometheus-node-exporter-bgps9',
           },
         ],
       },
@@ -56,13 +37,10 @@ const D3Visuals = (props) => {
         name: 'keda',
         children: [
           {
-            name: 'keda-metrics-apiserver-74d8b444f4-d4frw',
+            name: 'keda-operator-5b8c55cdb-qpcbk',
           },
           {
-            name: 'keda-operator-7749c69898-wcc66',
-          },
-          {
-            name: 'keda-operator-metrics-apiserver-95ccb594f-xr4lr ',
+            name: 'keda-operator-metrics-apiserver-66496446f7-stgfn',
           },
         ],
       },
@@ -70,7 +48,7 @@ const D3Visuals = (props) => {
         name: 'kube-system',
         children: [
           {
-            name: 'coredns-565d847f94-qhd4g',
+            name: 'coredns-565d847f94-tg54h',
           },
           {
             name: 'etcd-minikube',
@@ -82,13 +60,13 @@ const D3Visuals = (props) => {
             name: 'kube-controller-manager-minikube',
           },
           {
-            name: 'kube-proxy-8tg9b',
+            name: 'kube-proxy-rfkmt',
           },
           {
             name: 'kube-scheduler-minikube',
           },
           {
-            name: 'metrics-server-769cd898cd-czgjv',
+            name: 'metrics-server-769cd898cd-m9qjw',
           },
           {
             name: 'storage-provisioner',

@@ -51,7 +51,8 @@ const ClusterInfo = () => {
         const podCount = parseInt(cluster.PodCount.match(/\d+/g)[0], 10);
         dispatch({ type: 'SET_POD_COUNT', podCount });
 
-        const terminatedPods = Math.floor(Number(podLength) / Number(podCount));
+        const terminatedPods = Math.floor(Number(podLength) % Number(podCount));
+
         dispatch({ type: 'SET_TERMINATED_PODS', terminatedPods });
 
         setLoading(false);
