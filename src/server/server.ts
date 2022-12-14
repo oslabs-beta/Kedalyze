@@ -27,12 +27,6 @@ const port: number = Number(process.env.PORT) || 3000;
 
 app.use(express.json() as RequestHandler);
 app.use(express.urlencoded({ extended: true }) as RequestHandler);
-// app.use(
-//   cors({
-//     origin: 'http://localhost:8080/', // this is the React client's domain
-//     credentials: true,
-//   })
-// );
 app.use(
   cors({
     origin: 'http://localhost:8080',
@@ -81,6 +75,7 @@ app.post(
   cookieController.addCookie,
   sessionController.startSession,
   cookieController.sessionCookie,
+  JWTController.validateTokens,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
   }
@@ -92,7 +87,7 @@ app.post(
   cookieController.addCookie,
   sessionController.isLoggedIn,
   cookieController.sessionCookie,
-  // JWTController.validateTokens,
+  JWTController.validateTokens,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
   }
