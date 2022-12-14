@@ -31,29 +31,6 @@ app.use(express.urlencoded({ extended: true }) as RequestHandler);
 app.use(cors());
 app.use(cookieParser());
 
-app.use('/api', K8Router);
-
-client.collectDefaultMetrics();
-
-const collectDefaultMetrics = client.collectDefaultMetrics;
-const Registry = client.Registry;
-const register = new Registry();
-collectDefaultMetrics({ register });
-
-register.setDefaultLabels({
-  app: 'kedalyze-api',
-});
-
-app.get('/metrics', async (req: Request, res: Response) => {
-  res.setHeader('Content-type', register.contentType);
-  res.end(await register.metrics());
-});
-
-app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
-  console.log('Backend and Frontend are connected 🎉🎉🎉');
-  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-});
-
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.get(
@@ -85,6 +62,29 @@ app.post(
     return res.status(200).json(res.locals.user);
   }
 );
+
+app.use('/api', K8Router);
+
+client.collectDefaultMetrics();
+
+const collectDefaultMetrics = client.collectDefaultMetrics;
+const Registry = client.Registry;
+const register = new Registry();
+collectDefaultMetrics({ register });
+
+register.setDefaultLabels({
+  app: 'kedalyze-api',
+});
+
+app.get('/metrics', async (req: Request, res: Response) => {
+  res.setHeader('Content-type', register.contentType);
+  res.end(await register.metrics());
+});
+
+app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
+  console.log('Backend and Frontend are connected 🎉🎉🎉');
+  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
 
 app.use('*', (req: Request, res: Response) => {
   return res.status(404);

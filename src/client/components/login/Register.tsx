@@ -29,7 +29,16 @@ function Register() {
         setEmail('');
         setUsername('');
         setPassword('');
-        alert('User created successfully!');
+
+        const alertDiv = document.createElement('div');
+        alertDiv.innerHTML = 'User created successfully!';
+        alertDiv.classList.add('alert-success');
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 2500);
+
         navigate('/dashboard');
       } else {
         setMessage('This username / email is already in use');

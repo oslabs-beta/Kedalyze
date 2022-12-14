@@ -27,7 +27,16 @@ const LoginPage = () => {
       if (res.status === 200) {
         setUsername('');
         setPassword('');
-        alert('Login successful');
+
+        const alertDiv = document.createElement('div');
+        alertDiv.innerHTML = 'Login successful!';
+        alertDiv.classList.add('alert-login-success');
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 2500);
+
         navigate('/dashboard');
       } else {
         setMessage('Login credentials are invalid');
