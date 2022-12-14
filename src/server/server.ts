@@ -14,20 +14,32 @@ dotenv.config();
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
 
 const K8Router = require('./routes/K8-Routes');
 
 const userController = require('./middleware/userController');
 const cookieController = require('./middleware/cookieController');
 const sessionController = require('./middleware/sessionController');
+const JWTController = require('./middleware/JWTController');
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 3000;
 
 app.use(express.json() as RequestHandler);
 app.use(express.urlencoded({ extended: true }) as RequestHandler);
-app.use(cors());
+// app.use(
+//   cors({
+//     origin: 'http://localhost:8080/', // this is the React client's domain
+//     credentials: true,
+//   })
+// );
+app.use(
+  cors({
+    origin: 'http://localhost:8080',
+    credentials: true,
+    exposedHeaders: ['Set-Cookie', 'Date', 'ETag'],
+  })
+);
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../client')));
@@ -80,6 +92,7 @@ app.post(
   cookieController.addCookie,
   sessionController.isLoggedIn,
   cookieController.sessionCookie,
+  // JWTController.validateTokens,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
   }

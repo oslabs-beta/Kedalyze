@@ -10,24 +10,27 @@ interface cookieController {
 const cookieController: cookieController = {
   addCookie: (req: Request, res: Response, next: NextFunction) => {
     if (res.locals.user) {
-      const randomNum = Math.floor(Math.random() * 100);
-      res.cookie('secret', randomNum);
+      let randomNumber = Math.random().toString();
+      randomNumber = randomNumber.substring(2, randomNumber.length);
+      res.cookie('cookie', randomNumber, {
+        maxAge: 900000,
+        httpOnly: true,
+      });
 
       // const token = jwt.sign(res.locals.user.id, process.env.JWT_SECRET, {
-      //   expiresIn: '1d',
+      //   expiresIn: '1hr',
       // });
-      // res.cookie('access_token', token, { httpOnly: true });
 
-      res.cookie('user_id', res.locals.user.id, {
-        httpOnly: true,
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-      });
-      return next();
+      // res.cookie('token', token, { httpOnly: true });
     }
+    return next();
   },
   sessionCookie: (req: Request, res: Response, next: NextFunction) => {
     if (res.locals.user) {
-      res.cookie('session', res.locals.user.id, { httpOnly: true });
+      res.cookie('session', res.locals.user.id, {
+        httpOnly: true,
+        secure: true,
+      });
     }
     return next();
   },
