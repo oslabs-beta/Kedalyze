@@ -7,6 +7,18 @@
     <li>
       <a href="#installation">Installing KEDA via Helm</a>
     </li>
+    <li>
+      <a href="#Prometheus-setup">Installing a sample application</a>
+    </li>
+    <li>
+      <a href="#Sample-app">Using a sample application (optional)</a>
+    </li>
+    <li>
+      <a href="#scaled-object">Creating a scaled object</a>
+    </li>
+    <li>
+      <a href="#testing-load">Testing our KEDA Scaler</a>
+    </li>
       <li>
       <a href="#exposing">Expose KEDA Metrics</a>
     </li>
@@ -24,7 +36,7 @@
 
 ## Installing KEDA via Helm
 
-1. Run these commands to deploy with [Helm](https://keda.sh/docs/2.8/deploy/)
+1. Run these commands to deploy KEDA with [Helm](https://keda.sh/docs/2.8/deploy/)
 
    ```sh
    helm repo add kedacore https://kedacore.github.io/charts
@@ -35,83 +47,117 @@
    ```
 
    ```sh
-   helm show values kedacore/keda > keda-values.yaml
-   ```
-
-   ```sh
    kubectl create namespace keda
    ```
 
-2. After seeing the keda-values.yaml make sure everything regarding prometheus to true in the keda-values.yaml file
-
-   ```sh
-   helm install keda kedacore/keda --namespace keda -f keda-values.yaml
+    ```sh
+   helm install --set prometheus.metricServer.enabled=true --set prometheus.metricServer.podMonitor.enabled=true --set prometheus.operator.enabled=true --set prometheus.operator.podMonitor.enabled=true --set prometheus.operator.prometheusRules.enabled=true keda kedacore/keda --namespace keda
+   ```
+    ```sh
+   helm show values kedacore/keda > keda-values.yaml
    ```
 
-   **Note:** Now the prometheus values should all be true for KEDA now
+2. After seeing the keda-values.yaml, make sure everything regarding prometheus to true in the keda-values.yaml file
 
-3. Download [Go](https://go.dev/doc/install) as an event trigger
+   **Note:** Now the prometheus values should all be true for KEDA now. If not, then please use the command
+
+  ```sh
+   helm upgrade --set prometheus.metricServer.enabled=true --set prometheus.metricServer.podMonitor.enabled=true --set prometheus.operator.enabled=true --set prometheus.operator.podMonitor.enabled=true --set prometheus.operator.prometheusRules.enabled=true keda kedacore/keda --namespace keda
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Prometheus-setup
+
+## Setting up Prometheus
+
+   **Note:** The following steps use a sample app for testing purposes. this is **optional** because you can use your own application as well
+
+3. Download [Go](https://go.dev/doc/install)
 4. Create another namespace:
    ```sh
    kubectl create namespace keda-demo
    ```
-5. Go to [link](https://djamaile.dev/blog/using-keda-and-prometheus/) to start using KEDA and Prometheus to scale your Kubernetes workloads
+5. If you'd like to use our custom Prometheus manifest (recommended), it is listed under (config/Prometheus/prometheus.yaml) . If not, modify your existing prometheus yaml configurations to adhere to our customizations.
 
-6. Follow the sections _Starting Up_ to create your `prometheus.yaml` file
-
-   **Note**: SKIP the _Creating the application(optional)_ section
-
-7. Follow the section _Running the application_ and create a `go-deployment.yaml` file
-
-8. Apply the manifest:
+6. If using our prometheus.yaml manifest, make sure to apply it
    ```sh
-   kubectl apply -f go-deployment.yaml --namespace=keda-demo
+   kubectl apply -f Kedalyze/config/Prometheus/prometheus.yaml
    ```
-9. Run this command to see all services:
+
+7. Once the pod is up and running, see if it works on port 9090
+   ```sh
+   kubectl -n keda-demo port-forward svc/prometheus-service 9090
+   ```
+If using your own prometheus manifest, replace {prometheus-service} with your prometheus service name.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Sample-app
+
+## Using a sample application (optional)
+
+
+1. Use the manifest file under (config/SampleApplication/go-deployment.yaml) to create your application.
+**Note:** you can apply your own image as well
+  Apply the manifest:
+   ```sh
+   kubectl apply -f Kedalyze/config/SampleApplication/go-deployment.yaml
+   ```
+
+2. Run this command to see all services:
 
    ```sh
    kubectl get services -A
    ```
 
-10. Port-forward the image by running:
+3. Port-forward the image by running:
 
     ```sh
     kubectl port-forward svc/go-prom-app-service 8080 --namespace=keda-demo
     ```
 
-    **Note:** Change the port if it is going to affect your other ports
+    **Note:** Change the port if it is going to affect your other ports (8081:8080 or 8082:8080)
 
-11. Follow the section _Scaling the application_ and create a `scaled-object.yaml` file
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-    a) Make sure to change the service address to what your prometheus service address is
+# scaled-object
+
+## Creating a scaled object
+
+1. Now that we have our application, we can create a scaled object! To use our custom yaml file (Recommended) locate it under (config/SampleApplication/scaled-object.yaml)
+
+  a) Read the yaml manifest and it’s comments to understand what is going on. One important note as well is in advanced.horizontalPodAutoscalerConfig.scaleUp.policies you can see I have specified 50%, that means our pod will scale up with 50% of it’s current amount of pods. 1 -> 2 -> 3 -> 5 -> 8 -> 12 -> 18 -> 20 it will stop at 20 pods because that is the limit we specified.
+
+  b) Make sure to change the service address to your prometheus service address
 
     - You can check this by going to prometheus's port: `localhost:9090 > Status > Command-Line Flags > --web.external-url`
 
-    b) Change the query to what your prometheus can actually query
+  c) The query will be scaling the application up and down based on the amount of http requests coming into Prometheus
 
-12. Apply the manifest:
-
+2. Apply the manifest:
     ```sh
-    kubectl apply -f scaled-object.yaml --namespace=keda-demo
+    kubectl apply -f Kedalyze/config/SampleApplication/scaled-object.yaml --namespace=keda-demo
     ```
 
-13. Check that you have HPA and scaled objects in your namespace:
+3. Check that you have HPA and scaled objects in your namespace:
 
     ```sh
     kubectl get hpa -n keda-demo
-    ```
-
-    There are two types of commands you can run to check for scaled objects:
-
-    ```sh
-    kubectl get scaledobject.keda.sh/prometheus-scaledobject -n keda-demo
     ```
 
     ```sh
     kubectl get scaledobjects -n keda-demo
     ```
 
-14. Download hey from homebrew [link](https://github.com/rakyll/hey)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# testing-load
+
+## Testing our KEDA Scaler
+
+
+1. Download hey from homebrew [link](https://github.com/rakyll/hey)
 
     ```sh
     brew install hey
@@ -119,13 +165,12 @@
 
     **Note:** hey is used for testing purposes: they send http requests to localhost:8080
 
-    Run this command to create trigger events:
+2. Run this command to create trigger events:
 
     ```sh
     hey -n 100 -m GET http://localhost:8080
     ```
-
-15. To see the autoscaling in action:
+3. To see the autoscaling in action:
 
     a) Run this command for Scaled Objects:
 
@@ -158,10 +203,10 @@
 2. Port-forward your keda-metrics pod
 
    ```sh
-   kubectl port-forward keda-operator-metrics-apiserver-95ccb594f-xr4lr 9022 -n keda
+   kubectl port-forward {keda-operator-metrics-apiserver-pod#} 9022 -n keda
    ```
 
-   **Note**: Your pod name may appear different, follow what shows up on your terminal
+   **Note**: Replace {keda-operator-metrics-apiserver-pod#} with your actual pod name
 
 3. You can now see your KEDA metrics exposed at [localhost:9022/metrics](http://localhost:9022/metrics)
 
@@ -171,10 +216,12 @@
 
 ## Getting Kube-State-Metrics:
 
+Kube State metrics is a service that talks to the Kubernetes API server to get all the details about all the API objects like deployments, pods, daemonsets, Statefulsets, etc.
+
 1. Setup [Kube State Metrics](https://devopscube.com/setup-kube-state-metrics/)
 2. Run the command
    ```sh
-   git clone https://github.com/kubernetes/kube-state-metrics.git
+   git clone https://github.com/kubernetes/kube-state-metrics-configs.git
    ```
 3. Apply the files:
    ```sh
@@ -188,116 +235,13 @@
 
    **Note:** We are using port 8081 because our client is running on 8080
 
-5. Create a **`Service`** and a **`ServiceMonitor`** to expose the `kube-state-metrics` on a port.
-
-   This is an example of what it should look like:
-
-   ```jsx
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: kube-state-metrics
-     namespace: keda-demo
-   spec:
-     ports:
-     - port: 8081
-       targetPort: 8081
-       protocol: TCP
-     selector:
-       app: kube-state-metrics
-   ---
-   apiVersion: monitoring.coreos.com/v1
-   kind: ServiceMonitor
-   metadata:
-     name: kube-state-metrics
-     namespace: keda-demo
-   spec:
-     selector:
-       matchLabels:
-         app: kube-state-metrics
-     namespaceSelector:
-       any: true
-     endpoints:
-     - port: http
-   ```
+5. Create a **`Service`** and a **`ServiceMonitor`** to expose the `kube-state-metrics` on a port. You can utilize our custom manifest on (config/KubeMetrics/kube-service.yaml)
 
 6. Apply the **`Service`** and **`ServiceMonitor`** by running the following command:
 
    ```sh
-   kubectl apply -f <YAML-file-name>.yaml
+   kubectl apply -f Kedalyze/config/KubeMetrics/kube-service.yaml
    ```
-
-   **Note:** Replace <YAML-file-name> with the YAML file you just created in step 5
-
-7. Add both of these contents to your `prometheus.yaml` file:
-
-   ```jsx
-   containers:
-   - name: prometheus
-     image: prom/prometheus
-     args:
-       - '--config.file=/etc/prometheus/prometheus.yml'
-       - '--storage.tsdb.path=/prometheus/'
-       - '--web.external-url=http://prometheus-service.keda-demo.svc:9090'
-   ```
-
-   ```jsx
-   - job_name: 'kube-state-metrics'
-     static_configs:
-     - targets: ['kube-state-metrics:8081']
-   - job_name: 'keda-metrics'
-     static_configs:
-     - targets: ['keda-operator-metrics-apiserver.keda.svc.cluster.local:9022']
-   ```
-
-8. Update the clusterrole.rules.resources in `prometheus.yaml` to show services, nodes, nodes/metrics, endpoints, pods, and horizontalpodautoscalers and add apigroups with resources to the ConfigMaps
-
-   ```jsx
-   rules:
-     - apiGroups: [""]
-       resources:
-         - services
-         - nodes
-         - nodes/proxy
-         - nodes/metrics
-         - endpoints
-         - pods
-         - horizontalpodautoscalers
-       verbs: ["get", "list", "watch"]
-     - apiGroups: [""]
-       resources: ["configmaps"]
-     - nonResourceURLs: ["/metrics"]
-       verbs: ["get"]
-   ```
-
-9. Apply the prometheus.yaml file in keda-demo namespace
-   ```sh
-   kubectl apply -f prometheus.yaml -n keda-demo
-   ```
-   **Note:** The prometheus.yaml file should now be updated
-10. Restart the prometheus deployment to update the changes
-    ```sh
-    kubectl rollout restart deployment/prometheus-deployment -n keda-demo
-    ```
-11. Get your current prometheus pod in the keda-demo namespace and delete it
-
-    ```sh
-    kubectl get pods -n keda-demo
-    ```
-
-    ```sh
-    kubectl delete pod prometheus-pod-name -n keda-demo
-    ```
-
-    **Note:** A new prometheus pod should spin up automatically with all your changes
-
-12. Port-forward Prometheus again and you should see two new jobs that are being scraped for kube-metrics under targets (`keda-metrics` and `kube-state-metrics`) in prometheus
-
-    ```sh
-    kubectl port-forward svc/prometheus-service 9090
-    ```
-
-    **Note:** Change the port if it is going to affect your other ports
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -305,85 +249,32 @@
 
 ## Prometheus with Grafana:
 
-1. Set up [Grafana](https://devopscube.com/setup-grafana-kubernetes/)
-2. Run the command
-   ```sh
-   git clone https://github.com/bibinwilson/kubernetes-grafana.git
-   ```
-3. Under the file `grafana-datasource-config.yaml`, change the data > prometheus.yaml > datasources > url to look something like this:
+1. To set up Grafana, use our manifest files under config/Grafana (Recommended) or adjust your own Grafana files to follow our configurations
 
-   ```jsx
-   "url": "http://prometheus-service.monitoring.svc:9090",
-   ```
-
-4. Adjust the `service.yaml` file
-
-   ```jsx
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: grafana
-     namespace: keda-demo
-   spec:
-     selector:
-       app: grafana
-     ports:
-       - port: 3030
-         targetPort: 3030
-   ```
-
-5. Adjust the `grafana-datasource-config.yaml` to this:
-
-   ```jsx
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: grafana-datasources
-     namespace: keda-demo
-   data:
-     prometheus.yaml: |-
-       {
-           "apiVersion": 1,
-           "datasources": [
-               {
-                 "access":"proxy",
-                   "editable": true,
-                   "name": "prometheus",
-                   "orgId": 1,
-                   "type": "prometheus",
-                   "url": "http://prometheus-service.monitoring.svc:9090",
-                   "version": 1
-               }
-           ]
-       }
-   ```
-
-   **Note**: Change the namespace under every file from monitoring to keda-demo
-
-6. Create the files under your terminal once changes are made by running these commands:
+2. Apply our configurations using these commands:
 
    ```sh
-   kubectl create -f kubernetes-grafana/grafana-datasource-config.yaml
+   kubectl apply -f Kedalyze/config/Grafana/grafana-datasource-config.yaml
    ```
 
    ```sh
-   kubectl create -f kubernetes-grafana/deployment.yaml
+   kubectl apply -f Kedalyze/config/Grafana/deployment.yaml
    ```
 
    ```sh
-   kubectl create -f kubernetes-grafana/service.yaml
+   kubectl apply -f Kedalyze/config/Grafana/service.yaml
    ```
 
-7. Get all the pod names in keda-demo namespace
+3. Get all the pod names in keda-demo namespace
 
    ```sh
    kubectl get pods -n keda-demo
    ```
 
-8. Port-forward it to 3000
+4. Port-forward the grafana service to 3001:3000
 
    ```sh
-   kubectl -n keda-demo port-forward pod/grafana-5469c64c7d-7msgr 3000
+   kubectl -n keda-demo port-forward svc/grafana 3001:3000
    ```
 
    **Note:** Change the port if it is going to affect your other ports
@@ -393,76 +284,12 @@
     - Username: admin
     - Password: admin
 
-9. Make changes to your prometheus.yaml file for `Service`
-
-   ```jsx
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: prometheus-service
-     annotations:
-         prometheus.io/scrape: 'true'
-         prometheus.io/port: '9090'
-   spec:
-     ports:
-       - port: 9090
-         targetPort: 9090
-         nodePort: 30000
-         protocol: TCP
-     selector:
-       app: prometheus-server
-     type: NodePort
-   ```
-
-10. Apply the file again to prometheus in keda-demo namespace
-
-    ```sh
-    kubectl apply -f prometheus.yaml -n keda-demo
-    ```
-
-    prometheus.yaml should be updated now
-
-11. Restart the prometheus deployment and grafana deployment to update the changes
-
-    ```sh
-    kubectl rollout restart deployment/prometheus-deployment -n keda-demo
-    ```
-
-    ```sh
-    kubectl rollout restart deployment/grafana -n keda-demo
-    ```
-
-12. Get your current prometheus pod again
-
-    ```sh
-    kubectl get pods -n keda-demo
-    ```
-
-13. Delete the prometheus pod again
-    ```sh
-    kubectl delete pod prometheus-pod-name -n keda-demo
-    ```
-
-Once deleted, a new one should spin up automatically with all of your new changes
-
-14. Get the name of the grafana pod to connect to Grafana UI
-
-    ```sh
-    kubectl get pods -A
-    ```
-
-15. Port-forward the pod
-
-    ```sh
-    kubectl -n keda-demo port-forward pod/grafana-5469c64c7d-7msgr 3000
-    ```
-
-16. Once connected to the Grafana UI, go to settings > configuration > data sources > add > prometheus
+5. Once connected to the Grafana UI, go to settings > configuration > data sources > add > prometheus
 
 - For the HTTP URL, put in http://prometheus-service.keda-demo.svc:9090
 
-17. Prometheus metrics should now be accessible on Grafana
-18. The two main metrics we are focused on seeing the autoscaling based on HTTP requests are:
+6. Prometheus metrics should now be accessible on Grafana
+7. The two main metrics we are focused on seeing the autoscaling based on HTTP requests are:
 
 - keda_metrics_adapter_scaler_metrics_value
 - http_requests
