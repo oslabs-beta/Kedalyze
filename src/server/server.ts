@@ -15,11 +15,10 @@ dotenv.config();
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
-// routes
 const K8Router = require('./routes/K8-Routes');
 
-// controllers
 const userController = require('./middleware/userController');
 const cookieController = require('./middleware/cookieController');
 const sessionController = require('./middleware/sessionController');
@@ -45,7 +44,6 @@ register.setDefaultLabels({
   app: 'kedalyze-api',
 });
 
-// all metrics
 app.get('/metrics', async (req: Request, res: Response) => {
   res.setHeader('Content-type', register.contentType);
   res.end(await register.metrics());
@@ -58,7 +56,6 @@ app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
 
 app.use(express.static(path.join(__dirname, '../client')));
 
-// signup
 app.get(
   '/register',
   userController.getAllUsers,
@@ -67,44 +64,25 @@ app.get(
   }
 );
 
-// route handler POST request to /register
 app.post(
   '/register',
   userController.createUser,
-  cookieController.setSSIDCookie,
+  cookieController.addCookie,
   sessionController.startSession,
+  cookieController.sessionCookie,
   (req: Request, res: Response) => {
-    return res.status(200);
+    return res.status(200).json(res.locals.user);
   }
 );
 
-// login
 app.post(
   '/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
-  (req: Request, res: Response) => {
-    console.log('✅ successful login, redirecting');
-    return res.status(200);
-  }
-);
-
-// Authorized routes
-app.get(
-  '/dashboard',
+  cookieController.addCookie,
   sessionController.isLoggedIn,
+  cookieController.sessionCookie,
   (req: Request, res: Response) => {
-    return res.status(200);
-  }
-);
-
-app.get(
-  '/dashboard/users',
-  sessionController.isLoggedIn,
-  userController.getAllUsers,
-  (req: Request, res: Response) => {
-    res.send({ users: res.locals.users });
+    return res.status(200).json(res.locals.user);
   }
 );
 

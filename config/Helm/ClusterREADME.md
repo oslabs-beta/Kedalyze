@@ -13,7 +13,7 @@
     helm install [RELEASE_NAME] prometheus-community/kube-prometheus-stack
     ```
 
-    **Note**: Our release name was `prometheus`
+    **Note**: Our release name was `prometheus`, you can name it anything you want
 
 2.  Run
 

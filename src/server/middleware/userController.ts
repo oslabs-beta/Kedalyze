@@ -2,7 +2,8 @@ import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { ResponseObj } from '../interfaces/crud';
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
-//const jwt = require('jsonwebtoken');
+const saltRound = 10;
+const jwt = require('jsonwebtoken');
 
 interface userController {
   getAllUsers: ResponseObj;
@@ -24,64 +25,85 @@ const userController: userController = {
 
   createUser: (req: Request, res: Response, next: NextFunction) => {
     const { email, username, password } = req.body;
-    User.create({
-      email: email,
-      username: username,
-      password: password,
-    })
-      .then((data: any) => {
-        res.locals.users = data;
-        return next();
-      })
-      .catch((error: ErrorRequestHandler) => {
-        return next({
-          log: 'userController.createUser: ERROR: ' + error,
-          message: 'userController.createUser: ERROR: Database query issue',
-        });
-      });
+    bcrypt.hash(
+      password,
+      saltRound,
+      (err: ErrorRequestHandler, hash: string) => {
+        if (err) {
+          res.send({
+            success: false,
+            statusCode: 500,
+            message: `Error salting password: ${err}`,
+          });
+        } else {
+          User.create({ email: email, username: username, password: hash })
+            .then((user: object) => {
+              res.locals.user = user;
+              return next();
+            })
+            .catch((err: ErrorRequestHandler) => {
+              return next({
+                log: `userController.createUser: ERROR: ${err}`,
+                message: `userController.createUser: ${err}`,
+              });
+            });
+        }
+      }
+    );
   },
 
   verifyUser: (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
+
     if (!username || !password) {
-      console.log('❌ Error: username and password fields must be complete.');
-      return res.redirect('http://localhost:8080/register');
+      return res.status(400).json({
+        error: 'Username and password fields must be complete.',
+      });
     }
 
-    // check if user exists / password is correct
     User.findOne({ username: username })
-      .exec()
-      .then((userData: any) => {
+      .then((user: object) => {
+        res.locals.user = user;
+
+        if (!user) {
+          return res.status(401).json({
+            error: 'Invalid credentials. User does not exist.',
+          });
+        }
+
+        const plainTextPassword = req.body.password;
+        const hashedPassword = res.locals.user.password;
+
         bcrypt.compare(
-          password,
-          userData.password,
-          function (error: ErrorRequestHandler, isMatch: any) {
+          plainTextPassword,
+          hashedPassword,
+          (error: ErrorRequestHandler, result: string) => {
             if (error) {
-              console.log('❌ userController.verifyUser: ERROR: ' + error);
-              return res.redirect('/register');
-            } else if (!isMatch) {
-              console.log(
-                '❌ userController.verifyUser: ERROR: incorrect password'
-              );
-              return res.redirect('/register');
+              return next({
+                log: `An error occurred while comparing password hash, ${error}`,
+                message: {
+                  err: 'An error occurred while comparing password hash',
+                },
+              });
             } else {
-              res.locals.id = userData.id;
-              //const token = jwt.sign(res.locals.id, process.env.JWT_SECRET, {expiresIn: '1d'});
-              return next();
+              res.locals.users = user;
+              // const token = jwt.sign(res.locals.id, process.env.JWT_SECRET, {
+              //   expiresIn: '1d',
+              // });
+              return res.status(200).json({
+                message: '✅ Successful login!',
+              });
             }
           }
         );
       })
-      .catch((error: ErrorRequestHandler) => {
-        console.log(
-          '❌ userController.verifyUser: ERROR: incorrect username or password'
-        );
-        return res.redirect('/register');
+      .catch((err: ErrorRequestHandler) => {
+        next({
+          log: `ERROR: ${err}`,
+          message: { err: 'An error occurred in userController.verifyUser' },
+        });
       });
   },
 };
-
-
-
 
 module.exports = userController;

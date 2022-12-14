@@ -134,15 +134,11 @@ In the config folder, you can see all the configuration files needed to get you 
 
 # Electron Setup
 
-## MacOS Setup for Electron
-
-1.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+**Note:** If you are on a Windows operating system, you will need to follow these steps to run electron
 
 ## Windows Setup for Electron
 
-1. download and install all of these dependencies:
+1. Download and install all of these dependencies:
 
    ```sh
    sudo apt install ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils

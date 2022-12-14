@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const goLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
       let res = await fetch('http://localhost:3000/login', {
@@ -24,24 +24,17 @@ const LoginPage = () => {
       });
 
       let resJson = await res.json();
-      if (res.status !== 200) {
+      if (res.status === 200) {
         setUsername('');
         setPassword('');
-        setMessage('Wrong username/password, Please try again');
-        navigate('/login');
-        return;
-      } else {
-        setMessage('Successful login!');
+        alert('Login successful');
         navigate('/dashboard');
+      } else {
+        setMessage('Login credentials are invalid');
       }
     } catch (err) {
-      console.log(`❌ Error in fetching login POST requesting: ${err}`);
+      console.log(`❌ Error in fetching register POST request: ${err}`);
     }
-  };
-
-  const goLogin = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    navigate('/dashboard');
   };
 
   const goHome = (event: { preventDefault: () => void }) => {
@@ -56,7 +49,7 @@ const LoginPage = () => {
 
   return (
     <div className='login-page'>
-      <form onSubmit={handleSubmit} className='login-form'>
+      <form onSubmit={goLogin} className='login-form'>
         <div className='con'>
           <h2 className='login-in-text'>Log In</h2>
           <label>
