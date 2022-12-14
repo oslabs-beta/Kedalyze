@@ -6,7 +6,7 @@ const Keda = () => {
       <div className='frame-cut'>
         <iframe
           className='metric-data'
-          src='http://localhost:3001/d/krKM6I54k/keda-dashboard?orgId=1&refresh=5s'
+          src='http://localhost:3001/d/1-v6PK54z/keda-metrics?orgId=1&refresh=5s'
           width='1375'
           height='1910'
         ></iframe>
