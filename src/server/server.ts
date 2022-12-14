@@ -20,7 +20,7 @@ const K8Router = require('./routes/K8-Routes');
 const userController = require('./middleware/userController');
 const cookieController = require('./middleware/cookieController');
 const sessionController = require('./middleware/sessionController');
-const JWTController = require('./middleware/JWTController');
+// const JWTController = require('./middleware/JWTController');
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 3000;
@@ -87,7 +87,7 @@ app.post(
   cookieController.addCookie,
   sessionController.isLoggedIn,
   cookieController.sessionCookie,
-  JWTController.validateTokens,
+  // JWTController.validateTokens,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
   }
