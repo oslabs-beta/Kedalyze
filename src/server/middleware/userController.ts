@@ -3,7 +3,7 @@ import { ResponseObj } from '../interfaces/crud';
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const saltRound = 10;
-//const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 interface userController {
   getAllUsers: ResponseObj;
@@ -87,6 +87,9 @@ const userController: userController = {
               });
             } else {
               res.locals.users = user;
+              // const token = jwt.sign(res.locals.id, process.env.JWT_SECRET, {
+              //   expiresIn: '1d',
+              // });
               return res.status(200).json({
                 message: '✅ Successful login!',
               });

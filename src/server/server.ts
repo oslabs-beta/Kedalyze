@@ -15,6 +15,7 @@ dotenv.config();
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 const K8Router = require('./routes/K8-Routes');
 
@@ -82,23 +83,6 @@ app.post(
   cookieController.sessionCookie,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
-  }
-);
-
-app.get(
-  '/dashboard',
-  sessionController.isLoggedIn,
-  (req: Request, res: Response) => {
-    return res.status(200);
-  }
-);
-
-app.get(
-  '/dashboard/users',
-  sessionController.isLoggedIn,
-  userController.getAllUsers,
-  (req: Request, res: Response) => {
-    res.send({ users: res.locals.users });
   }
 );
 

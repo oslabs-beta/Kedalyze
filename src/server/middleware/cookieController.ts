@@ -13,6 +13,11 @@ const cookieController: cookieController = {
       const randomNum = Math.floor(Math.random() * 100);
       res.cookie('secret', randomNum);
 
+      // const token = jwt.sign(res.locals.user.id, process.env.JWT_SECRET, {
+      //   expiresIn: '1d',
+      // });
+      // res.cookie('access_token', token, { httpOnly: true });
+
       res.cookie('user_id', res.locals.user.id, {
         httpOnly: true,
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
