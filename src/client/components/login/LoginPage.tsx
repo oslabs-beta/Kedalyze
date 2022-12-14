@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/loginStyles.css';
 import eye from '../../styles/pine-eye.jpg';
@@ -27,13 +27,22 @@ const LoginPage = () => {
       if (res.status === 200) {
         setUsername('');
         setPassword('');
-        alert('Login successful');
+
+        const alertDiv = document.createElement('div');
+        alertDiv.innerHTML = 'Login successful!';
+        alertDiv.classList.add('alert-login-success');
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 2500);
+
         navigate('/dashboard');
       } else {
         setMessage('Login credentials are invalid');
       }
     } catch (err) {
-      console.log(`❌ Error in fetching register POST request: ${err}`);
+      console.error(`❌ Error in fetching register POST request: ${err}`);
     }
   };
 

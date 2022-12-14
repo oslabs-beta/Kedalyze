@@ -58,7 +58,7 @@ const ClusterInfo = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(
+        console.error(
           `❌ An error occurred fetching cluster information: ${err}`
         );
       });
@@ -97,7 +97,7 @@ const ClusterInfo = () => {
   const data = generateData(cluster, namespace, [podName]);
 
   if (loading) {
-    console.log('Your clusters are not connected ⛔');
+    console.error('Your clusters are not connected ⛔');
     return (
       <div id='loading'>
         <span className='loading-text'>Loading ...</span>

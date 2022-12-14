@@ -2,7 +2,6 @@ import {
   Action,
   ThunkAction,
   configureStore,
-  createSlice,
 } from '@reduxjs/toolkit';
 
 export type RootState = ReturnType<typeof store.getState>;

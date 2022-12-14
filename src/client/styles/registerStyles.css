@@ -17,6 +17,18 @@ label {
   letter-spacing: 2px;
 }
 
+.alert-success {
+  display: flex;
+  padding: 20px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  width: 16%;
+  margin: 1.5rem auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
 /* SIGNUP BUTTON */
 .signup-page-btn,
 .go-back-again-btn {
@@ -111,7 +123,7 @@ label {
 .message {
   text-align: center;
   letter-spacing: 2px;
-  color: rgb(215, 151, 3);
+  color: rgb(255, 0, 0);
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
   padding: 0 2rem;

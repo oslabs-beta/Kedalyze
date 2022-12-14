@@ -41,6 +41,18 @@ form {
   border: 2px solid white;
 }
 
+.alert-login-success {
+  display: flex;
+  padding: 18px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  width: 11%;
+  margin: 1.5rem auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
 /* LOGIN BUTTON */
 .login-page-btn,
 .go-back-again-btn {

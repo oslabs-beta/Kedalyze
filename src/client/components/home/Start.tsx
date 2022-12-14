@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../../styles/styles.css';
 import background from '../../styles/logo1.jpg';
 import SignUp from '../login/SignUp';

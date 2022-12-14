@@ -73,7 +73,7 @@ KEDALyze is an open-source product that gives users the ability to visualize KED
 
 ## Live Metrics
 
-### KEDA: See KEDA autoscaling in action
+### See KEDA autoscaling in action
 
 ![KEDA](./demo-gifs/KEDA.gif)
 
@@ -128,7 +128,10 @@ In the config folder, you can see all the configuration files needed to get you 
    ```js
    JWT_SECRET = 'your string of choice';
    ```
-6. `npm run dev`
+6. Make sure you cluster is running and then you can run the command
+   ```sh
+   npm run dev
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

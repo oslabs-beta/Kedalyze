@@ -4,7 +4,6 @@ import express, {
   Response,
   NextFunction,
   ErrorRequestHandler,
-  Router,
 } from 'express';
 import { RequestHandler } from 'express-serve-static-core';
 import path from 'path';
@@ -31,6 +30,8 @@ app.use(express.urlencoded({ extended: true }) as RequestHandler);
 app.use(cors());
 app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, '../client')));
+
 app.use('/api', K8Router);
 
 client.collectDefaultMetrics();
@@ -49,12 +50,10 @@ app.get('/metrics', async (req: Request, res: Response) => {
   res.end(await register.metrics());
 });
 
-app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   console.log('Backend and Frontend are connected 🎉🎉🎉');
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
-
-app.use(express.static(path.join(__dirname, '../client')));
 
 app.get(
   '/register',
@@ -103,7 +102,7 @@ app.use(
       message: { err: `${err}: An error occurred` },
     };
     const errorObj = Object.assign({}, defaultError, err);
-    console.log(errorObj.log);
+    console.error(errorObj.log);
     return res.status(errorObj.status).json(errorObj.message);
   }
 );
