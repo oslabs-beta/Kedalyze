@@ -32,7 +32,7 @@ function Register() {
         setPassword('');
 
         const alertDiv = document.createElement('div');
-        alertDiv.innerHTML = 'User created successfully!';
+        alertDiv.innerText = 'User created successfully!';
         alertDiv.classList.add('alert-success');
         document.body.appendChild(alertDiv);
 

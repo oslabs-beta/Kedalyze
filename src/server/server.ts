@@ -75,7 +75,7 @@ app.post(
   cookieController.addCookie,
   sessionController.startSession,
   cookieController.sessionCookie,
-  JWTController.validateTokens,
+  // JWTController.validateTokens,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
   }
@@ -87,7 +87,7 @@ app.post(
   cookieController.addCookie,
   sessionController.isLoggedIn,
   cookieController.sessionCookie,
-  JWTController.validateTokens,
+  // JWTController.validateTokens,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.user);
   }

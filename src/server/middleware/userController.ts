@@ -87,6 +87,17 @@ const userController: userController = {
               });
             } else {
               res.locals.users = user;
+              let randomNumber = Math.random().toString();
+              randomNumber = randomNumber.substring(2, randomNumber.length);
+              res.cookie('cookie', randomNumber, {
+                maxAge: 900000,
+                httpOnly: true,
+                secure: true,
+              });
+              res.cookie('session', res.locals.user._id, {
+                httpOnly: true,
+                secure: true,
+              });
               // const token = jwt.sign(
               //   res.locals.user.id,
               //   process.env.JWT_SECRET,
