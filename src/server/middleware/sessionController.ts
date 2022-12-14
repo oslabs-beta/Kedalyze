@@ -9,7 +9,10 @@ interface sessionController {
 
 const sessionController: sessionController = {
   isLoggedIn: (req: Request, res: Response, next: NextFunction) => {
-    Session.findOne({ cookieId: req.cookies.ssid })
+    console.log('this is req cookies', req.cookies.user);
+
+    Session.findOne({ cookieId: req.cookies.user })
+
       .exec()
       .then((data: any) => {
         if (!data) {
