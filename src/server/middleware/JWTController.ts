@@ -26,16 +26,23 @@ const JWTController: JWTController = {
   },
 
   validateTokens: (req: UserRequest, res: Response, next: NextFunction) => {
-    const authHeader = req.headers['authorization'];
-    console.log('this is auth header',authHeader);
-    const token = authHeader && authHeader.split(' ')[1].slice(6);
-    if (token == null) return res.sendStatus(401);
+    const authHeader = req.headers.hasOwnProperty('authorization')
+      ? req.headers['authorization']
+      : null;
+
+    if (authHeader === null) {
+      return res.sendStatus(401);
+    }
+    const [type, token] = authHeader.split(' ');
+    if (type !== 'Bearer' || !token) {
+      return res.sendStatus(401);
+    }
     try {
-      res.locals.user_id = jwt.verify(token, secret).user_id;
+      res.locals.user._id = jwt.verify(token, process.env.JWT_SECRET).user_id;
       return next();
-    } catch {
-      console.log('jwtController caught error in verify MW');
-      return next({ err: 'Verification error - Invalid JWT' });
+    } catch (err) {
+      console.error(`❌ Error in jwtController.verifyTokens: ${err}`);
+      return res.sendStatus(401);
     }
   },
 };

@@ -30,7 +30,7 @@ const LoginPage = () => {
         setPassword('');
 
         const alertDiv = document.createElement('div');
-        alertDiv.innerHTML = 'Login successful!';
+        alertDiv.innerText = 'Login successful!';
         alertDiv.classList.add('alert-login-success');
         document.body.appendChild(alertDiv);
 
