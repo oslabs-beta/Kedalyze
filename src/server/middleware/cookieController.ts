@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ResponseObj } from '../interfaces/crud';
 
-const jwt = require('jsonwebtoken');
-
-const JWT_SECRET = process.env.JWT_SECRET;
-
 interface cookieController {
   addCookie: ResponseObj;
   sessionCookie: ResponseObj;
@@ -20,10 +16,6 @@ const cookieController: cookieController = {
         httpOnly: true,
         secure: true,
       });
-      // const token = jwt.sign(res.locals.user.id, JWT_SECRET, {
-      //   expiresIn: '1hr',
-      // });
-      // res.cookie('token', token, { httpOnly: true });
     }
     return next();
   },

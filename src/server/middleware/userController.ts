@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { ResponseObj } from '../interfaces/crud';
+import { UserObj } from '../interfaces/user';
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const saltRound = 10;
@@ -37,7 +38,16 @@ const userController: userController = {
           });
         } else {
           User.create({ email: email, username: username, password: hash })
-            .then((user: object) => {
+            .then((user: UserObj) => {
+              const payload = {
+                user_id: user._id,
+                email,
+              };
+              const options = {
+                expiresIn: '2hr',
+              };
+              const token = jwt.sign(payload, process.env.JWT_SECRET, options);
+              user.token = token;
               res.locals.user = user;
               return next();
             })
@@ -98,13 +108,6 @@ const userController: userController = {
                 httpOnly: true,
                 secure: true,
               });
-              // const token = jwt.sign(
-              //   res.locals.user.id,
-              //   process.env.JWT_SECRET,
-              //   {
-              //     expiresIn: '1hr',
-              //   }
-              // );
               return res.status(200).json({
                 message: '✅ Successful login!',
               });
