@@ -1,10 +1,6 @@
-import express, {
-  Express,
-  Request,
-  Response,
+import {
   NextFunction,
   ErrorRequestHandler,
-  Router,
 } from 'express';
 
 const mongoose = require('mongoose');
@@ -18,7 +14,7 @@ mongoose
   })
   .then(() => console.log('Connected to Mongo DB 🦫 🦫 🦫'))
   .catch((err: ErrorRequestHandler) =>
-    console.log(`❌ Error connecting to Mongo DB: ${err}`)
+    console.error(`❌ Error connecting to Mongo DB: ${err}`)
   );
 
 const Schema = mongoose.Schema;

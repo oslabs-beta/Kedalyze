@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, Routes, Route, useNavigate } from 'react-router-dom';
 import Structure from '../pages/Structures';
 import Metrics from '../pages/Metrics';
@@ -51,7 +51,6 @@ const Navbar = () => {
                 Structure
               </Link>
             </li>
-            {/* //////////////////// */}
             <div className='dropdown'>
               <button className='nav-bar' onClick={() => setIsOpen(!isOpen)}>
                 <Link to='/dashboard/metrics' className='metric'>
@@ -116,7 +115,6 @@ const Navbar = () => {
                 </ul>
               )}
             </div>
-            {/* //////////////////// */}
             <li>
               <Link to='/dashboard/customs' className='custom'>
                 Custom

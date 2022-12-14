@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/loginStyles.css';
 import eye from '../../styles/pine-eye.jpg';
@@ -42,7 +42,7 @@ const LoginPage = () => {
         setMessage('Login credentials are invalid');
       }
     } catch (err) {
-      console.log(`❌ Error in fetching register POST request: ${err}`);
+      console.error(`❌ Error in fetching register POST request: ${err}`);
     }
   };
 

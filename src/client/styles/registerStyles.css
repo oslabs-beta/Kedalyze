@@ -123,7 +123,7 @@ label {
 .message {
   text-align: center;
   letter-spacing: 2px;
-  color: rgb(215, 151, 3);
+  color: rgb(255, 0, 0);
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
   padding: 0 2rem;

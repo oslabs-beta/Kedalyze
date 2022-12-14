@@ -1,15 +1,11 @@
 import express, {
   Request,
   Response,
-  NextFunction,
-  ErrorRequestHandler,
   Router,
-  response,
 } from 'express';
 const clusterController = require('../middleware/clusterController');
 const router: Router = express.Router();
 
-// k8 route to get cluster info
 router.get(
   '/cluster',
   clusterController.getClusterInfo,
@@ -18,7 +14,6 @@ router.get(
   }
 );
 
-// k8 routes for keda-demo
 router.get(
   '/podList',
   clusterController.getPodList,

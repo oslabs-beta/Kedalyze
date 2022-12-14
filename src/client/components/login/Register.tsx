@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/registerStyles.css';
 import eye from '../../styles/pine-eye.jpg';
@@ -44,7 +44,7 @@ function Register() {
         setMessage('This username / email is already in use');
       }
     } catch (err) {
-      console.log(`❌ Error in fetching register POST request: ${err}`);
+      console.error(`❌ Error in fetching register POST request: ${err}`);
     }
   };
 
