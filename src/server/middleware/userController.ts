@@ -87,9 +87,13 @@ const userController: userController = {
               });
             } else {
               res.locals.users = user;
-              // const token = jwt.sign(res.locals.id, process.env.JWT_SECRET, {
-              //   expiresIn: '1d',
-              // });
+              // const token = jwt.sign(
+              //   res.locals.user.id,
+              //   process.env.JWT_SECRET,
+              //   {
+              //     expiresIn: '1hr',
+              //   }
+              // );
               return res.status(200).json({
                 message: '✅ Successful login!',
               });

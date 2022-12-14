@@ -27,7 +27,10 @@ const sessionController: sessionController = {
 
   startSession: (req: Request, res: Response, next: NextFunction) => {
     const { _id } = res.locals.user;
-    Session.create({ cookieId: _id })
+
+    const newSession = new Session({ cookieId: _id });
+    newSession
+      .save()
       .then((newSession: object) => {
         res.locals.newSession = newSession;
         return next();
