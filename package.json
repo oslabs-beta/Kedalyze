@@ -24,6 +24,7 @@
   "homepage": "https://github.com/oslabs-beta/Kedalyze#readme",
   "dependencies": {
     "@kubernetes/client-node": "^0.17.1",
+    "@microsoft/tsdoc": "^0.14.2",
     "@reduxjs/toolkit": "^1.9.0",
     "@types/react-router-dom": "^5.3.3",
     "bcryptjs": "^2.4.3",

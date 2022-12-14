@@ -129,8 +129,14 @@ In the config folder, you can see all the configuration files needed to get you 
    JWT_SECRET = 'your string of choice';
    ```
 6. Make sure you cluster is running and then you can run the command
+
    ```sh
    npm run dev
+   ```
+
+7. Run your electron application
+   ```sh
+   npm run electron-start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -222,6 +228,8 @@ Don't forget to give our product a star! Thanks again!
 3. Commit your Changes `git commit -m 'Add some AmazingFeature'`
 4. Push to the Branch `git push origin feature/AmazingFeature`
 5. Open a Pull Request
+
+<a href="./docs/ContributingREADME.md">README for Contributions </a></li>
 
 ## License
 
