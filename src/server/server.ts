@@ -16,10 +16,8 @@ dotenv.config();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
-// routes
 const K8Router = require('./routes/K8-Routes');
 
-// controllers
 const userController = require('./middleware/userController');
 const cookieController = require('./middleware/cookieController');
 const sessionController = require('./middleware/sessionController');
@@ -45,7 +43,6 @@ register.setDefaultLabels({
   app: 'kedalyze-api',
 });
 
-// all metrics
 app.get('/metrics', async (req: Request, res: Response) => {
   res.setHeader('Content-type', register.contentType);
   res.end(await register.metrics());
@@ -58,7 +55,6 @@ app.get('/', cookieController.addCookie, (req: Request, res: Response) => {
 
 app.use(express.static(path.join(__dirname, '../client')));
 
-// signup
 app.get(
   '/register',
   userController.getAllUsers,
@@ -67,7 +63,6 @@ app.get(
   }
 );
 
-// route handler POST request to /register
 app.post(
   '/register',
   userController.createUser,
@@ -79,7 +74,6 @@ app.post(
   }
 );
 
-// login
 app.post(
   '/login',
   userController.verifyUser,
@@ -91,7 +85,6 @@ app.post(
   }
 );
 
-// Authorized routes
 app.get(
   '/dashboard',
   sessionController.isLoggedIn,

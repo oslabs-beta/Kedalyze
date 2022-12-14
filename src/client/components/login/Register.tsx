@@ -10,13 +10,9 @@ function Register() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const signUp = (event: { preventDefault: () => void }) => {
+  const signUp = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    navigate('/dashboard');
-  };
 
-  let handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
     try {
       let res = await fetch('http://localhost:3000/register', {
         method: 'POST',
@@ -28,16 +24,13 @@ function Register() {
         }),
       });
 
-      console.log('email', email);
-      console.log('username', username);
-      console.log('password', password);
-
       let resJson = await res.json();
       if (res.status === 200) {
         setEmail('');
         setUsername('');
         setPassword('');
-        setMessage('User created successfully!');
+        alert('User created successfully!');
+        navigate('/dashboard');
       } else {
         setMessage('This username / email is already in use');
       }
@@ -46,14 +39,12 @@ function Register() {
     }
   };
 
-  // go home
   const navigate = useNavigate();
   const goHome = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     navigate('/');
   };
 
-  // toggle password visibility
   const togglePassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setPasswordShown(!passwordShown);
@@ -61,7 +52,7 @@ function Register() {
 
   return (
     <div className='register'>
-      <form onSubmit={handleSubmit} className='signup-form'>
+      <form onSubmit={signUp} className='signup-form'>
         <div className='con'>
           <h2 className='login-in-text'>Sign Up</h2>
           <label>
