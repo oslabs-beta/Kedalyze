@@ -21,10 +21,6 @@ const JWTController: JWTController = {
       secret,
       { expiresIn: '1hr' }
     );
-
-    console.log('res locals user', res.locals.user);
-    // console.log()
-
     res.cookie('jwt', res.locals.user.jwt, { httpOnly: true });
     return next();
   },
@@ -34,24 +30,19 @@ const JWTController: JWTController = {
       ? req.headers['authorization']
       : null;
 
-    console.log('this is auth header1', authHeader);
-
     if (authHeader === null) {
       return res.sendStatus(401);
     }
-    console.log('this is auth header', authHeader);
-
-    const token = authHeader && authHeader.split(' ')[1].slice(6);
-    if (token == null) return res.sendStatus(401);
+    const [type, token] = authHeader.split(' ');
+    if (type !== 'Bearer' || !token) {
+      return res.sendStatus(401);
+    }
     try {
-      res.locals.user_id = jwt.verify(token, secret).user_id;
-
-      console.log('this is auth header2', authHeader);
-      console.log('user id ', res.locals.user_id);
+      res.locals.user._id = jwt.verify(token, process.env.JWT_SECRET).user_id;
       return next();
-    } catch {
-      console.log('jwtController caught error in verify MW');
-      return next({ err: 'Verification error - Invalid JWT' });
+    } catch (err) {
+      console.error(`❌ Error in jwtController.verifyTokens: ${err}`);
+      return res.sendStatus(401);
     }
   },
 };
