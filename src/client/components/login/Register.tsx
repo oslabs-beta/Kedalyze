@@ -28,6 +28,10 @@ function Register() {
         }),
       });
 
+      console.log('email', email);
+      console.log('username', username);
+      console.log('password', password);
+
       let resJson = await res.json();
       if (res.status === 200) {
         setEmail('');

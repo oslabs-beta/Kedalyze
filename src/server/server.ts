@@ -71,10 +71,11 @@ app.get(
 app.post(
   '/register',
   userController.createUser,
-  cookieController.setSSIDCookie,
+  cookieController.addCookie,
   sessionController.startSession,
+  cookieController.sessionCookie,
   (req: Request, res: Response) => {
-    return res.status(200);
+    return res.status(200).json(res.locals.user);
   }
 );
 
@@ -82,11 +83,11 @@ app.post(
 app.post(
   '/login',
   userController.verifyUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
+  cookieController.addCookie,
+  sessionController.isLoggedIn,
+  cookieController.sessionCookie,
   (req: Request, res: Response) => {
-    console.log('✅ successful login, redirecting');
-    return res.status(200);
+    return res.status(200).json(res.locals.user);
   }
 );
 

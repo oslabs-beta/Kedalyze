@@ -97,6 +97,7 @@ const ClusterInfo = () => {
   const data = generateData(cluster, namespace, [podName]);
 
   if (loading) {
+    console.log('Your clusters are not connected ⛔');
     return (
       <div id='loading'>
         <span className='loading-text'>Loading ...</span>
