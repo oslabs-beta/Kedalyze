@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  namespace: keda-demo
+data:
+  prometheus.yaml: |-
+    {
+        "apiVersion": 1,
+        "datasources": [
+            {
+                "access":"proxy",
+                "editable": true,
+                "name": "prometheus",
+                "type": "prometheus",
+                "url": "http://prometheus-service.keda-demo.svc:9090",
+                "version": 1
+            }
+        ]
+    }

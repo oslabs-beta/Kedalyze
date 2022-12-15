@@ -1,0 +1,59 @@
+body {
+  background: rgb(17, 18, 23);
+  color: white;
+  margin: 0;
+}
+
+.background-image {
+  width: auto;
+  height: 700px;
+  background-size: 900px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-attachment: fixed;
+}
+
+/* BUTTONS */
+.login-signup {
+  display: inline-flex;
+  position: fixed;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 75%;
+}
+
+.login-btn,
+.signup-btn {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 2rem;
+}
+
+.signup-btn:hover {
+  background-color: rgba(218, 255, 125, 1);
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.login-btn:hover {
+  background-color: rgba(83, 179, 203, 1);
+  box-shadow: 0px 15px 20px rgba(0, 208, 255, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}

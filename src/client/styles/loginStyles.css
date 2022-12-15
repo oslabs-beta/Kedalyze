@@ -1,0 +1,146 @@
+/* LOGIN PAGE */
+
+.login-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* LOGIN FORM */
+input,
+label {
+  width: 291px;
+  padding: 12px 20px;
+  margin: 5px 0;
+  display: block;
+  letter-spacing: 2px;
+  margin-right: 1.5rem;
+  border: none;
+  background: none;
+}
+
+input {
+  border-bottom: 1px solid rgb(138, 138, 138);
+}
+
+form .con {
+  justify-content: center;
+  padding: 2.2rem;
+}
+
+.login-in-text {
+  color: rgb(78, 51, 7);
+}
+
+form {
+  width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.4);
+  background: #f3ece5;
+  border: 2px solid white;
+}
+
+.alert-login-success {
+  display: flex;
+  padding: 18px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  width: 11%;
+  margin: 1.5rem auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* LOGIN BUTTON */
+.login-page-btn,
+.go-back-again-btn {
+  width: 152px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+}
+
+.login-page-btn:hover {
+  background-color: rgba(83, 179, 203, 1);
+  box-shadow: 0px 15px 20px rgba(0, 208, 255, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+.go-back-again-btn:hover {
+  background-color: rgba(252, 188, 181, 1);
+  box-shadow: 0px 7px 15px rgba(224, 26, 79, 0.4);
+  color: rgb(224, 26, 79);
+  transform: translateY(-7px);
+}
+
+.pine-eye {
+  height: 50px;
+  width: auto;
+}
+
+.pine-button {
+  background: none;
+  border: none;
+  margin-top: 1rem;
+}
+
+.pine-button:hover {
+  animation: shake 1s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-2deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(3deg);
+  }
+  30% {
+    transform: translate(0px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(2px, 1px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(4deg);
+  }
+  90% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.pine {
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
