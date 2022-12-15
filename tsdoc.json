@@ -1,0 +1,8 @@
+{
+  "tsdoc": {
+    "tsdocFlavor": "minimal",
+    "inputFiles": ["src"],
+    "exclude": ["node_modules"],
+    "output": "docs"
+  }
+}
