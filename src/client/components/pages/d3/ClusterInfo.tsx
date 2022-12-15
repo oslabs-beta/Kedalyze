@@ -12,6 +12,7 @@ interface ClusterState {
   terminatedPods: number;
 }
 
+
 const ClusterInfo = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();

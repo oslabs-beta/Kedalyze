@@ -3,7 +3,6 @@ import { Link, Routes, Route, useNavigate } from 'react-router-dom';
 import Structure from '../pages/Structures';
 import Metrics from '../pages/Metrics';
 import Custom from '../pages/Custom';
-import Alerts from '../pages/Alerts';
 
 import Global from '../pages/data/Global';
 import APIServer from '../pages/data/APIServer';
@@ -120,11 +119,6 @@ const Navbar = () => {
                 Custom
               </Link>
             </li>
-            <li>
-              <Link to='/dashboard/alerts' className='alert'>
-                Alerts
-              </Link>
-            </li>
           </nav>
         </div>
         <div className='column2'>
@@ -141,7 +135,6 @@ const Navbar = () => {
             <Route path='/metrics/coreDNS' element={<CoreDNS />} />
 
             <Route path='/customs' element={<Custom />} />
-            <Route path='/alerts' element={<Alerts />} />
           </Routes>
         </div>
       </div>
