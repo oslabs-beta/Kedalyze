@@ -93,8 +93,6 @@ Customizing the KEDA scaled object to use http requests, we are able to deploy r
 We've incorporated Grafana to allow monitoring of the http requests of your application, alongside with the autoscaling that is triggered.
 Our charts give users the security to know that KEDA is functional, deploying pods at higher workloads and disapating them when they are no longer necessary.
 
-_insert youtube video here_
-
 <p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
 # General Setup
