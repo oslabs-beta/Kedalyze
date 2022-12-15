@@ -67,7 +67,7 @@ KEDALyze is an open-source product that gives users the ability to visualize KED
 - ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
 # Features
 
@@ -95,7 +95,7 @@ Our charts give users the security to know that KEDA is functional, deploying po
 
 _insert youtube video here_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
 # General Setup
 
@@ -139,7 +139,7 @@ In the config folder, you can see all the configuration files needed to get you 
    npm run electron-start
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
 # Electron Setup
 
@@ -201,7 +201,7 @@ Each and every time you want to launch our application on Windows you must: laun
 \*\* **Additional:**
 If you need anymore help with setup on windows visit this [link](https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
 # Cluster Setup
 
@@ -214,7 +214,7 @@ Follow the steps that apply to you for your operating system to install [kubectl
 <li><a href="./config/README.md">README for KEDA Setup</a></li>
 </ul>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
 # Contributing
 
@@ -229,7 +229,7 @@ Don't forget to give our product a star! Thanks again!
 4. Push to the Branch `git push origin feature/AmazingFeature`
 5. Open a Pull Request
 
-<a href="./docs/ContributingREADME.md">README for Contributions </a></li>
+<a href="./ContributingREADME.md">README for Contributions</a></li>
 
 ## License
 
@@ -242,4 +242,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - Hashim Farah - [Github](https://github.com/Hashim-21) | [LinkedIn](https://www.linkedin.com/in/hashim-farah-b73660232/)
 - Karen Shi - [Github](https://github.com/ks1009) | [LinkedIn](https://www.linkedin.com/in/karenshi/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#kedalyze">back to top</a>)</p>
