@@ -91,7 +91,7 @@ KEDALyze is an open-source product that gives users the ability to visualize KED
 Prometheus queries are the event triggers we used to horizontally auto scale our pods.
 Customizing the KEDA scaled object to use http requests, we are able to deploy replica pods once the requests have reached a certain threshold.
 We've incorporated Grafana to allow monitoring of the http requests of your application, alongside with the autoscaling that is triggered.
-Our charts give users the security to know that KEDA is functional, deploying pods at higher workloads and disapating them when they are no longer necessary.
+Our charts give users the security to know that KEDA is functional, deploying pods at higher workloads and dissipating them when they are no longer necessary.
 
 <p align="right">(<a href="#kedalyze">back to top</a>)</p>
 
