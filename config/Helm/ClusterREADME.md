@@ -123,7 +123,7 @@
 
 18. You can now create your own promQL queries and dashboards!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#macos-installation">back to top</a>)</p>
 
 # Grafana Embedding (via Helm)
 
@@ -203,4 +203,4 @@
 
 15. To start embedding your own custom dashboard, click on the three dots on the top to share. You will see 4 options: Link, Snapshot, Embed, Library Panel. If you decide to use the `Embed` section with the iframe, replace the current src link with the link from the `Link` section or else you will get a 404 error
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#macos-installation">back to top</a>)</p>
