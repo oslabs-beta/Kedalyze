@@ -8,10 +8,10 @@ spec:
     # target our deployment
     name: go-prom-app
   # Interval to when check Prometheus in this case
-  pollingInterval: 15
+  pollingInterval: 5
   # The period to wait after the last trigger reported active
   # before scaling the deployment back to 0
-  cooldownPeriod: 30
+  cooldownPeriod: 15
   # min replicas keda will scale to
   # if you have an app that has an dependency on pubsub
   # this would be a good use case to set it to zero
