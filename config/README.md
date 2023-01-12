@@ -330,3 +330,5 @@ If you already have helm KEDA installed:
 ```sh
 helm upgrade --set promethus.metricServer.enabled=true --set prometheus.operator.enabled=true --set prometheusRules.enabled=true keda kedacore/keda --namespace keda
 ```
+
+<!-- I'm only doing this for daily commits -->
