@@ -333,4 +333,3 @@ helm upgrade --set promethus.metricServer.enabled=true --set prometheus.operator
 
 <!-- I'm only doing this for daily commits -->
 <!-- I'm only doing this for daily commits -->
-<!-- I'm only doing this for daily commits -->
